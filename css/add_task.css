@@ -1,3 +1,9 @@
+.task-h2 {
+    font-size: 61px;
+    font-weight: 700;
+    line-height: 73.2px;
+}
+
 .task-body {
     display: flex;
     justify-content: center;
@@ -8,6 +14,8 @@
 .task-form {
     display: flex;
     flex-direction: column;
+    height: 424px;
+    width: 976.25px;
 }
 
 .task-input-con {
@@ -17,24 +25,74 @@
 .task-input-left {
     display: flex;
     flex-direction: column;
+    height: 376px;
+    justify-content: space-between;
+    width: 440px;
 }
 
 .task-hr {
+    background-color: #d1d1d1;
+    height: 424px;
+    margin: 0 48.125px;
     width: 1px;
-    background-color: gray;
-    margin: 0 16px;
 }
 
 .task-input-right {
     display: flex;
     flex-direction: column;
+    height: 416px;
+    justify-content: space-between;
+    width: 440px;
+}
+
+.task-label {
+    color: #2A3647;
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    font-size: 20px;
+    gap: 8px;
+    line-height: 24px;
+}
+
+.task-star {
+    color: #FF8190;
+}
+
+.task-input-fd {
+    background-color: white;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    font-size: 20px;
+    line-height: 24px;
+    padding: 12px 16px;
+}
+.task-input-fd::placeholder {
+    color: #d1d1d1;
+    font-family: 'Inter', sans-serif;
+}
+
+.task-input-fd-ti {
+    padding: 12px 21px;
+}
+.task-input-fd-desc {
+    height: 82px;
+    /* gap: 10px; */
+    padding: 18px 16px;
+}
+.task-con-prio {
+    display: flex;
+    gap: 16px;
+}
+.task-prio-bt {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 10px;
 }
 
 .task-foot-con {
     display: flex;
     justify-content: space-between;
-}
-
-.task-input-fd {
-    border: 1px solid #E8E8E8;
 }

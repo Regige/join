@@ -5,55 +5,98 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./fonts.css" />
     <link rel="stylesheet" href="./css/add_task.css" />
   </head>
   <body class="task-body">
     <main>
-      <h2>Add Task</h2>
+      <h2 class="task-h2">Add Task</h2>
       <form action="" class="task-form">
         <div class="task-input-con">
           <div class="task-input-left">
-            <label for="title">Title*</label>
-            <input
-              class="input-fd"
-              type="text"
-              name=""
-              id="title"
-              placeholder="Enter a title"
-            />
-            <label for="description">Description</label>
-            <textarea name="" id="description" cols="30" rows="5"></textarea>
-            <label for="assigned-to">Assigned to</label>
-            <select name="" id="assigned-to">
-              <option value="">
-                <!-- <input type="checkbox" name="Regina Gering" id="" /> -->
-              </option>
-              <option value="">
-                <!-- <input type="checkbox" name="Max Mustermann" id="" /> -->
-              </option>
-            </select>
+            <label class="task-label"
+              ><span>Title<span class="task-star">*</span></span>
+              <input
+                required
+                class="task-input-fd task-input-fd-ti"
+                type="text"
+                name=""
+                id="title"
+                placeholder="Enter a title"
+              />
+            </label>
+            <label class="task-label"
+              >Description
+              <textarea
+                class="task-input-fd task-input-fd-desc"
+                name=""
+                id="description"
+                cols="30"
+                rows="3"
+                placeholder="Enter a Description"
+              >
+              </textarea>
+            </label>
+            <label class="task-label"
+              >Assigned to
+              <select class="task-input-fd" name="" id="assigned-to">
+                <option value="">
+                  <!-- <input type="checkbox" name="Regina Gering" id="" /> -->
+                </option>
+                <option value="">
+                  <!-- <input type="checkbox" name="Max Mustermann" id="" /> -->
+                </option>
+              </select>
+            </label>
           </div>
           <div class="task-hr"></div>
           <div class="task-input-right">
-            <label for="date">Due date*</label>
-            <input type="date" name="dd/mm/yyyy" id="date" />
-            <label for="prio">Prio</label>
-            <div>
-              <input type="button" value="Urgent" />
-              <input type="button" value="Medium" />
-              <input type="button" value="Low" />
-            </div>
-            <label for="category">Category*</label>
-            <select name="" id="category">
-              <option value="">To do</option>
-              <option value="">In progress</option>
-            </select>
-            <label for="subtask">Subtasks</label>
-            <input type="search" name="" id="subtask" />
+            <label class="task-label"
+              ><span>Due date<span class="task-star">*</span></span>
+              <input
+                required
+                class="task-input-fd"
+                type="date"
+                name="dd/mm/yyyy"
+                id="date"
+                placeholder="dd/mm/yyyy"
+              />
+            </label>
+            <label class="task-label"
+              >Prio
+              <div class="task-con-prio">
+                <button class="task-input-fd task-prio-bt">
+                  Urgent &nbsp;<img src="./img/task-prio-u.svg" alt="" />
+                </button>
+                <button class="task-input-fd task-prio-bt">
+                  Medium &nbsp;<img src="./img/task_prio-m.svg" alt="" />
+                </button>
+                <button class="task-input-fd task-prio-bt">
+                  Low &nbsp;<img src="./img/task-prio-l.svg" alt="" />
+                </button>
+              </div>
+            </label>
+            <label class="task-label"
+              ><span>Category<span class="task-star">*</span></span>
+              <select required class="task-input-fd" name="" id="category">
+                <option value="">To do</option>
+                <option value="">In progress</option>
+              </select>
+            </label>
+            <label class="task-label"
+              >Subtasks
+              <input
+                class="task-input-fd"
+                type="search"
+                name=""
+                id="subtask"
+                placeholder="Add new subtask"
+            /></label>
           </div>
         </div>
         <div class="task-foot-con">
-          <span>*This field is requierd</span>
+          <span><span class="task-star">*</span>This field is requierd</span>
           <div>
             <input type="button" value="Clear" />
             <input type="submit" value="Create Task" />
