@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join</title>
+    <link rel="stylesheet" href="./css/add_task.css" />
+  </head>
+  <body class="task-body">
+    <main>
+      <h2>Add Task</h2>
+      <form action="" class="task-form">
+        <div class="task-input-con">
+          <div class="task-input-left">
+            <label for="title">Title*</label>
+            <input
+              class="input-fd"
+              type="text"
+              name=""
+              id="title"
+              placeholder="Enter a title"
+            />
+            <label for="description">Description</label>
+            <textarea name="" id="description" cols="30" rows="5"></textarea>
+            <label for="assigned-to">Assigned to</label>
+            <select name="" id="assigned-to">
+              <option value="">
+                <!-- <input type="checkbox" name="Regina Gering" id="" /> -->
+              </option>
+              <option value="">
+                <!-- <input type="checkbox" name="Max Mustermann" id="" /> -->
+              </option>
+            </select>
+          </div>
+          <div class="task-hr"></div>
+          <div class="task-input-right">
+            <label for="date">Due date*</label>
+            <input type="date" name="dd/mm/yyyy" id="date" />
+            <label for="prio">Prio</label>
+            <div>
+              <input type="button" value="Urgent" />
+              <input type="button" value="Medium" />
+              <input type="button" value="Low" />
+            </div>
+            <label for="category">Category*</label>
+            <select name="" id="category">
+              <option value="">To do</option>
+              <option value="">In progress</option>
+            </select>
+            <label for="subtask">Subtasks</label>
+            <input type="search" name="" id="subtask" />
+          </div>
+        </div>
+        <div class="task-foot-con">
+          <span>*This field is requierd</span>
+          <div>
+            <input type="button" value="Clear" />
+            <input type="submit" value="Create Task" />
+          </div>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>
