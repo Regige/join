@@ -1,9 +1,16 @@
 body {
-    margin: 0;
-    background-color: #0b76e0;
-    width: 100%;
-    height: 100vh;
-    font-family: 'Inter', sans-serif;
+    position: relative;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.board_p {
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
 }
 
 .board_fbc {
@@ -11,7 +18,7 @@ body {
     flex-direction: column;
 }
 
-.board_fbccco{
+.board_fbccco {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,9 +31,9 @@ body {
     align-items: center;
 }
 
-.board_fbsacw {
+.board_fbsbcw {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -48,7 +55,6 @@ body {
 
 .board_button_add_task {
     margin-left: 30px;
-    margin-right: 50px;
     width: 160px;
     height: 48px;
     background-color: rgb(42, 54, 71);
@@ -92,17 +98,40 @@ body {
     line-height: 24px;
 }
 
-.board_serch_svg{
+.board_serch_svg {
     height: 31px;
     margin-right: 15px;
     padding-left: 10px;
-    border-left: 1px solid rgba(209, 209, 209, 1) ;
+    border-left: 1px solid rgba(209, 209, 209, 1);
 }
 
-.board_serch_svg:hover{
+.board_serch_svg:hover {
     cursor: pointer;
 }
 
-.board_columns{
+.board_columns {
     width: 246px;
+}
+
+.board_no_task {
+    width: 246px;
+    height: 48px;
+    border-radius: 10px;
+    border: 1px;
+    gap: 10px;
+    background-color: rgba(231, 231, 231, 1);
+    border: 2px dashed rgba(168, 168, 168, 1);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+    color: rgba(168, 168, 168, 1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+    
+}
+
+.board_no_task:hover {
+    cursor: pointer;
+    background-color: rgba(231, 231, 231, 0.7);
 }
