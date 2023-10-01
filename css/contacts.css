@@ -1,0 +1,122 @@
+.contacts-body {
+    display: flex;
+}
+
+.contacts-list-section {
+    width: 352px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 52px;
+    padding-right: 52px;
+}
+
+.contacts-button {
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid #2A3647;
+    display: flex;
+    font-size: 21px;
+    gap: 16px;
+    line-height: 25.2px;
+    justify-content: center;
+    margin-top: 22.5px;
+    padding: 12px 0;
+    background-color: #2A3647;
+    color: white;
+    width: 100%;
+}
+
+.contacts-head {
+    display: flex;
+    align-items: center;
+    margin-top: 110px;
+    margin-left: 55px;
+}
+
+.contacts-h2 {
+    font-size: 61px;
+    line-height: 73.2px;
+    margin: 0;
+}
+    
+.contacts-hr {
+    border: 1px solid #29ABE2;
+    height: 59px;
+    margin: 0 30px;
+}
+
+.contacts-head-text {
+    font-size: 27px;
+    line-height: 32.4px;
+    color: #2A3647;
+}
+
+
+/* PopUp Add contact */
+
+.add-contact-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(191,191,191, 0.3);
+    /* background-color: #BFBFBF; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.add-contact-con {
+    display: flex;
+}
+
+.add-contact-con-left {
+    border-radius: 16px 0 0 16px;
+    background-color: #2A3647;
+    color: white;
+    height: 462px;
+    width: 371px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 66px 48px;
+}
+
+.contacts-join-logo {
+    width: 55.6px;
+    height: 66.48px;
+    margin-bottom: 8px;
+}
+
+.contacts-add-text {
+    font-size: 27px;
+    line-height: 32.4px;
+    margin: 8px 0 16px 0;
+    font-weight: 400;
+}
+
+.contacts-hr-ho {
+    width: 90px;
+    border: 1.5px solid #29ABE2;
+    margin-bottom: 66px;
+}
+
+
+.add-contact-con-right {
+    border-radius: 0 16px 16px 0;
+    background-color: white;
+    height: 462px;
+    width: 649px;
+    display: flex;
+    justify-content: center;
+    padding: 66px 48px;
+}
+
+.contacts-user-logo {
+    height: 120px;
+    width: 120px;
+}

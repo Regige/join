@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join/Contacts</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="fonts.css" />
+    <link rel="stylesheet" href="./css/contacts.css" />
+  </head>
+  <body class="contacts-body" onload="renderContacts()">
+    <div class="add-contact-bg">
+      <div class="add-contact-con">
+        <div class="add-contact-con-left">
+          <img
+            src="./img/contacts-join-logo.svg"
+            alt=""
+            class="contacts-join-logo"
+          />
+          <h2 class="contacts-h2">Add contact</h2>
+          <p class="contacts-add-text">Tasks are better with a team!</p>
+          <div class="contacts-hr-ho"></div>
+        </div>
+        <div class="add-contact-con-right">
+          <img
+            src="./img/contacts-user-logo.svg"
+            alt=""
+            class="contacts-user-logo"
+          />
+          <div>
+            <div></div>
+            <form action="">
+              <input type="text" />
+              <input type="email" name="" id="" />
+              <input type="tel" name="" id="" />
+              <div>
+                <button class="contacts-button">Cancel</button>
+                <button class="contacts-button">Create contacts</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contacts-list-section">
+      <button class="contacts-button" onclick="addNewContacts()">
+        Add new contacts<img src="./img/contacts_add_icon.svg" alt="" />
+      </button>
+      <div class="contacts-list" id="contacts-list"></div>
+    </div>
+    <main>
+      <div class="contacts-head">
+        <h2 class="contacts-h2">Contacts</h2>
+        <div class="contacts-hr"></div>
+        <p class="contacts-head-text">Better with a team</p>
+      </div>
+    </main>
+  </body>
+</html>

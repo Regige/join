@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Join</title>
+    <title>Join/Add Task</title>
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./fonts.css" />
     <link rel="stylesheet" href="./css/add_task.css" />
@@ -96,10 +96,17 @@
           </div>
         </div>
         <div class="task-foot-con">
-          <span><span class="task-star">*</span>This field is requierd</span>
-          <div>
-            <input type="button" value="Clear" />
-            <input type="submit" value="Create Task" />
+          <span class="task-foot-text"
+            ><span class="task-star">*</span>This field is requierd</span
+          >
+          <div class="task-button-con">
+            <button class="task-button task-bt-clear">
+              Clear<img src="./img/task_cancel.svg" alt="" />
+            </button>
+            <button class="task-button task-bt-create">
+              Create Task<img src="./img/task_check.svg" alt="" />
+            </button>
+            <!-- <input type="submit" value="Create Task" /> -->
           </div>
         </div>
       </form>
