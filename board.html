@@ -14,7 +14,7 @@
 
 </head>
 
-<body>
+<body onload="initBoard()">
     <div class="board_header board_fbsbc">
         <h1>Board</h1>
         <div class="board_fbsbc">
@@ -30,7 +30,7 @@
             <div class="board_fbsbc board_columns">
                 <p class="board_p">To do</p><img src="./img/plus_button.svg" alt="">
             </div>
-            <div id="board_to-do" class=" board_fbcco board_box">
+            <div id="board_to_do" class=" board_fbcco board_box" ondragleave="removeHighlight('board_to_do')" ondrop="moveTo('board_to_do')" ondragover="allowDrop(event); highlight('board_to_do')">
                 <div class="board_no_task board_fbccco">No tasks To do</div>
                 <div class="board_fbc board_note">
                     <div class="board_task_headline">User Story</div>
@@ -62,10 +62,10 @@
 
         </div>
         <div class="board_fbcco board_columns_fixed">
-            <div class="board_fbsbc board_columns">
+            <div class="board_fbsbc board_columns" >
                 <p class="board_p">In progress</p><img src="./img/plus_button.svg" alt="">
             </div>
-            <div id="board_in-progress" class="board_box board_fbcco">
+            <div id="board_in_progress" class="board_box board_fbcco" ondragleave="removeHighlight('board_in_progress')" ondrop="moveTo('board_in_progress')" ondragover="allowDrop(event); highlight('board_in_progress')">
                 <div class="board_no_task board_fbccco">No tasks In progress</div>
             </div>
         </div>
@@ -73,7 +73,7 @@
             <div class="board_fbsbc board_columns">
                 <p class="board_p">Await feedback</p><img src="./img/plus_button.svg" alt="">
             </div>
-            <div id="board_await-feedback" class="board_box board_fbcco">
+            <div id="board_await_feedback" class="board_box board_fbcco" ondragleave="removeHighlight('board_await_feedback')" ondrop="moveTo('board_await_feedback')" ondragover="allowDrop(event); highlight('board_await_feedback')">
                 <div class="board_no_task board_fbccco">No tasks container Await feedback</div>
             </div>
         </div>
@@ -81,9 +81,9 @@
             <div class="board_fbsbc board_columns">
                 <p class="board_p">Done</p>
             </div>
-            <div id="board_done" class="board_box board_fbcco">
+            <div id="board_done" class="board_box board_fbcco" ondragleave="removeHighlight('board_done')" ondrop="moveTo('board_done')" ondragover="allowDrop(event); highlight('board_done')">
                 <div class="board_no_task board_fbccco">No tasks Done</div>
-                <div class="board_fbc board_note">
+              <!--  <div class="board_fbc board_note">
                     <div class="board_task_headline">User Story</div>
                     <div class="board_task_header">Überschrift Und das ist nochmal eine länge Version der Überschrift
                     </div>
@@ -134,7 +134,7 @@
                         </div>
                         <div class="board_task_prio"><img src="./img/task_prio-m.svg" alt=""></div>
                     </div>
-                </div>
+                </div>-->
 
             </div>
         </div>

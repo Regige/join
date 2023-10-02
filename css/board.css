@@ -75,7 +75,7 @@ h1 {
     width: 246px;
 }
 
-.board_box:hover {
+.board_box_highlight {
     min-height: 30em;
     width: 260px;
     padding-left: 10px;
@@ -187,6 +187,12 @@ h1 {
     border-radius: 24px;
     gap: 10px;
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+}
+
+.board_note:hover {
+    cursor: pointer;
+    transform: rotate(5deg);
+
 }
 
 .board_task_headline {
