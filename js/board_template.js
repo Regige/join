@@ -63,7 +63,8 @@ function filterTaskBoardToDo() {
         const element = board_to_do[i];
         document.getElementById('board_to-do').innerHTML +=
         createBoardTask(element.id, element.category, element.headline, element.text);
-        createBoardUsers(element.task_user);
+        console.log(element.task_user);
+        createBoardUsers(element.id,element.task_user);
     }
 }
 
