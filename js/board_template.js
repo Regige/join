@@ -206,3 +206,12 @@ function moveTo(category) {
     console.log(list[draggedElement]['task_board'])
     initBoard();
 }
+
+function highlight(id) {
+    document.getElementById(id).classList.add('board_box_highlight');
+}
+
+function removeHighlight(id) {
+    document.getElementById(id).classList.remove('board_box_highlight');
+
+}

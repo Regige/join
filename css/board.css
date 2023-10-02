@@ -75,7 +75,7 @@ h1 {
     width: 246px;
 }
 
-.board_box:hover {
+.board_box_highlight {
     min-height: 30em;
     width: 260px;
     padding-left: 10px;
