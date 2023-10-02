@@ -62,7 +62,8 @@ function filterTaskBoardToDo() {
     for (let i = 0; i < board_to_do.length; i++) {
         const element = board_to_do[i];
         document.getElementById('board_to-do').innerHTML +=
-            createBoardTask(element.id, element.category, element.headline, element.text, element.task_user);
+        createBoardTask(element.id, element.category, element.headline, element.text);
+        createBoardUsers(element.task_user);
     }
 }
 
@@ -84,9 +85,7 @@ function filterTaskBoardToDo() {
 
 
 
-function createBoardTask(id, category, headline, text, task_user) {
-
-
+function createBoardTask(id, category, headline, text) {
     let a = `<div id="${id}" class="board_fbc board_note">
         <div class="board_task_headline">${category}
         </div>
@@ -110,18 +109,20 @@ function createBoardTask(id, category, headline, text, task_user) {
             <div class="board_task_prio"><img src="./img/task_prio-m.svg" alt="">
             </div>
         </div>
-    </div>`
+    </div>`;
+return a
+}
 
+function createBoardUsers(id, task_user) {
     for (let i = 0; i < task_user.length; i++) {
         const element = task_user[i];
 
-        console.log(element, id)
-        let task_user = `task_user${id}`;
-        console.log(task_user, id)
-        document.getElementById(task_user).innerHTML += `
+        let task_user_number = `task_user${id}`;
+      
+        document.getElementById(task_user_number).innerHTML += `
         <div class="board_task_name board_fbcc" style="background: ${element.color};">${element.name}
         </div>`;
     };
-    //return a;
+    
 
 }
