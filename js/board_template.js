@@ -3,7 +3,7 @@ let list = [{
     'id': 1,
     'task_board': 'board_to_do',
     'category': 'Coden',
-    'headline': 'Css fertigstellen',
+    'headline': 'Css rtrretfertigstellen',
     'text': 'Es muss noch sehr viel gemacht werden.',
     'subtasks': [],
     'task_user': [{
