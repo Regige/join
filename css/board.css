@@ -189,6 +189,12 @@ h1 {
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
 }
 
+.board_note:hover {
+    cursor: pointer;
+    transform: rotate(5deg);
+
+}
+
 .board_task_headline {
     background-color: aqua;
     width: fit-content;

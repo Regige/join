@@ -1,35 +1,93 @@
 
-let id = 1;
-let task_board = 'board_to-do';
-let category = 'Coden';
-let headline = 'Css fertigstellen';
-let text = 'Es muss noch sehr viel gemacht werden.';
-let task_user = [{
-    "name": 'TT',
-    "color": 'green'
+let list = [{
+    'id': 1,
+    'task_board': 'board_to_do',
+    'category': 'Coden',
+    'headline': 'Css fertigstellen',
+    'text': 'Es muss noch sehr viel gemacht werden.',
+    'subtasks': [],
+    'task_user': [{
+        "name": 'TT',
+        "color": 'green'
+    },
+    {
+        "name": 'AF',
+        "color": 'red'
+    }, {
+        "name": 'ET',
+        "color": 'blue'
+    }
+    ]
 },
 {
-    "name": 'AF',
-    "color": 'red'
-}, {
-    "name": 'ET',
-    "color": 'blue'
-},
+    'id': 2,
+    'task_board': 'board_in_progress',
+    'category': 'Coden',
+    'headline': 'Css fertigstellen',
+    'text': 'Es muss noch sehr viel gemacht werden.',
+    'subtasks': [],
+    'task_user': [{
+        "name": 'TT',
+        "color": 'green'
+    },
+    {
+        "name": 'AF',
+        "color": 'red'
+    }, {
+        "name": 'ET',
+        "color": 'blue'
+    }
+    ],
+}
 ];
 
 
+function filterTaskBoardInProgress() {
+    let board_in_progress = list.filter(t => t['task_board'] == 'board_in_progress');
 
-function test(){
-    createBoardTask(id, task_board, category, headline, text,task_user);
+}
+
+
+function initBoard() {
+    filterTaskBoardToDo();
+    filterTaskBoardInProgress();
+}
+
+
+function filterTaskBoardToDo() {
+    let board_to_do = list.filter(t => t['task_board'] == 'board_to_do');
+    console.log(board_to_do);
+    document.getElementById('board_to-do').innerHTML = "";
+
+    for (let i = 0; i < board_to_do.length; i++) {
+        const element = board_to_do[i];
+        document.getElementById('board_to-do').innerHTML +=
+            createBoardTask(element.id, element.category, element.headline, element.text, element.task_user);
+    }
 }
 
 
 
-function createBoardTask(id, task_board, category, headline, text,task_user) {
 
 
-    document.getElementById(task_board).innerHTML +=
-    `<div id="${id}" class="board_fbc board_note">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function createBoardTask(id, category, headline, text, task_user) {
+
+
+    let a = `<div id="${id}" class="board_fbc board_note">
         <div class="board_task_headline">${category}
         </div>
         <div class="board_task_header">${headline}
@@ -52,13 +110,18 @@ function createBoardTask(id, task_board, category, headline, text,task_user) {
             <div class="board_task_prio"><img src="./img/task_prio-m.svg" alt="">
             </div>
         </div>
-    </div>`;
+    </div>`
 
-    for (let j = 0; j < task_user.length; j++) {
-        const element = task_user[j];
-        document.getElementById(`task_user${id}`).innerHTML += `
+    for (let i = 0; i < task_user.length; i++) {
+        const element = task_user[i];
+
+        console.log(element, id)
+        let task_user = `task_user${id}`;
+        console.log(task_user, id)
+        document.getElementById(task_user).innerHTML += `
         <div class="board_task_name board_fbcc" style="background: ${element.color};">${element.name}
         </div>`;
-    }
+    };
+    //return a;
 
 }
