@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+
+    <div class="begin">
+
+        <div class="capaAnimation">
+            <img class="capaImg" src="img/Capa 1.svg">
+        </div>
+
+        <div class="login" id="login">
+            
+            <div class="SignupButton" >
+                <span style="margin-right: 20px;">Not a Join user?</span>
+                <button class="login-button" onclick="showSignUp()">Sign up</button>
+            </div>
+
+            <div>
+                <h1 class="login-headline">Log in</h1>
+            </div>
+            <div>
+                <img class="VectorImg" src="img/Vector 5.svg">
+            </div>
+            <form class="password-login email-login">
+                <input class="mail-img" type="email" placeholder="Email">
+                <input class="password-img" type="password" placeholder="Password">
+            </form>
+            <div class="checkbox">
+                <input type="checkbox" checked style="cursor: pointer; ">
+                <span>Remember me</span>
+            </div>
+            <div>
+                <button class="login-button">Log in</button>
+                <button class="Guest-button">Guest Log in</button>
+            </div>
+        </div>
+
+        <div class="sign-up d-none" id="sign-up">
+            <div>
+                <img onclick="hideSignUp()" class="arrow-img" src="img/arrow-left-line.svg">
+                <h1 class="login-headline">Sign up</h1>
+            </div>
+            <div>
+                <img class="VectorImg" src="img/Vector 5.svg">
+            </div>
+            <form class="password-login email-login">
+                <input class="name-img" type="text" placeholder="Name">
+                <input class="mail-img" type="email" placeholder="Email">
+                <input class="password-img" type="password" placeholder="Password">
+                <input class="password-img" type="password" placeholder="Password">
+            </form>
+            <div class="checkbox-sign-up">
+                <input type="checkbox" checked style="cursor: pointer; ">
+                <span>I accept the <a href="">Privacy policy</a></span>
+            </div>
+            <div>
+                <button class="login-button">Sign up</button>
+            </div>
+        </div>
+
+    </div>
+    
+    <footer>
+        <a href="" target="_blank">Privacy Policy</a>
+        <a href="" target="_blank">Legal notice</a>
+      </footer>
+    
+
+</body>
+
+</html>

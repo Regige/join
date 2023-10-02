@@ -3,3 +3,239 @@ body {
     background-color: #F6F7F8;
     font-family: 'Inter', sans-serif;
 }
+
+.begin {
+    height: 98vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login {
+    background-color: white;
+    height: 420px;
+    width: 570px;
+    border-radius: 15px;
+    box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.login-headline {
+    font-size: 40px;
+    margin-bottom: 0px;
+    margin-top: -10px;
+}
+
+.VectorImg {
+    width: 100px;
+    height: 2px;
+}
+
+.email-login input {
+    display: flex;
+    border-radius: 7px;
+    border: 1px solid #c0c0c0;
+    font-size: 18px;
+    box-sizing: border-box;
+    height: 40px;
+    width: 380px;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+.mail-img {
+    background-image: url('../../img/mail.svg') !important;
+    background-position: 350px 8px !important;
+    background-size: 20px !important;
+    background-repeat: no-repeat !important;
+}
+
+.email-login input::placeholder {
+    color: #bebcbc;
+}
+
+.password-login input {
+    display: flex;
+    border-radius: 7px;
+    border: 1px solid #c0c0c0;
+    font-size: 18px;
+    box-sizing: border-box;
+    height: 40px;
+    width: 380px;
+    padding: 10px;
+    margin-bottom: 40px;
+}
+
+.password-img {
+    background-image: url('../../img/lock.svg') !important;
+    background-position: 350px 8px !important;
+    background-size: 20px !important;
+    background-repeat: no-repeat !important;
+}
+
+.name-img {
+    background-image: url('../../img/person.svg') !important;
+    background-position: 350px 8px !important;
+    background-size: 20px !important;
+    background-repeat: no-repeat !important;
+}
+
+.password-login input::placeholder {
+    color: #bebcbc;
+}
+
+.checkbox {
+    margin-top: -10px;
+    margin-left: -190px;
+    margin-bottom: 25px;
+}
+
+.checkbox-sign-up {
+    margin-top: -10px;
+    margin-bottom: 25px;
+}
+
+.login-button {
+    border-radius: 5px;
+    width: 100px;
+    height: 42px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #2A3647;
+    color: white;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: #29ABE2;
+    box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.7);
+}
+
+.Guest-button {
+    border-radius: 5px;
+    width: 160px;
+    height: 42px;
+    border: 2px solid #2A3647;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: white;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.Guest-button:hover {
+    color: #29ABE2;
+    border-color: #29ABE2;
+    box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.7);
+}
+
+.SignupButton {
+    position: absolute;
+    top: 75px;
+    right: 120px;
+}
+
+.capaAnimation {
+    animation: background-fade 1.2s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.capaImg {
+    transform: translate(0px, 0px);
+    animation: logoAnimation 1.8s ease-in-out;
+    position: absolute;
+    top: 70px;
+    left: 70px;
+}
+
+@keyframes logoAnimation {
+    from {
+        top: calc(100vh - 50%);
+        left: calc(100vw - 50%);
+        scale: 200%;
+    }
+
+    to {
+        top: 70px;
+        left: 70px;
+    }
+}
+
+@keyframes background-fade {
+    0% {
+        background: #ffffff;
+        z-index: 3;
+    }
+
+    99% {
+        z-index: 3;
+    }
+
+    100% {
+        background: none;
+        z-index: 1;
+    }
+}
+
+@keyframes buttonAnimation {
+    0% {
+        transform: translate(0px);
+        z-index: 5;
+    }
+
+    99% {
+        transform: translate(0px, -150px);
+        z-index: 5;
+    }
+
+    100% {
+        z-index: -5;
+    }
+}
+
+.sign-up {
+    background-color: white;
+    height: 570px;
+    width: 570px;
+    border-radius: 15px;
+    box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.arrow-img {
+    position: fixed;
+    margin-left: -150px;
+    cursor: pointer;
+}
+
+.d-none {
+    display: none;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: -50px;
+    gap: 35px;
+}
+
+a{
+    text-decoration: none;
+    color: #c0c0c0;
+}
