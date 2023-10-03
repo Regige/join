@@ -227,7 +227,7 @@ body {
     display: none;
 }
 
-footer {
+.footer {
     display: flex;
     justify-content: center;
     width: 100%;
