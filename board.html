@@ -29,17 +29,16 @@
     <div class="board_fbsbcw">
         <div class="board_fbcco board_columns_fixed">
             <div class="board_fbsbc board_columns">
-                <p class="board_p">To do</p><img src="./img/plus_button.svg" alt="">
+                <p class="board_p">To do</p><img class="board_add_img" src="./img/plus_button.svg" alt="">
             </div>
             <div id="board_to_do" class=" board_fbcco board_box" ondragleave="removeHighlight('board_to_do')"
                 ondrop="moveTo('board_to_do');removeHighlight('board_to_do')" ondragover="allowDrop(event); highlight('board_to_do')">
                 <div class="board_no_task board_fbccco">No tasks To do</div>
             </div>
-
         </div>
         <div class="board_fbcco board_columns_fixed">
             <div class="board_fbsbc board_columns">
-                <p class="board_p">In progress</p><img src="./img/plus_button.svg" alt="">
+                <p class="board_p">In progress</p><img class="board_add_img" src="./img/plus_button.svg" alt="">
             </div>
             <div id="board_in_progress" class="board_box board_fbcco" ondragleave="removeHighlight('board_in_progress')"
                 ondrop="moveTo('board_in_progress');removeHighlight('board_in_progress')" ondragover="allowDrop(event); highlight('board_in_progress')">
@@ -48,7 +47,7 @@
         </div>
         <div class="board_fbcco board_columns_fixed">
             <div class="board_fbsbc board_columns">
-                <p class="board_p">Await feedback</p><img src="./img/plus_button.svg" alt="">
+                <p class="board_p">Await feedback</p><img class="board_add_img" src="./img/plus_button.svg" alt="">
             </div>
             <div id="board_await_feedback" class="board_box board_fbcco" ondragleave="removeHighlight('board_await_feedback')"
                 ondrop="moveTo('board_await_feedback');removeHighlight('board_await_feedback')"
