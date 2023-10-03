@@ -32,34 +32,8 @@
                 <p class="board_p">To do</p><img src="./img/plus_button.svg" alt="">
             </div>
             <div id="board_to_do" class=" board_fbcco board_box" ondragleave="removeHighlight('board_to_do')"
-                ondrop="moveTo('board_to_do')" ondragover="allowDrop(event); highlight('board_to_do')">
+                ondrop="moveTo('board_to_do');removeHighlight('board_to_do')" ondragover="allowDrop(event); highlight('board_to_do')">
                 <div class="board_no_task board_fbccco">No tasks To do</div>
-                <div class="board_fbc board_note">
-                    <div class="board_task_headline">User Story</div>
-                    <div class="board_task_header">Überschrift Und das ist nochmal eine länge Version der Überschrift
-                    </div>
-                    <div class="board_task_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-                        similique nam molestias sed nulla earum voluptatibus maiores at praesentium est adipisci nobis,
-                        rem,
-                        aliquam maxime soluta veritatis quidem voluptate! Vero.</div>
-                    <div class="board_fbsbc">
-                        <div class="board_task_progess_empty">
-                            <div id="progress-bar-25" class="board_task_progess" role="progressbar" aria-valuenow="75"
-                                aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>
-                        </div>
-                        <div class="board_task_progess_text">
-                            1/2 Subtasks
-                        </div>
-                    </div>
-                    <div class="board_fbsbc board_footerline">
-                        <div class="board_fbfb board_task_name_box">
-                            <div class="board_task_name board_fbcc" style="background: red;">TT</div>
-                            <div class="board_task_name board_fbcc" style="background: blue;">AR</div>
-                            <div class="board_task_name board_fbcc" style="background: green;">DN</div>
-                        </div>
-                        <div class="board_task_prio"><img src="./img/task_prio-m.svg" alt=""></div>
-                    </div>
-                </div>
             </div>
 
         </div>
@@ -68,7 +42,7 @@
                 <p class="board_p">In progress</p><img src="./img/plus_button.svg" alt="">
             </div>
             <div id="board_in_progress" class="board_box board_fbcco" ondragleave="removeHighlight('board_in_progress')"
-                ondrop="moveTo('board_in_progress')" ondragover="allowDrop(event); highlight('board_in_progress')">
+                ondrop="moveTo('board_in_progress');removeHighlight('board_in_progress')" ondragover="allowDrop(event); highlight('board_in_progress')">
                 <div class="board_no_task board_fbccco">No tasks In progress</div>
             </div>
         </div>
@@ -76,8 +50,8 @@
             <div class="board_fbsbc board_columns">
                 <p class="board_p">Await feedback</p><img src="./img/plus_button.svg" alt="">
             </div>
-            <div id="board_await_feedback" class="board_box board_fbcco"
-                ondragleave="removeHighlight('board_await_feedback')" ondrop="moveTo('board_await_feedback')"
+            <div id="board_await_feedback" class="board_box board_fbcco" ondragleave="removeHighlight('board_await_feedback')"
+                ondrop="moveTo('board_await_feedback');removeHighlight('board_await_feedback')"
                 ondragover="allowDrop(event); highlight('board_await_feedback')">
                 <div class="board_no_task board_fbccco">No tasks container Await feedback</div>
             </div>
@@ -87,10 +61,12 @@
                 <p class="board_p">Done</p>
             </div>
             <div id="board_done" class="board_box board_fbcco" ondragleave="removeHighlight('board_done')"
-                ondrop="moveTo('board_done')" ondragover="allowDrop(event); highlight('board_done')">
+                ondrop="moveTo('board_done'); removeHighlight('board_done')"
+                ondragover="allowDrop(event); highlight('board_done')">
                 <div class="board_no_task board_fbccco">No tasks Done</div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
