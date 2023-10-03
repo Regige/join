@@ -1,0 +1,83 @@
+body{
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+header{
+    background-color: white;
+    height: 96px;
+    width: 100%;
+    box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Kanban{
+    font-size: 20px;
+    position: absolute;
+    left: 400px;
+    z-index: 2;
+}
+
+.user-border{
+    display: flex;
+    margin-right: 70px;
+}
+
+.help{
+    height: 25px;
+    margin-top: 16px;
+    cursor: pointer;
+}
+
+.help:hover{
+    transform: scale(1.1);
+}
+
+.user-border-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 40px;
+    height: 56px;
+    width: 56px;
+    border: 2px solid black;
+    border-radius: 50px;
+    color: #29ABE2;
+    font-weight: bold;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.user-border-logo:hover{
+    background-color: rgb(220, 218, 218);
+}
+
+.Logout {
+    width: 152px;
+    position: absolute;
+    top: 96px; /* Anpassen Sie den Abstand nach Bedarf */
+    right: 0;
+    margin-right: 25px;
+    background-color: #2A3647;
+    padding: 15px 13px 15px 15px;
+    border-radius: 15px 0px 15px 15px;
+}
+
+.btn-logout {
+    color: rgb(220, 218, 218);
+    background-color: #2A3647;
+    border: none;
+    padding: 10px 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.btn-logout:hover{
+    background-color: #2a4468;
+}
+
+.d-none {
+    display: none;
+}
