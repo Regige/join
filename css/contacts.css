@@ -3,28 +3,23 @@
 }
 
 .contacts-list-section {
+    background-color: white;
     width: 352px;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
     padding-left: 52px;
     padding-right: 52px;
+    box-shadow: 4px 0px 8px 0px rgba(0, 0, 0, 0.1);
 }
 
-.contacts-button {
-    align-items: center;
-    border-radius: 10px;
-    border: 1px solid #2A3647;
-    display: flex;
+.contacts-bt-add {
     font-size: 21px;
     gap: 16px;
-    line-height: 25.2px;
     justify-content: center;
+    line-height: 25.2px;
     margin-top: 22.5px;
     padding: 12px 0;
-    background-color: #2A3647;
-    color: white;
     width: 100%;
 }
 
@@ -54,9 +49,61 @@
 }
 
 
+/* Contacts List */
+
+.contacts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.contacts-list-sgl-con {
+    display: flex;
+    align-items: start;
+}
+
+.contacts-color-icon {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    background-color: #FF8190;
+    border-radius: 50px;
+    margin-right: 32px;
+}
+
+.contact-name {
+    margin: 0 0 8px 0;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.contact-email {
+    color: #007CEE;
+    font-size: 16px;
+    line-height: 19.2px;
+}
+
+
+/* Clicked Contact shown on main page*/
+
+.contact-clicked {
+    margin: 0 55px 55px 55px;
+}
+.con-icon-sz {
+        height: 120px !important;
+        width: 120px !important;
+        border-radius: 70px;
+
+}
+
 /* PopUp Add contact */
 
-.add-contact-bg {
+.contacts-add-bg {
     position: fixed;
     top: 0;
     right: 0;
@@ -67,14 +114,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    overflow-x: hidden;
 }
 
-.add-contact-con {
+.contacts-add-con {
     display: flex;
+    transform: translateX(4000px);
+    transition: all 825ms ease-in-out;
+}
+.contacts-add-con-show {
+    transform: translateX(0);
 }
 
-.add-contact-con-left {
+.contacts-add-con-left {
     border-radius: 16px 0 0 16px;
     background-color: #2A3647;
     color: white;
@@ -106,17 +158,118 @@
 }
 
 
-.add-contact-con-right {
+.contacts-add-con-right {
     border-radius: 0 16px 16px 0;
     background-color: white;
-    height: 462px;
+    height: 498px;
     width: 649px;
     display: flex;
-    justify-content: center;
-    padding: 66px 48px;
+    flex-direction: column;
+    /* justify-content: center; */
+    padding: 48px 48px;
+    gap: 57px;
+}
+
+.contacts-add-close-con {
+    display: flex;
+    justify-content: end;
+}
+.contacts-add-close-con img {
+    padding: 4px 3.5px;
+}
+.contacts-add-close-con img:hover {
+    background-color: #D1D1D1;
+    border-radius: 50px;
+}
+
+.contacts-con-sub {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .contacts-user-logo {
     height: 120px;
     width: 120px;
+    margin-left: 35px;
+    margin-bottom: 72px;
 }
+
+.contacts-form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.contacts-input-con {
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 422px;
+    padding: 3px 0;
+}
+
+.contacts-input-con img {
+    padding-right: 21px;
+}
+
+.contacts-input {
+    border: none;
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0 0 0 4px;
+    padding: 10px 21px;
+    width: 100%;
+}
+.contacts-input::placeholder {
+    color: #d1d1d1;
+}
+.contacts-input:focus {
+    outline: 0;
+}
+
+
+/* Button Cancel + Create */
+.contacts-button-con {
+    display: flex;
+    gap: 24px;
+    margin-top: 16px;
+}
+.contacts-button {
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid #2A3647;
+    display: flex;
+}
+.contacts-bt-ft {
+    font-size: 20px;
+    gap: 4px;
+    line-height: 24px;
+    padding: 16px;
+}
+.contacts-bt-clear {
+    background-color: white;
+    color: #2A3647;
+}
+.contacts-bt-clear:hover {
+    color: #29ABE2;
+    border: 1px solid #29ABE2;
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.3);
+}
+/* .contacts-bt-clear img:hover {
+    fill: #29ABE2;
+} */
+
+.contacts-bt-create {
+    background-color: #2A3647;
+    color: white;
+    font-weight: 700;
+}
+.contacts-bt-create:hover {
+    background-color: #29ABE2;
+    border: 1px solid #29ABE2;
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+

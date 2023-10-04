@@ -5,6 +5,10 @@ body {
     
 }
 
+.d-none {
+    display: none !important;
+}
+
 .begin {
     height: 98vh;
     display: flex;
