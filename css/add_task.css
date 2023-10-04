@@ -12,6 +12,9 @@
     line-height: 73.2px;
 }
 
+
+/* Form field - Containers */
+
 .task-form {
     display: flex;
     flex-direction: column;
@@ -19,15 +22,13 @@
 
 .task-input-con {
     display: flex;
-    height: 424px;
     width: 976.25px;
 }
 
 .task-input-left {
     display: flex;
     flex-direction: column;
-    height: 376px;
-    justify-content: space-between;
+    gap: 34px;
     width: 440px;
 }
 
@@ -45,6 +46,9 @@
     justify-content: space-between;
     width: 440px;
 }
+
+
+/* Form field - repetitive elements */
 
 .task-label {
     color: #2A3647;
@@ -73,14 +77,69 @@
     font-family: 'Inter', sans-serif;
 }
 
+
+/* Form field - Title & Description */
+
 .task-input-fd-ti {
     padding: 12px 21px;
 }
 .task-input-fd-desc {
     height: 82px;
-    /* gap: 10px; */
     padding: 18px 16px;
 }
+
+/* Form field - Assigned to Popup Button */
+
+.task-assigned-to-con {
+    position: relative;
+}
+
+.task-assigned-to {
+    color: #D1D1D1;
+    font-size: 20px;
+    line-height: 24px;
+    padding: 12px 0 12px 16px !important;
+    width: 100%;
+}
+
+.task-contacts-list-to-assign {
+    background-color: white;
+    position: absolute;
+    overflow: scroll;
+    height: 150px;
+    width: 100%;
+}
+
+.task-contacts-list-to-assign-sub {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.task-contacts-color-icon {
+    height: 40px;
+    width: 40px;
+    background-color: #FF8190;
+    border-radius: 50px;
+    margin-right: 12px;
+}
+
+.task-bt-add {
+    font-size: 21px;
+    gap: 16px !important;
+    justify-content: center;
+    line-height: 25.2px !important;
+    padding: 12px 0;
+    width: 100%;
+    position: absolute;
+    top: 190px;
+}
+
+/* Form field - Prio Button */
+
 .task-con-prio {
     display: flex;
     gap: 16px;
@@ -92,6 +151,39 @@
     justify-content: center;
     padding: 16px 10px;
 }
+
+/*  */
+.task-sub-input-con {
+    background-color: white;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 0;
+}
+
+.task-sub-input-con img {
+    padding-right: 16px;
+}
+
+.task-sub-input {
+    border: none;
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0 0 0 4px;
+    padding: 10px 16px;
+    width: 100%;
+}
+
+.task-sub-input::placeholder {
+    color: #d1d1d1;
+}
+
+.task-sub-input:focus {
+    outline: none;
+}
+
+/*  */
 
 .task-foot-con {
     align-items: end;
@@ -130,4 +222,12 @@
 .task-bt-create {
     background-color: #2A3647;
     color: white;
+}
+
+/* Allg. */
+
+.flex-just-btw-ct {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
