@@ -18,9 +18,9 @@
 </head>
 
 <body onload="includeHTML();initBoard()">
-    <div w3-include-html="/templates/header.html"></div>
-    <div w3-include-html="/templates/sidebar.html"></div>
-    <div id="board_body" class="board_body" >
+  <!--  <div w3-include-html="/templates/header.html"></div>
+    <div w3-include-html="/templates/sidebar.html"></div> board_body  -->
+    <div id="board_body" class="" >
         <div class="board_header board_fbsbc">
             <h1>Board</h1>
             <div onclick="test()" class="board_button_add_task_small board_fbcc"><img src="./img/add.svg"
@@ -39,7 +39,7 @@
         <div class="board_fbsbcw">
             <div class="board_fbcco board_columns_fixed">
                 <div class="board_fbsbc board_columns">
-                    <p id="board_to_do_headline" class="board_p">To do</p><img src="./img/plus_button.svg" alt="">
+                    <p id="board_to_do_headline" class="board_p ">To do</p><img class="board_add" src="./img/plus_button.svg" alt="">
                 </div>
                 <div id="board_to_do" class=" board_fbcco board_box" ondragleave="removeHighlight('board_to_do')"
                     ondrop="moveTo('to_do') ;removeHighlight('board_to_do')"
@@ -49,7 +49,7 @@
             </div>
             <div class="board_fbcco board_columns_fixed">
                 <div class="board_fbsbc board_columns">
-                    <p id="board_in_progress_headline" class="board_p">In progress</p><img src="./img/plus_button.svg"
+                    <p id="board_in_progress_headline" class="board_p ">In progress</p><img class="board_add" src="./img/plus_button.svg"
                         alt="">
                 </div>
                 <div id="board_in_progress" class="board_box board_fbcco"
@@ -61,7 +61,7 @@
             </div>
             <div class="board_fbcco board_columns_fixed">
                 <div class="board_fbsbc board_columns">
-                    <p id="board_await_feedback_headline" class="board_p">Await feedback</p><img
+                    <p id="board_await_feedback_headline" class="board_p ">Await feedback</p><img class="board_add"
                         src="./img/plus_button.svg" alt="">
                 </div>
                 <div id="board_await_feedback" class="board_box board_fbcco"

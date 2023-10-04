@@ -134,6 +134,11 @@ h1 {
     color: white;
 }
 
+.board_button_add_task_small:hover {
+    cursor: pointer;
+    background-color: rgba(42, 54, 71, 0.8);
+}
+
 .board_serch {
     width: 312px;
     height: 48px;
@@ -311,4 +316,8 @@ h1 {
 
 .dn{
     display: none;
+}
+
+.board_add{
+    cursor: pointer;
 }

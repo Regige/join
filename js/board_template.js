@@ -23,7 +23,7 @@ let list = [{
         'color': 'red'
     },
     'headline': 'Witziges',
-    'text': 'urrios: In Schweden heißt Mutter "Mor". Großmutter heißt "Mormor". Uhrgroßmutter heißt "Gammelmormor".',
+    'text': 'In Schweden heißt Mutter "Mor". Großmutter heißt "Mormor". Uhrgroßmutter heißt "Gammelmormor".',
     'subtasks': [],
     'task_user': [{
         "name": 'TT',
