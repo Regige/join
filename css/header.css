@@ -56,9 +56,10 @@ header{
 
 .Logout {
     width: 152px;
-    position: absolute;
+    position: fixed;
     top: 96px; /* Anpassen Sie den Abstand nach Bedarf */
     right: 0;
+    z-index: 5;
     margin-right: 25px;
     background-color: #2A3647;
     padding: 15px 13px 15px 15px;

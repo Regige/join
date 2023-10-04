@@ -1,0 +1,26 @@
+.help-header {
+    position: fixed;
+    top: 89px;
+    left: 232px;
+}
+
+.help-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 100px 0px 100px;
+}
+
+.help-img {
+    display: flex;
+    justify-content: space-between;
+    font-size: 32px;
+}
+
+.help-img img {
+    margin-right: 60px;
+    cursor: pointer;
+}
+
+.help-img img:hover {
+    transform: scale(1.3);
+}
