@@ -45,8 +45,25 @@ function showContact(i) {
     clickedContact.innerHTML = "";
 
     clickedContact.innerHTML = /*html*/`
-        <div id="contact-con-${i}" class="contacts-list-sgl-con"><div class="contacts-color-icon con-icon-sz"></div><div><h3 class="contact-name" id="contact-${i}">${contact['name']}</h3><button>Edit</button><button>Delete</button></div></div>
-        <div><div>Contact Information</div><div>Email</div><div class="contact-email" id="email-${i}">${contact['email']}</div><div>Phone</div><div class="contact-phone" id="phone-${i}">${contact['phone']}</div></div></div>
+        <div id="contact-con-${i}" class="flx-col">
+            <div class="contact-sgl-head-con">
+                <div class="contacts-color-icon con-icon-sz"></div>
+                <div>
+                    <h2 class="contact-name-sgl" id="contact-${i}">${contact['name']}</h2>
+                    <div class="flx">
+                        <button class="contact-bt-sgl"><img src="./img/edit.svg" alt="">Edit</button>
+                        <button class="contact-bt-sgl"><img src="./img/delete.svg" alt="">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 class="contact-sgl-text">Contact Information</h3>
+                <h4>Email</h4>
+                <div class="contact-email" id="email-${i}">${contact['email']}</div>
+                <h4>Phone</h4>
+                <div class="contact-phone" id="phone-${i}">${contact['phone']}</div>
+            </div>
+        </div>
     `
 }
 
