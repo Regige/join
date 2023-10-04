@@ -18,16 +18,18 @@
 </head>
 
 <body onload="includeHTML();initBoard()">
-  <!--  <div w3-include-html="/templates/header.html"></div>
-    <div w3-include-html="/templates/sidebar.html"></div> board_body  -->
-    <div id="board_body" class="" >
+    <div w3-include-html="/templates/header.html"></div>
+    <div w3-include-html="/templates/sidebar.html"></div>
+    <div id="board_body" class="board_body">
         <div class="board_header board_fbsbc">
-            <h1>Board</h1>
-            <div onclick="test()" class="board_button_add_task_small board_fbcc"><img src="./img/add.svg"
-                    alt="add Icon">
+            <div class="board_heder_small">
+                <h1>Board</h1>
+                <div onclick="test()" class="board_button_add_task_small board_fbcc dn"><img src="./img/add.svg"
+                        alt="add Icon">
+                </div>
             </div>
-            <div class="board_fbsbc">
-                <div class="board_serch board_fbsbc">
+            <div class="board_fbsbc board_serch_small">
+                <div class=" board_fbsbc board_serch">
                     <input class="board_serch_left" type="search" placeholder="Find Task" name="suche" id="">
                     <img class="board_serch_svg" src="./img/search.svg" alt="">
                 </div>
@@ -36,10 +38,11 @@
                 </div>
             </div>
         </div>
-        <div class="board_fbsbcw">
-            <div class="board_fbcco board_columns_fixed">
+        <div class="board_fbsbcw board_columns_fixed_small">
+            <div class="board_fbcco board_columns_fixed ">
                 <div class="board_fbsbc board_columns">
-                    <p id="board_to_do_headline" class="board_p ">To do</p><img class="board_add" src="./img/plus_button.svg" alt="">
+                    <p id="board_to_do_headline" class="board_p ">To do</p><img class="board_add"
+                        src="./img/plus_button.svg" alt="">
                 </div>
                 <div id="board_to_do" class=" board_fbcco board_box" ondragleave="removeHighlight('board_to_do')"
                     ondrop="moveTo('to_do') ;removeHighlight('board_to_do')"
@@ -49,8 +52,8 @@
             </div>
             <div class="board_fbcco board_columns_fixed">
                 <div class="board_fbsbc board_columns">
-                    <p id="board_in_progress_headline" class="board_p ">In progress</p><img class="board_add" src="./img/plus_button.svg"
-                        alt="">
+                    <p id="board_in_progress_headline" class="board_p ">In progress</p><img class="board_add"
+                        src="./img/plus_button.svg" alt="">
                 </div>
                 <div id="board_in_progress" class="board_box board_fbcco"
                     ondragleave="removeHighlight('board_in_progress')"
