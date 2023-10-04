@@ -1,9 +1,16 @@
 body {
     margin: 0;
     background-color: #F6F7F8;
-    width: 100%;
-    height: 100vh;
-    
+
+}
+
+.summary_body{
+    position: absolute;
+    left: 232px;
+    right: 0;
+    top:100px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .summary_dn {
@@ -127,6 +134,7 @@ body {
 
 .summary_greeting {
     width: 100%;
+    margin-left: 100px;
 }
 
 .summary_left_start {

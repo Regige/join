@@ -9,63 +9,77 @@
     <link rel="stylesheet" href="./css/board.css">
     <script src="./js/board_template.js"></script>
     <script src="./js/board.js"></script>
-
-
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/sidebar.css" />
+    <title>Join/Board</title>
+    <script src="js/header.js"></script>
+    <script src="includeHTML.js"></script>
 
 </head>
 
-<body onload="initBoard()">
-    <div class="board_header board_fbsbc">
-        <h1>Board</h1>
-        <div class="board_fbsbc">
-            <div class="board_serch board_fbsbc">
-                <input class="board_serch_left" type="search" placeholder="Find Task" name="suche" id="">
-                <img class="board_serch_svg" src="./img/search.svg" alt="">
+<body onload="includeHTML();initBoard()">
+    <div w3-include-html="/templates/header.html"></div>
+    <div w3-include-html="/templates/sidebar.html"></div>
+    <div id="board_body" class="board_body" >
+        <div class="board_header board_fbsbc">
+            <h1>Board</h1>
+            <div onclick="test()" class="board_button_add_task_small board_fbcc"><img src="./img/add.svg"
+                    alt="add Icon">
             </div>
-            <div onclick="test()" class="board_button_add_task board_fbcc">Add task <img src="./img/add.svg"
-                    alt="add Icon"></div>
-        </div>
-    </div>
-    <div class="board_fbsbcw">
-        <div class="board_fbcco board_columns_fixed">
-            <div class="board_fbsbc board_columns">
-                <p id="board_to_do_headline" class="board_p">To do</p><img src="./img/plus_button.svg" alt="">
-            </div>
-            <div id="board_to_do" class=" board_fbcco board_box" ondragleave="removeHighlight('board_to_do')"
-                ondrop="moveTo('to_do') ;removeHighlight('board_to_do')"
-                ondragover="allowDrop(event); highlight('board_to_do')">
-                <div class="board_no_task board_fbccco">No tasks To do</div>
+            <div class="board_fbsbc">
+                <div class="board_serch board_fbsbc">
+                    <input class="board_serch_left" type="search" placeholder="Find Task" name="suche" id="">
+                    <img class="board_serch_svg" src="./img/search.svg" alt="">
+                </div>
+                <div onclick="test()" class="board_button_add_task board_fbcc">Add task <img src="./img/add.svg"
+                        alt="add Icon">
+                </div>
             </div>
         </div>
-        <div class="board_fbcco board_columns_fixed">
-            <div class="board_fbsbc board_columns">
-                <p id="board_in_progress_headline" class="board_p">In progress</p><img src="./img/plus_button.svg" alt="">
+        <div class="board_fbsbcw">
+            <div class="board_fbcco board_columns_fixed">
+                <div class="board_fbsbc board_columns">
+                    <p id="board_to_do_headline" class="board_p">To do</p><img src="./img/plus_button.svg" alt="">
+                </div>
+                <div id="board_to_do" class=" board_fbcco board_box" ondragleave="removeHighlight('board_to_do')"
+                    ondrop="moveTo('to_do') ;removeHighlight('board_to_do')"
+                    ondragover="allowDrop(event); highlight('board_to_do')">
+                    <div class="board_no_task board_fbccco">No tasks To do</div>
+                </div>
             </div>
-            <div id="board_in_progress" class="board_box board_fbcco" ondragleave="removeHighlight('board_in_progress')"
-                ondrop="moveTo('in_progress');removeHighlight('board_in_progress')"
-                ondragover="allowDrop(event); highlight('board_in_progress')">
-                <div class="board_no_task board_fbccco">No tasks In progress</div>
+            <div class="board_fbcco board_columns_fixed">
+                <div class="board_fbsbc board_columns">
+                    <p id="board_in_progress_headline" class="board_p">In progress</p><img src="./img/plus_button.svg"
+                        alt="">
+                </div>
+                <div id="board_in_progress" class="board_box board_fbcco"
+                    ondragleave="removeHighlight('board_in_progress')"
+                    ondrop="moveTo('in_progress');removeHighlight('board_in_progress')"
+                    ondragover="allowDrop(event); highlight('board_in_progress')">
+                    <div class="board_no_task board_fbccco">No tasks In progress</div>
+                </div>
             </div>
-        </div>
-        <div class="board_fbcco board_columns_fixed">
-            <div class="board_fbsbc board_columns">
-                <p id="board_await_feedback_headline" class="board_p">Await feedback</p><img src="./img/plus_button.svg" alt="">
+            <div class="board_fbcco board_columns_fixed">
+                <div class="board_fbsbc board_columns">
+                    <p id="board_await_feedback_headline" class="board_p">Await feedback</p><img
+                        src="./img/plus_button.svg" alt="">
+                </div>
+                <div id="board_await_feedback" class="board_box board_fbcco"
+                    ondragleave="removeHighlight('board_await_feedback')"
+                    ondrop="moveTo('await_feedback');removeHighlight('board_await_feedback')"
+                    ondragover="allowDrop(event); highlight('board_await_feedback')">
+                    <div class="board_no_task board_fbccco">No tasks container Await feedback</div>
+                </div>
             </div>
-            <div id="board_await_feedback" class="board_box board_fbcco"
-                ondragleave="removeHighlight('board_await_feedback')"
-                ondrop="moveTo('await_feedback');removeHighlight('board_await_feedback')"
-                ondragover="allowDrop(event); highlight('board_await_feedback')">
-                <div class="board_no_task board_fbccco">No tasks container Await feedback</div>
-            </div>
-        </div>
-        <div class="board_fbcco board_columns_fixed">
-            <div class="board_fbsbc board_columns">
-                <p id="board_done_headline" class="board_p">Done</p>
-            </div>
-            <div id="board_done" class="board_box board_fbcco" ondragleave="removeHighlight('board_done')"
-                ondrop="moveTo('done');removeHighlight('board_done')"
-                ondragover="allowDrop(event); highlight('board_done')">
-                <div class="board_no_task board_fbccco">No tasks Done</div>
+            <div class="board_fbcco board_columns_fixed">
+                <div class="board_fbsbc board_columns">
+                    <p id="board_done_headline" class="board_p">Done</p>
+                </div>
+                <div id="board_done" class="board_box board_fbcco" ondragleave="removeHighlight('board_done')"
+                    ondrop="moveTo('done');removeHighlight('board_done')"
+                    ondragover="allowDrop(event); highlight('board_done')">
+                    <div class="board_no_task board_fbccco">No tasks Done</div>
+                </div>
             </div>
         </div>
     </div>

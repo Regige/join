@@ -1,7 +1,13 @@
 body {
     position: relative;
-    margin-left: 100px;
-    margin-right: 100px;
+}
+.board_body{
+    position: absolute;
+    left: 232px;
+    right: 0;
+    top:100px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .board_p {
@@ -85,10 +91,7 @@ h1 {
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
 }
 
-
 .board_header {
-    padding-top: 50px;
-    padding-bottom: 0px;
     position: relative;
     width: 100%;
     background-color: #F6F7F8;
@@ -113,6 +116,22 @@ h1 {
 .board_button_add_task:hover {
     cursor: pointer;
     background-color: rgba(42, 54, 71, 0.8);
+}
+
+.board_button_add_task_small {
+    margin-left: 30px;
+    width: 48px;
+    height: 48px;
+    background-color: rgb(42, 54, 71);
+    font-size: 21px;
+    line-height: 25px;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px;
+    gap: 4px;
+    padding: 8px, 16px, 8px, 16px;
+    color: white;
 }
 
 .board_serch {
@@ -288,4 +307,8 @@ h1 {
 
 .board_footerline {
     margin-top: 10px;
+}
+
+.dn{
+    display: none;
 }

@@ -7,8 +7,8 @@ let list = [{
         'text': 'Coden',
         'color': 'yellow'
     },
-    'headline': 'Css fertigstellen',
-    'text': 'Es muss noch sehr viel gemacht werden.',
+    'headline': 'Feedback zur Seite',
+    'text': 'Warten wir mal ab wie sich die Seite so entwickelt.',
     'subtasks': [],
     'task_user': [{
         "name": 'TT',
@@ -19,11 +19,11 @@ let list = [{
     'id': 1,
     'task_board': 'in_progress',
     'category': {
-        'text': 'Coden',
+        'text': 'Sonstiges',
         'color': 'red'
     },
-    'headline': 'Css fertigstellen',
-    'text': 'Es muss noch sehr viel gemacht werden.',
+    'headline': 'Witziges',
+    'text': 'urrios: In Schweden heißt Mutter "Mor". Großmutter heißt "Mormor". Uhrgroßmutter heißt "Gammelmormor".',
     'subtasks': [],
     'task_user': [{
         "name": 'TT',
@@ -47,7 +47,7 @@ let list = [{
     'id': 2,
     'task_board': 'await_feedback',
     'category': {
-        'text': 'Coden',
+        'text': 'Css',
         'color': 'blue'
     },
     'headline': 'Css fertigstellen',
@@ -66,8 +66,8 @@ let list = [{
         'text': 'Löschen',
         'color': 'green'
     },
-    'headline': 'Css fertigstellen',
-    'text': 'Es muss noch sehr viel gemacht werden.',
+    'headline': 'Fertige Projekte',
+    'text': 'Nun ist es geschafft, Besten dank an das ganze Team!',
     'subtasks': [],
     'task_user': [{
         "name": 'TT',
