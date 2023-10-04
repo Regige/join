@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    font-family: 'Raleway', sans-serif;
 }
 
 header{
@@ -79,4 +80,16 @@ header{
 
 .d-none {
     display: none;
+}
+
+@media (max-width: 950px){
+    .Kanban{
+        display: none;
+    }
+}
+
+@media (max-width: 500px){
+    .user-border{
+        margin-right: 30px;
+    }
 }
