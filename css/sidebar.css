@@ -117,6 +117,12 @@ body {
     }
 }
 
+@media (max-width: 710px){
+    .sidebarBtn{
+        padding: 8px;
+    }
+}
+
 @media (max-width: 660px){
     .sidebarBtn {
         flex-direction: column;
@@ -135,7 +141,7 @@ body {
     }
 }
 
-@media (max-width: 490px){
+@media (max-width: 550px){
     .sidebarBtn{
         padding: 4px;
     }
