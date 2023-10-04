@@ -1,6 +1,4 @@
-body {
-    position: relative;
-}
+
 
 .board_body {
     position: absolute;
@@ -180,7 +178,7 @@ h1 {
     gap: 10px;
     background-color: rgba(231, 231, 231, 1);
     border: 2px dashed rgba(168, 168, 168, 1);
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+  
     color: rgba(168, 168, 168, 1);
     font-size: 16px;
     font-weight: 400;
@@ -393,6 +391,22 @@ h1 {
         align-items: flex-start;
         flex-direction: initial;
         overflow-x: auto;
+        scrollbar-width: auto;
+        scrollbar-color: #6C757D #ffffff;
+    }
+
+    .board_box::-webkit-scrollbar {
+        width: 16px;
+    }
+
+    .board_box::-webkit-scrollbar-track {
+        background: #ffffff;
+    }
+
+    .board_box::-webkit-scrollbar-thumb {
+        background-color: #6C757D;
+        border-radius: 10px;
+        border: 3px solid #ffffff;
     }
 
     .board_columns_fixed_small {
@@ -400,7 +414,7 @@ h1 {
         width: 100%;
     }
 
-.board_note{
-    margin-right: 20px;
-}
+    .board_note {
+        margin-right: 20px;
+    }
 }
