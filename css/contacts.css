@@ -64,6 +64,7 @@
 }
 
 .contacts-color-icon {
+    border: 3px solid white;
     color: white;
     display: flex;
     justify-content: center;
@@ -94,11 +95,52 @@
 .contact-clicked {
     margin: 0 55px 55px 55px;
 }
-.con-icon-sz {
-        height: 120px !important;
-        width: 120px !important;
-        border-radius: 70px;
 
+.contact-sgl-head-con {
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.con-icon-sz {
+    height: 120px !important;
+    width: 120px !important;
+    border-radius: 70px;
+    font-size: 47px;
+    font-weight: 500;
+    line-height: 56.4px;
+    box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.contact-name-sgl {
+    margin: 0 0 8px 0;
+    font-weight: 500;
+    font-size: 47px;
+    line-height: 56.4px;
+}
+
+.contact-bt-sgl {
+    border: none;
+    display: flex;
+    align-items: center;
+    background-color: #F6F7F8;
+    font-size: 16px;
+    line-height: 19.2px;
+}
+.contact-bt-sgl:hover {
+    color: #29ABE2;
+    font-weight: 600;
+}
+
+.contact-bt-sgl img {
+    margin-right: 8px;
+}
+
+.contact-sgl-text {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 48px 0;
 }
 
 /* PopUp Add contact */
@@ -273,3 +315,13 @@
 }
 
 
+/* Allg. */
+
+.flx {
+    display: flex;
+}
+
+.flx-col {
+    display: flex;
+    flex-direction: column;
+}
