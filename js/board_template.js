@@ -19,14 +19,14 @@ let list = [{
         "completed": 1
     }],
     'task_user': [{
-        "first_name" : 'Tony',
-        "last_name" : 'Tech',
+        "first_name": 'Tony',
+        "last_name": 'Tech',
         "name": 'TT',
         "color": 'green'
     },
     {
-        "first_name" : 'Erik',
-        "last_name" : 'Teuber',
+        "first_name": 'Erik',
+        "last_name": 'Teuber',
         "name": 'ET',
         "color": 'blue'
     }]
@@ -44,26 +44,26 @@ let list = [{
     'text': 'In Schweden heißt Mutter "Mor". Großmutter heißt "Mormor". Uhrgroßmutter heißt "Gammelmormor".',
     'subtasks': [],
     'task_user': [{
-        "first_name" : 'Tony',
-        "last_name" : 'Tech',
+        "first_name": 'Tony',
+        "last_name": 'Tech',
         "name": 'TT',
         "color": 'green'
     },
     {
-        "first_name" : 'Erika',
-        "last_name" : 'Taub',
+        "first_name": 'Erika',
+        "last_name": 'Taub',
         "name": 'ET',
         "color": 'blue'
     },
     {
-        "first_name" : 'Frank',
-        "last_name" : 'Krause',
+        "first_name": 'Frank',
+        "last_name": 'Krause',
         "name": 'FK',
         "color": 'yellow'
     },
     {
-        "first_name" : 'Manuel',
-        "last_name" : 'Frei',
+        "first_name": 'Manuel',
+        "last_name": 'Frei',
         "name": 'MF',
         "color": 'pink'
     }
@@ -82,8 +82,8 @@ let list = [{
     'text': 'Es muss noch sehr viel gemacht werden.',
     'subtasks': [],
     'task_user': [{
-        "first_name" : 'Karin',
-        "last_name" : 'Kraus',
+        "first_name": 'Karin',
+        "last_name": 'Kraus',
         "name": 'KK',
         "color": 'blue'
     }
@@ -101,32 +101,32 @@ let list = [{
     'headline': 'Fertige Projekte',
     'text': 'Nun ist es geschafft, Besten dank an das ganze Team!',
     'subtasks': [{
-        "text": "Sprache Überarbeiten",
+        "text": "Sprache Überarbeiten 1",
         "completed": 0
     }, {
-        "text": "Text Überprüfen",
+        "text": "Text Überprüfen 1",
         "completed": 1
     }, {
-        "text": "Sprache Überarbeiten",
+        "text": "Sprache Überarbeiten 2",
         "completed": 0
     }, {
-        "text": "Text Überprüfen",
+        "text": "Text Überprüfen 2",
         "completed": 0
     }],
     'task_user': [{
-        "first_name" : 'Tony',
-        "last_name" : 'Tech',
+        "first_name": 'Tony',
+        "last_name": 'Tech',
         "name": 'TT',
         "color": 'red'
     },
     {
-        "first_name" : 'Alfred',
-        "last_name" : 'Ferner',
+        "first_name": 'Alfred',
+        "last_name": 'Ferner',
         "name": 'AF',
         "color": 'red'
     }, {
-        "first_name" : 'Laura',
-        "last_name" : 'Durst',
+        "first_name": 'Laura',
+        "last_name": 'Durst',
         "name": 'LD',
         "color": 'red'
     }
@@ -238,7 +238,7 @@ function createBoradCard(id, story, story_bg, headline, text, date, priority, pr
     `;
 }
 
-function createBoardCardUsers(first_name,last_name,user, color) {
+function createBoardCardUsers(first_name, last_name, user, color) {
     return `
     <div class="board_dfcb" style="margin-top: 20px;margin-left: 25px;">
     <div class="board_task_name board_fbcc" style="background: ${color};">${user}
@@ -247,10 +247,10 @@ function createBoardCardUsers(first_name,last_name,user, color) {
     </div>`;
 }
 
-function createBoardCardSubtaks(user, color) {
+function createBoardCardSubtaks(id,i,status, text, img) {
     return `
-    <div class="board_dfcb" style="margin-top: 20px;margin-left: 5px;">
-    <img class="board_fbcc" src="./img/Check button.svg" alt="">
-    <span class="board_detail_subtasks"> Implement Recipe Recommendation</span>
+    <div id="completed${id}-${i}" class=" board_detail_subtasks board_dfcb" style="margin-top: 20px;margin-left: 5px;">
+    <img onclick="toggelSubtaskCompleted(${id},${i},${status})" class="board_fbcc" src="${img}" alt="">
+    <span>${text}</span>
 </div>`;
 }

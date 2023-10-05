@@ -110,9 +110,10 @@ function closeBoardCard() {
 }
 
 function deleteTask(id) {
-    list.splice(id, 1);
-    loadTaskBoard();
+    list[id] = "";
     closeBoardCard();
+    loadTaskBoard();
+    showPopup("Task deleted");
 }
 
 function editTask(id) {
@@ -124,11 +125,10 @@ function loadBoardCard(id) {
         if (element.id == id) {
             generateTaskData(element);
             document.getElementById('board_detail').innerHTML = createBoradCard(id, story, story_bg, headline, text, date, priority, priority_img);
-            createBordCardTable(id, element.task_user,);
-
+            createBordCardUsers(id, element.task_user);
+            createBordCardSubtasks(id, element.subtasks);
         }
     }
-
 }
 
 function generateTaskData(element) {
@@ -142,10 +142,56 @@ function generateTaskData(element) {
     return;
 }
 
-function createBordCardTable(id, elemente) {
+function createBordCardUsers(id, users) {
     document.getElementById(`board-card-users${id}`).innerHTML = "";
-    for (let i = 0; i < elemente.length; i++) {
-        const element = elemente[i];
-        document.getElementById(`board-card-users${id}`).innerHTML += createBoardCardUsers(element.first_name,element.last_name,element.name, element.color)
+    if (users.length >= 1) {
+        document.getElementById(`board-card-users${id}`).innerHTML = 'Assigned To:';
+        for (let i = 0; i < users.length; i++) {
+            const element = users[i];
+            document.getElementById(`board-card-users${id}`).innerHTML += createBoardCardUsers(element.first_name, element.last_name, element.name, element.color)
+        }
     }
+}
+
+function createBordCardSubtasks(id, subtasks) {
+
+    document.getElementById(`board-card-subtasks${id}`).innerHTML = "";
+    if (subtasks.length >= 1) {
+        document.getElementById(`board-card-subtasks${id}`).innerHTML = 'Subtasks';
+        for (let i = 0; i < subtasks.length; i++) {
+            const element = subtasks[i];
+            if (element.completed == 1) {
+                var completed = './img/Check button.svg';
+            } else {
+                var completed = './img/Check button none.svg';
+            }
+            document.getElementById(`board-card-subtasks${id}`).innerHTML += createBoardCardSubtaks(id, i, element.completed, element.text, completed);
+        }
+    }
+}
+
+function toggelSubtaskCompleted(id, i, status) {
+    if (status == 1) {
+        list[id].subtasks[i].completed = 0;
+    } else {
+        list[id].subtasks[i].completed = 1;
+    }
+    loadBoardCard(id);
+}
+
+
+function showPopup(text) {
+    var popup = document.createElement("div");
+    popup.textContent = text;
+    popup.classList.add("board_popup");
+    document.body.appendChild(popup);
+    setTimeout(function () {
+        popup.style.top = "30px";
+    }, 100);
+    setTimeout(function () {
+        popup.style.top = "-100px";
+        setTimeout(function () {
+            document.body.removeChild(popup);
+        }, 500);
+    }, 3000);
 }
