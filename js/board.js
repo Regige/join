@@ -68,3 +68,23 @@ function removeHighlight(id) {
     document.getElementById(id).classList.remove('board_box_highlight');
 
 }
+
+function searchAllNote() {
+    var search = document.getElementById('search_board').value;
+    search = search.toLowerCase();
+    let found = 0;
+    for (let i = 0; i < list.length; i++) {
+        const element = list[i];
+        found = searchNote(i, search, found, element.headline, element.text);
+    };
+}
+
+function searchNote(i, search, found, headline, text) {
+    if (headline.toLowerCase().includes(search) || text.toLowerCase().includes(search)) {
+        document.getElementById(i).classList.remove('dn');
+        found++;
+    } else {
+        document.getElementById(i).classList.add('dn');
+    };
+    return found;
+}

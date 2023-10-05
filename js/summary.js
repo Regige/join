@@ -1,6 +1,6 @@
 
 window.addEventListener('resize', executeOnScreenWidthChange);  // Monitoring the screen width
-let screenWidthThreshold = 900;                                 // Screen resolution when the popup appears
+let screenWidthThreshold = 950;                                 // Screen resolution when the popup appears
 let lastScreenWidth = window.innerWidth;                        // Query the screen width at the start of the page
 let welcome_text;                                               // Set the welcome text variable
 let user_name = 'TT';                                           //Sets the username
