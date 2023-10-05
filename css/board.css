@@ -7,6 +7,11 @@
     margin-right: 50px;
 }
 
+.board_fixed {
+    position: fixed;
+    right: 16px;
+}
+
 .board_p {
     font-family: Inter;
     font-size: 20px;
@@ -504,17 +509,19 @@ h1 {
 
 .board_popup {
     color: white;
-    background-color: rgb(42, 54, 71); /* Hintergrundfarbe ohne Transparenz */
+    background-color: rgb(42, 54, 71);
+    /* Hintergrundfarbe ohne Transparenz */
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: none; /* Kein Schatten */
+    box-shadow: none;
+    /* Kein Schatten */
     transition: top 0.5s ease-in-out;
     top: -100px;
     z-index: 10;
-  }
+}
 
 
 @media (max-width: 1000px) {
@@ -586,6 +593,10 @@ h1 {
         top: 100px;
         margin-left: 50px;
         margin-right: 50px;
+    }
+
+    .board_columns_fixed {
+        margin-right: 15px;
     }
 }
 

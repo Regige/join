@@ -107,6 +107,8 @@ function notClose(event) {
 
 function closeBoardCard() {
     document.getElementById('board_detail').innerHTML = "";
+    loadTaskBoard();
+    document.getElementById('board_body').classList.remove('board_fixed');
 }
 
 function deleteTask(id) {
@@ -120,6 +122,7 @@ function editTask(id) {
 }
 
 function loadBoardCard(id) {
+    document.getElementById('board_body').classList.add('board_fixed');
     for (let i = 0; i < list.length; i++) {
         const element = list[i];
         if (element.id == id) {
