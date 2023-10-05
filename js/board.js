@@ -14,13 +14,13 @@ function loadTaskBoard() {
 function filterTaskBoard(task_board) {
     let filter = list.filter(t => t['task_board'] == task_board);
     if (filter.length) {
-        console.log('board_' + task_board)
         document.getElementById('board_' + task_board).innerHTML = "";
         for (let i = 0; i < filter.length; i++) {
             const element = filter[i];
             document.getElementById('board_' + task_board).innerHTML +=
-                createBoardTask(element.id, element.category, element.headline, element.text);
-            createBoardUsers(element.id, element.task_user);
+                createBoardTasks(element.id, element.category, element.headline, element.text);
+            loadBoardUsers(element.id, element.task_user);
+            loadBoardSubtasks(element.id, element.subtasks);
         }
     } else {
         taskBoardEmpty(task_board);
@@ -28,21 +28,33 @@ function filterTaskBoard(task_board) {
 }
 
 function taskBoardEmpty(task) {
-    console.log(`board_${task}_headline`)
     let tasktext = document.getElementById(`board_${task}_headline`).innerHTML;
     document.getElementById('board_' + task).innerHTML = `
         <div class="board_no_task board_fbccco">No tasks ${tasktext}</div>`;
 }
 
-function createBoardUsers(id, task_user) {
+function loadBoardUsers(id, task_user) {
     for (let i = 0; i < task_user.length; i++) {
         const element = task_user[i];
-
         let task_user_number = `task_user${id}`;
+        document.getElementById(task_user_number).innerHTML += createBoardUsers(element.color, element.name);
+    };
+}
 
-        document.getElementById(task_user_number).innerHTML += `
-        <div class="board_task_name board_fbcc" style="background: ${element.color};">${element.name}
-        </div>`;
+function loadBoardSubtasks(id, subtasks) {
+    var element_subtask = 0;
+    var element_percent = 0;
+    let subtask_number = `task_subtask${id}`;
+    for (let i = 0; i < subtasks.length; i++) {
+        const element = subtasks[i];
+        element_subtask = element_subtask + element.completed;
+        element_percent = element.completed + element_percent;
+    }
+    if (subtasks.length) {
+        percent = (element_percent / subtasks.length) * 100;
+        document.getElementById(subtask_number).innerHTML = createBoardSubtasks(element_subtask, subtasks.length, percent);
+    } else {
+        document.getElementById(subtask_number).innerHTML = "";
     };
 }
 
@@ -55,7 +67,6 @@ function allowDrop(ev) {
 }
 
 function moveTo(category) {
-    console.warn(category)
     list[draggedElement]['task_board'] = category;
     initBoard();
 }
@@ -87,4 +98,43 @@ function searchNote(i, search, found, headline, text) {
         document.getElementById(i).classList.add('dn');
     };
     return found;
+}
+
+function notClose(event) {
+    event.stopPropagation();
+}
+
+function closeBoardCard() {
+    document.getElementById('board_detail').innerHTML = "";
+}
+
+function loadBoardCard(id) {
+    for (let i = 0; i < list.length; i++) {
+        const element = list[i];
+        if (element.id == id) {
+            generateTaskData(element);
+            document.getElementById('board_detail').innerHTML = createBoradCard(id, story, story_bg, headline, text, date, priority, priority_img);
+        }
+
+    }
+}
+
+function deleteTask(id) {
+    list.splice(id, 1);
+    loadTaskBoard();
+    closeBoardCard();
+}
+
+function editTask(id) {
+}
+
+function generateTaskData(element) {
+    story = element.category.text;
+    story_bg = element.category.color;
+    headline = element.headline;
+    text = element.text;
+    date = element.date;
+    priority = element.priority;
+    priority_img = './img/task-prio-'+ element.priority.charAt(0).toLowerCase()+'.svg'
+    return;
 }
