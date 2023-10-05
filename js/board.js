@@ -17,8 +17,9 @@ function filterTaskBoard(task_board) {
         document.getElementById('board_' + task_board).innerHTML = "";
         for (let i = 0; i < filter.length; i++) {
             const element = filter[i];
+            let priority_img = './img/task-prio-' + element.priority.charAt(0).toLowerCase() + '.svg'
             document.getElementById('board_' + task_board).innerHTML +=
-                createBoardTasks(element.id, element.category, element.headline, element.text);
+                createBoardTasks(element.id, element.category, element.headline, element.text, priority_img);
             loadBoardUsers(element.id, element.task_user);
             loadBoardSubtasks(element.id, element.subtasks);
         }
@@ -108,17 +109,6 @@ function closeBoardCard() {
     document.getElementById('board_detail').innerHTML = "";
 }
 
-function loadBoardCard(id) {
-    for (let i = 0; i < list.length; i++) {
-        const element = list[i];
-        if (element.id == id) {
-            generateTaskData(element);
-            document.getElementById('board_detail').innerHTML = createBoradCard(id, story, story_bg, headline, text, date, priority, priority_img);
-        }
-
-    }
-}
-
 function deleteTask(id) {
     list.splice(id, 1);
     loadTaskBoard();
@@ -128,6 +118,19 @@ function deleteTask(id) {
 function editTask(id) {
 }
 
+function loadBoardCard(id) {
+    for (let i = 0; i < list.length; i++) {
+        const element = list[i];
+        if (element.id == id) {
+            generateTaskData(element);
+            document.getElementById('board_detail').innerHTML = createBoradCard(id, story, story_bg, headline, text, date, priority, priority_img);
+            createBordCardTable(id, element.task_user,);
+
+        }
+    }
+
+}
+
 function generateTaskData(element) {
     story = element.category.text;
     story_bg = element.category.color;
@@ -135,6 +138,14 @@ function generateTaskData(element) {
     text = element.text;
     date = element.date;
     priority = element.priority;
-    priority_img = './img/task-prio-'+ element.priority.charAt(0).toLowerCase()+'.svg'
+    priority_img = './img/task-prio-' + element.priority.charAt(0).toLowerCase() + '.svg'
     return;
+}
+
+function createBordCardTable(id, elemente) {
+    document.getElementById(`board-card-users${id}`).innerHTML = "";
+    for (let i = 0; i < elemente.length; i++) {
+        const element = elemente[i];
+        document.getElementById(`board-card-users${id}`).innerHTML += createBoardCardUsers(element.first_name,element.last_name,element.name, element.color)
+    }
 }

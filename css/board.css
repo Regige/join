@@ -366,11 +366,11 @@ h1 {
     gap: 10px;
     font-family: Inter;
     font-size: 23px;
-    font-weight: 250;
+    font-weight: 350;
     line-height: 28px;
     letter-spacing: 0em;
     text-align: left;
-    color: white;
+    color: black;
     background-color: blue;
 }
 
@@ -405,7 +405,14 @@ h1 {
     line-height: 24px;
     letter-spacing: 0em;
     text-align: left;
+}
 
+.board_detail_date_prio img {
+    margin-left: 20px;
+}
+
+.board_detail_date_prio img:hover {
+    cursor: default;
 }
 
 .board_detail_name {

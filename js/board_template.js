@@ -8,7 +8,7 @@ let list = [{
         'color': 'yellow'
     },
     'date': '15/10/2024',
-    'priority' : 'Medium',
+    'priority': 'Medium',
     'headline': 'Feedback zur Seite',
     'text': 'Warten wir mal ab wie sich die Seite so entwickelt.',
     'subtasks': [{
@@ -19,10 +19,14 @@ let list = [{
         "completed": 1
     }],
     'task_user': [{
+        "first_name" : 'Tony',
+        "last_name" : 'Tech',
         "name": 'TT',
         "color": 'green'
     },
     {
+        "first_name" : 'Erik',
+        "last_name" : 'Teuber',
         "name": 'ET',
         "color": 'blue'
     }]
@@ -35,25 +39,33 @@ let list = [{
         'color': 'red'
     },
     'date': '11/10/2024',
-    'priority' : 'Low',
+    'priority': 'Low',
     'headline': 'Witziges',
     'text': 'In Schweden heißt Mutter "Mor". Großmutter heißt "Mormor". Uhrgroßmutter heißt "Gammelmormor".',
     'subtasks': [],
     'task_user': [{
+        "first_name" : 'Tony',
+        "last_name" : 'Tech',
         "name": 'TT',
         "color": 'green'
     },
     {
+        "first_name" : 'Erika',
+        "last_name" : 'Taub',
         "name": 'ET',
         "color": 'blue'
     },
     {
-        "name": 'ET',
-        "color": 'blue'
+        "first_name" : 'Frank',
+        "last_name" : 'Krause',
+        "name": 'FK',
+        "color": 'yellow'
     },
     {
-        "name": 'ET',
-        "color": 'blue'
+        "first_name" : 'Manuel',
+        "last_name" : 'Frei',
+        "name": 'MF',
+        "color": 'pink'
     }
     ],
 },
@@ -65,12 +77,14 @@ let list = [{
         'color': 'blue'
     },
     'date': '15/02/2023',
-    'priority' : 'Low',
+    'priority': 'Low',
     'headline': 'Css fertigstellen',
     'text': 'Es muss noch sehr viel gemacht werden.',
     'subtasks': [],
     'task_user': [{
-        "name": 'ET',
+        "first_name" : 'Karin',
+        "last_name" : 'Kraus',
+        "name": 'KK',
         "color": 'blue'
     }
     ],
@@ -83,7 +97,7 @@ let list = [{
         'color': 'green'
     },
     'date': '10/07/2022',
-    'priority' : 'Urgent',
+    'priority': 'Urgent',
     'headline': 'Fertige Projekte',
     'text': 'Nun ist es geschafft, Besten dank an das ganze Team!',
     'subtasks': [{
@@ -100,14 +114,20 @@ let list = [{
         "completed": 0
     }],
     'task_user': [{
+        "first_name" : 'Tony',
+        "last_name" : 'Tech',
         "name": 'TT',
         "color": 'red'
     },
     {
+        "first_name" : 'Alfred',
+        "last_name" : 'Ferner',
         "name": 'AF',
         "color": 'red'
     }, {
-        "name": 'ET',
+        "first_name" : 'Laura',
+        "last_name" : 'Durst',
+        "name": 'LD',
         "color": 'red'
     }
     ]
@@ -115,8 +135,8 @@ let list = [{
 ];
 
 
-function createBoardTasks(id, category, headline, text) {
-    return `<div onclick="loadBoardCard(${id})" id="" draggable="true" ondragstart="startDragging(${id})" class="board_fbc board_note" >
+function createBoardTasks(id, category, headline, text, priority_img) {
+    return `<div onclick="loadBoardCard(${id})" id="${id}" draggable="true" ondragstart="startDragging(${id})" class="board_fbc board_note" >
         <div class="board_task_headline" style="background-color: ${category.color};">${category.text}
         </div>
         <div class="board_task_header">${headline}
@@ -136,7 +156,7 @@ function createBoardTasks(id, category, headline, text) {
         <div class="board_fbsbc board_footerline">
             <div id="task_user${id}" class="board_fbfb board_task_name_box">
             </div>
-            <div class="board_task_prio"><img src="./img/task_prio-m.svg" alt="">
+            <div class="board_task_prio"><img src="${priority_img}" alt="">
             </div>
         </div>
     </div>`;
@@ -161,8 +181,8 @@ function createBoardSubtasks(taskcompleted, taskall, percent) {
 }
 
 
-function createBoradCard(id,story,story_bg,headline,text,date,priority,priority_img){
-    return`
+function createBoradCard(id, story, story_bg, headline, text, date, priority, priority_img) {
+    return `
     <div class="board_detail_box board_fbcc" onclick="closeBoardCard()" >
     <div class="board_detail_card" onclick="notClose(event)">
         <div class="board_fbsbc">
@@ -182,7 +202,7 @@ function createBoradCard(id,story,story_bg,headline,text,date,priority,priority_
         <div class="board_fbfb board_detail_date_prio">
             <div style="width: 20%;">Priority:
             </div>
-            <div>${priority}<img src="${priority_img}" alt="">
+            <div class="board_fbcc">${priority}<img src="${priority_img}" alt="">
             </div>
         </div>
         <div id="board-card-users${id}" class="board_dfcfsco board_detail_date_prio">Assigned To:
@@ -216,4 +236,21 @@ function createBoradCard(id,story,story_bg,headline,text,date,priority,priority_
     </div>
 </div>
     `;
+}
+
+function createBoardCardUsers(first_name,last_name,user, color) {
+    return `
+    <div class="board_dfcb" style="margin-top: 20px;margin-left: 25px;">
+    <div class="board_task_name board_fbcc" style="background: ${color};">${user}
+    </div>
+        <span class="board_detail_name">${first_name} ${last_name}</span>
+    </div>`;
+}
+
+function createBoardCardSubtaks(user, color) {
+    return `
+    <div class="board_dfcb" style="margin-top: 20px;margin-left: 5px;">
+    <img class="board_fbcc" src="./img/Check button.svg" alt="">
+    <span class="board_detail_subtasks"> Implement Recipe Recommendation</span>
+</div>`;
 }
