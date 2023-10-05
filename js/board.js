@@ -180,18 +180,3 @@ function toggelSubtaskCompleted(id, i, status) {
 }
 
 
-function showPopup(text) {
-    var popup = document.createElement("div");
-    popup.textContent = text;
-    popup.classList.add("board_popup");
-    document.body.appendChild(popup);
-    setTimeout(function () {
-        popup.style.top = "30px";
-    }, 100);
-    setTimeout(function () {
-        popup.style.top = "-100px";
-        setTimeout(function () {
-            document.body.removeChild(popup);
-        }, 500);
-    }, 3000);
-}
