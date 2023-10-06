@@ -1,10 +1,15 @@
+let users = [
+    { 'email': 'test@test.de', 'password': 'test' }
+];
+
+
 
 function showSignUp() {
     document.getElementById('sign-up').classList.remove('d-none');
     document.getElementById('login').classList.add('d-none');
 }
 
-function hideSignUp(){
+function hideSignUp() {
     document.getElementById('sign-up').classList.add('d-none');
     document.getElementById('login').classList.remove('d-none');
 }
@@ -25,6 +30,14 @@ function showPopup(text) {
     }, 3000);
 }
 
-function openHTML(html){
+function openHTML(html) {
     location.href = html;
+}
+
+function loadUserData() {
+
+}
+
+function sendUserData() {
+
 }
