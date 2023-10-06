@@ -1,15 +1,25 @@
 
+let summary_all = 0;
+let summary_task = [];
+
+let summary_urgent = 0;
+let summary_urgent_date = "";
+
+
+
+
 window.addEventListener('resize', executeOnScreenWidthChange);  // Monitoring the screen width
 let screenWidthThreshold = 950;                                 // Screen resolution when the popup appears
 let lastScreenWidth = window.innerWidth;                        // Query the screen width at the start of the page
 let welcome_text;                                               // Set the welcome text variable
-let user_name = 'TT';                                           //Sets the username
+let user_name = 'TT';                                           // Sets the username
 
 function initsummary() {
     GreetingAfterTime();
     OneStartexecuteOnScreenWidthChange();
-
+    loadSummaryTask();
 }
+
 /** 
  * This function calculates what time of day it is. No parameters are required.
  * 
@@ -37,7 +47,7 @@ function OneStartexecuteOnScreenWidthChange() {
     if (lastScreenWidth <= screenWidthThreshold) {
         showPopup();
         document.getElementById('summary_gretting').classList.add('summary_dn');
-    }else{
+    } else {
         document.getElementById('summary_gretting').classList.remove('summary_dn');
     }
 }
@@ -50,10 +60,8 @@ function OneStartexecuteOnScreenWidthChange() {
 function executeOnScreenWidthChange() {
     const currentScreenWidth = window.innerWidth;
     if (lastScreenWidth < screenWidthThreshold && currentScreenWidth >= screenWidthThreshold) {
-        console.log('Transition from less than to greater than or equal to ' + screenWidthThreshold + ' pixels');
         document.getElementById('summary_gretting').classList.remove('summary_dn');
     } else if (lastScreenWidth >= screenWidthThreshold && currentScreenWidth < screenWidthThreshold) {
-        console.log('Transition from greater than or equal to ' + screenWidthThreshold + ' pixels to less than ' + screenWidthThreshold + ' pixels');
         showPopup();
         document.getElementById('summary_gretting').classList.add('summary_dn');
     }
@@ -82,4 +90,32 @@ function showPopup() {
         popup.style.display = "none";
         popup.remove();
     }, 4000);
+}
+
+function loadSummaryTask() {
+    let to_do = loadSummaryCategory('to_do');
+    let in_progress = loadSummaryCategory('in_progress');
+    let await_feedback = loadSummaryCategory('await_feedback');
+    let done = loadSummaryCategory('done');
+    let summary_all = to_do + in_progress + await_feedback + done;
+    createAllTaskCounter(to_do, in_progress, await_feedback, done, summary_all);
+}
+
+function loadSummaryCategory(task) {
+    let task_counter = 0;
+    for (let i = 0; i < list.length; i++) {
+        const element = list[i];
+        if (element.task_board == task)
+            task_counter = task_counter + 1;
+    }
+
+    return task_counter;
+}
+
+function createAllTaskCounter(to_do, in_progress, await_feedback, done, summary_all) {
+    document.getElementById('summary-to-do').innerHTML = to_do;
+    document.getElementById('summary-in-progess').innerHTML = in_progress;
+    document.getElementById('summary-await-feedback').innerHTML = await_feedback;
+    document.getElementById('summary-done').innerHTML = done;
+    document.getElementById('summary-all-tasks').innerHTML = summary_all;
 }

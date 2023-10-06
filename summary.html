@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join/Summary</title>
+    <script src="./js/script.js"></script>
+    <script src="./js/storage.js"></script>
     <script src="./js/summary.js"></script>
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./fonts.css" />
@@ -58,14 +60,14 @@
                             <div class="summary_left_start summary_fbcc summary_box_margin">
                                 <div><img class="summary_icon" src="./img/pen_icon.svg" alt="Edit-Icon"></div>
                                 <div class="summary_fbcco">
-                                    <div class="summary_number_font">1</div>
+                                    <div id="summary-to-do" class="summary_number_font">0</div>
                                     <div class="summary_text_font">To-do</div>
                                 </div>
                             </div>
                             <div class="summary_left_start summary_fbcc summary_box_margin">
                                 <div><img class="summary_icon" src="./img/check_icon.svg" alt="Check-Icon"></div>
                                 <div class="summary_fbcco">
-                                    <div class="summary_number_font">1</div>
+                                    <div id="summary-done" class="summary_number_font">0</div>
                                     <div class="summary_text_font">Done</div>
                                 </div>
                             </div>
@@ -76,7 +78,7 @@
                                 <div class="summary_left_start_center summary_fbcc">
                                     <div><img class="summary_icon" src="./img/urgent_icon.svg" alt="Edit-Icon"></div>
                                     <div class="">
-                                        <div class="summary_number_font">1</div>
+                                        <div class="summary_number_font">0</div>
                                         <div class="summary_text_font">Urgent</div>
                                     </div>
                                 </div>
@@ -99,20 +101,20 @@
                         <div class=" summary_fbsbc">
                             <div class="summary_left_ende summary_fbcc summary_box_margin">
                                 <div class="summary_fbcco">
-                                    <div class="summary_number_font">5</div>
+                                    <div id="summary-all-tasks" class="summary_number_font">0</div>
                                     <div class="summary_text_font summary_left_ende-box">Tasks in Board</div>
                                 </div>
 
                             </div>
                             <div class="summary_left_ende summary_fbcc summary_box_margin">
                                 <div class="summary_fbcco">
-                                    <div class="summary_number_font">2</div>
-                                    <div class="summary_text_font summary_left_ende-box">Tasks in Progess</div>
+                                    <div id="summary-in-progess" class="summary_number_font">0</div>
+                                    <div  class="summary_text_font summary_left_ende-box">Tasks in Progess</div>
                                 </div>
                             </div>
                             <div class="summary_left_ende summary_fbcc summary_box_margin">
                                 <div class="summary_fbcco">
-                                    <div class="summary_number_font">2</div>
+                                    <div id="summary-await-feedback" class="summary_number_font">0</div>
                                     <div class="summary_text_font summary_left_ende-box">Awaiting Feedback</div>
                                 </div>
                             </div>
