@@ -15,85 +15,11 @@
       id="contacts-add-bg"
       class="contacts-add-bg d-none"
       onclick="closeNewContacts()"
-    >
-      <div
-        id="contacts-add-con"
-        class="contacts-add-con"
-        onclick="stopClosing(event)"
-      >
-        <div class="contacts-add-con-left">
-          <img
-            src="./img/contacts-join-logo.svg"
-            alt=""
-            class="contacts-join-logo"
-          />
-          <h2 class="contacts-h2">Add contact</h2>
-          <p class="contacts-add-text">Tasks are better with a team!</p>
-          <div class="contacts-hr-ho"></div>
-        </div>
-        <div class="contacts-add-con-right">
-          <div class="contacts-add-close-con" onclick="closeNewContacts()">
-            <img src="./img/task_cancel.svg" alt="" />
-          </div>
-          <div class="contacts-con-sub">
-            <img
-              src="./img/contacts-user-logo.svg"
-              alt=""
-              class="contacts-user-logo"
-            />
-            <form action="" class="contacts-form">
-              <div class="contacts-input-con">
-                <input
-                  type="text"
-                  placeholder="Name"
-                  class="contacts-input"
-                /><img src="./img/person.svg" alt="" />
-              </div>
-              <div class="contacts-input-con">
-                <input
-                  type="email"
-                  name=""
-                  id=""
-                  placeholder="Email"
-                  class="contacts-input"
-                /><img src="./img/mail.svg" alt="" />
-              </div>
-              <div class="contacts-input-con">
-                <input
-                  type="tel"
-                  name=""
-                  id=""
-                  placeholder="Phone"
-                  class="contacts-input"
-                /><img src="./img/call.svg" alt="" />
-              </div>
-              <div class="contacts-button-con">
-                <button
-                  id="contacts-bt-cancel"
-                  onclick="closeNewContacts()"
-                  class="contacts-button contacts-bt-clear contacts-bt-ft"
-                >
-                  Cancel<img
-                    id="img_cancel"
-                    src="./img/task_cancel.svg"
-                    alt=""
-                  />
-                </button>
-                <button
-                  class="contacts-button contacts-bt-create contacts-bt-ft"
-                >
-                  Create contacts<img src="./img/task_check.svg" alt="" />
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+    ></div>
     <div class="contacts-list-section">
       <button
         class="contacts-button contacts-bt-add contacts-bt-create"
-        onclick="addNewContacts()"
+        onclick="showAddNewContactsPopup()"
       >
         Add new contacts<img src="./img/contacts_add_icon.svg" alt="" />
       </button>

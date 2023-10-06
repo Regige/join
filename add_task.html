@@ -20,6 +20,12 @@
     <div w3-include-html="/templates/header.html"></div>
     <div w3-include-html="/templates/sidebar.html"></div>
     <div class="task-body">
+      <!-- Hier muss noch addNewContacts Popup bearbeitet werden, oder auf neue HTML Seite verweisen -->
+      <!-- <div
+        id="contacts-add-bg"
+        class="contacts-add-bg d-none"
+        onclick="closeNewContacts()"
+      ></div> -->
       <main>
         <h2 class="task-h2">Add Task</h2>
         <form action="" class="task-form">
@@ -32,7 +38,7 @@
                   class="task-input-fd task-input-fd-ti"
                   type="text"
                   name="title"
-                  id="title"
+                  id="task-title"
                   placeholder="Enter a title"
                 />
               </label>
@@ -41,12 +47,11 @@
                 <textarea
                   class="task-input-fd task-input-fd-desc"
                   name="description"
-                  id="description"
+                  id="task-description"
                   cols="30"
                   rows="3"
                   placeholder="Enter a Description"
-                >
-                </textarea>
+                ></textarea>
               </label>
               <label class="task-label"
                 >Assigned to
@@ -66,7 +71,7 @@
                     class="d-none task-contacts-list-to-assign"
                   ></div>
                   <button
-                    onclick="stopClosing(event)"
+                    onclick="stopClosing(event), showAddNewContactsPopup()"
                     id="add-new-contact-bt"
                     class="d-none task-button task-bt-create task-bt-add"
                   >
@@ -86,41 +91,78 @@
                   class="task-input-fd"
                   type="date"
                   name="dd/mm/yyyy"
-                  id="date"
+                  id="task-date"
                   placeholder="dd/mm/yyyy"
                 />
               </label>
               <label class="task-label"
                 >Prio
                 <div class="task-con-prio">
-                  <button class="task-input-fd task-prio-bt">
+                  <div>
+                    <input
+                      id="prio-bt-Urgent"
+                      type="button"
+                      value="Urgent"
+                      onclick="setTaskPrio('Urgent')"
+                    /><img src="./img/task-prio-u.svg" alt="" />
+                  </div>
+                  <!-- <button
+                    id="prio-bt-Urgent"
+                    class="task-input-fd task-prio-bt"
+                    onclick="setTaskPrio('Urgent')"
+                  >
                     Urgent &nbsp;<img src="./img/task-prio-u.svg" alt="" />
-                  </button>
-                  <button class="task-input-fd task-prio-bt">
+                  </button> -->
+                  <div>
+                    <input
+                      id="prio-bt-Medium"
+                      type="button"
+                      value="Medium"
+                      onclick="setTaskPrio('Medium')"
+                    /><img src="./img/task-prio-m.svg" alt="" />
+                  </div>
+                  <!-- <button
+                    id="prio-bt-Medium"
+                    class="task-input-fd task-prio-bt"
+                    onclick="setTaskPrio('Medium')"
+                  >
                     Medium &nbsp;<img src="./img/task-prio-m.svg" alt="" />
-                  </button>
-                  <button class="task-input-fd task-prio-bt">
+                  </button> -->
+                  <div>
+                    <input
+                      id="prio-bt-Low"
+                      type="button"
+                      value="Low"
+                      onclick="setTaskPrio('Low')"
+                    /><img src="./img/task-prio-l.svg" alt="" />
+                  </div>
+                  <!-- <button
+                    id="prio-bt-Low"
+                    class="task-input-fd task-prio-bt"
+                    onclick="setTaskPrio('Low')"
+                  >
                     Low &nbsp;<img src="./img/task-prio-l.svg" alt="" />
-                  </button>
+                  </button> -->
                 </div>
               </label>
               <label class="task-label"
                 ><span>Category<span class="task-star">*</span></span>
                 <select
-                  required
                   class="task-input-fd"
                   name="category"
                   id="category"
                   placeholder="Select task category"
                 >
-                  <option value="">To do</option>
-                  <option value="">In progress</option>
+                  <option value="">Select task category</option>
+                  <option value="Technical Task">Technical Task</option>
+                  <option value="User Story">User Story</option>
                 </select>
               </label>
               <label class="task-label"
                 >Subtasks
                 <div class="task-sub-input-con">
                   <input
+                    id="task-subtask"
                     type="text"
                     placeholder="Add new subtask"
                     class="task-sub-input"
@@ -136,7 +178,10 @@
               <button class="task-button task-bt-clear">
                 Clear<img src="./img/task_cancel.svg" alt="" />
               </button>
-              <button class="task-button task-bt-create">
+              <button
+                class="task-button task-bt-create"
+                onclick="createNewTask()"
+              >
                 Create Task<img src="./img/task_check.svg" alt="" />
               </button>
               <!-- <input type="submit" value="Create Task" /> -->

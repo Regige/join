@@ -24,9 +24,12 @@ let contacts = [
         'email': 'markus@gmail.com',
         'phone': '+49 5555 555 55 5'
     },
-]
+];
+
 let letters = [];
 
+// Variable for function createContact()
+let allContacts = []; 
 
 // show contacts list on the side
 
@@ -74,6 +77,7 @@ function renderContactsHTML(contactsList, i, contact, firstCha, secondCha) {
             </div>`;
 }
 
+
 // show clicked contact on the main page
 
 function showContact(i) {
@@ -118,6 +122,58 @@ function renderSglContactHTML(i, contact, firstCha, secondCha, clickedContact) {
 
 // Add new contacts - Button + PopUp (in progress...)
 
+function showAddNewContactsPopup() {
+    renderAddNewContacts();
+    addNewContacts();
+}
+
+
+function renderAddNewContacts() {
+    let addNewContactsPopup = document.getElementById('contacts-add-bg');
+    addNewContactsPopup.innerHTML = /*html*/`
+        <div id="contacts-add-con" class="contacts-add-con" onclick="stopClosing(event)">
+            <div class="contacts-add-con-left">
+                <img src="./img/contacts-join-logo.svg" alt="" class="contacts-join-logo"/>
+                <h2 class="contacts-h2">Add contact</h2>
+                <p class="contacts-add-text">Tasks are better with a team!</p>
+                <div class="contacts-hr-ho"></div>
+            </div>
+            <div class="contacts-add-con-right">
+                <div class="contacts-add-close-con" onclick="closeNewContacts()">
+                    <img src="./img/task_cancel.svg" alt="" />
+                </div>
+                <div class="contacts-con-sub">
+                    <img src="./img/contacts-user-logo.svg" alt="" class="contacts-user-logo"/>
+                    <form action="" class="contacts-form">
+                        <div class="contacts-input-con">
+                            <input type="text" name="name" id="new-contact-name" placeholder="Name" class="contacts-input"/>
+                            <img src="./img/person.svg" alt="" />
+                        </div>
+                        <div class="contacts-input-con">
+                            <input type="email" name="email" id="new-contact-email" placeholder="Email" class="contacts-input"/>
+                            <img src="./img/mail.svg" alt="" />
+                        </div>
+                        <div class="contacts-input-con">
+                            <input type="tel" name="phone" id="new-contact-phone" placeholder="Phone" class="contacts-input"/>
+                            <img src="./img/call.svg" alt="" />
+                        </div>
+                        <div class="contacts-button-con">
+                            <button id="contacts-bt-cancel" onclick="closeNewContacts()" class="contacts-button contacts-bt-clear       contacts-bt-ft">
+                                Cancel
+                                <img id="img_cancel" src="./img/task_cancel.svg" alt=""/>
+                            </button>
+                            <button onclick="createNewContact()" class="contacts-button contacts-bt-create contacts-bt-ft">
+                                Create contacts
+                                <img src="./img/task_check.svg" alt="" />
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>`;
+}
+
+
 function addNewContacts() {
     document.getElementById('contacts-add-bg').classList.remove('d-none');
     setTimeout(showAddCon, 0)
@@ -128,6 +184,7 @@ function addNewContacts() {
 function showAddCon() {
     document.getElementById('contacts-add-con').classList.add('contacts-add-con-show');
 }
+
 
 function closeNewContacts() {
     let overlayBg = document.getElementById('contacts-add-bg');
@@ -144,3 +201,23 @@ function stopClosing(event) {
 // document.getElementById('contacts-bt-cancel').addEventListener("mousemove", function(){
 //     document.getElementById('img_cancel').src = "./img/task_cancel_hover.svg";
 // })
+
+
+// Create new Contact (in progress ...)
+
+function createNewContact() {
+    let contactName = document.getElementById('new-contact-name').value;
+    let contactEmail = document.getElementById('new-contact-email').value;
+    let contactPhone = document.getElementById('new-contact-phone').value;
+
+    let newContact = {
+        'name': contactName,
+        'email': contactEmail,
+        'phone': contactPhone
+    }
+
+    allContacts.push(newContact);
+
+    let allContactsAsString = JSON.stringify(allContacts);
+    // localStorage.setItem('allContacts', allContctsAsString); bzw. auf ext. Server speichern
+}
