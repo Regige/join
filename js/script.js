@@ -12,7 +12,7 @@ function hideSignUp(){
 function showPopup(text) {
     var popup = document.createElement("div");
     popup.textContent = text;
-    popup.classList.add("board_popup");
+    popup.classList.add("popup");
     document.body.appendChild(popup);
     setTimeout(function () {
         popup.style.top = "30px";
