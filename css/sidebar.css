@@ -1,7 +1,7 @@
 body {
     margin: 0;
     background-color: #F6F7F8;
-    font-family: 'Raleway', sans-serif;
+    font-family: Inter;
 }
 
 .sidebar {
@@ -143,6 +143,10 @@ body {
 
 @media (max-width: 550px){
     .sidebarBtn{
-        padding: 4px;
+        padding: 3px;
+    }
+
+    .sidebarBtn span {
+        font-size: 14px;
     }
 }
