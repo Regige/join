@@ -104,12 +104,12 @@ function createBoradCard(id, story, story_bg, headline, text, date, priority, pr
     `;
 }
 
-function createBoardCardUsers(first_name, last_name, user, color) {
+function createBoardCardUsers(first_name, user, color) {
     return `
     <div class="board_dfcb" style="margin-top: 20px;margin-left: 25px;">
     <div class="board_task_name board_fbcc" style="background: ${color};">${user}
     </div>
-        <span class="board_detail_name">${first_name} ${last_name}</span>
+        <span class="board_detail_name">${first_name}</span>
     </div>`;
 }
 

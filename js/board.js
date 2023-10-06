@@ -153,7 +153,7 @@ function createBordCardUsers(id, users) {
         document.getElementById(`board-card-users${id}`).innerHTML = 'Assigned To:';
         for (let i = 0; i < users.length; i++) {
             const element = users[i];
-            document.getElementById(`board-card-users${id}`).innerHTML += createBoardCardUsers(element.first_name, element.last_name, element.name, element.color)
+            document.getElementById(`board-card-users${id}`).innerHTML += createBoardCardUsers(element.full_name, element.name, element.color)
         }
     }
 }

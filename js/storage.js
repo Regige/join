@@ -43,14 +43,12 @@ let list = [
         }],
         'task_user': [
             {
-                "first_name": 'Lisa',
-                "last_name": 'Müller',
+                "full_name": 'Lisa Müller',
                 "name": 'LM',
                 "color": 'purple'
             },
             {
-                "first_name": 'Max',
-                "last_name": 'Schmidt',
+                "full_name": 'Max Schmidt',
                 "name": 'MS',
                 "color": 'orange'
             }
@@ -70,8 +68,7 @@ let list = [
         'subtasks': [],
         'task_user': [
             {
-                "first_name": 'Anna',
-                "last_name": 'Schneider',
+                "full_name": 'Anna Schneider',
                 "name": 'AS',
                 "color": 'blue'
             }
@@ -109,8 +106,7 @@ let list = [
         }],
         'task_user': [
             {
-                "first_name": 'Julia',
-                "last_name": 'Weber',
+                "full_name": 'Julia Weber',
                 "name": 'JW',
                 "color": 'green'
             }
@@ -130,8 +126,7 @@ let list = [
         'subtasks': [],
         'task_user': [
             {
-                "first_name": 'Tom',
-                "last_name": 'Hansen',
+                "full_name": 'Tom Hansen',
                 "name": 'TH',
                 "color": 'orange'
             }
@@ -151,8 +146,7 @@ let list = [
         'subtasks': [],
         'task_user': [
             {
-                "first_name": 'Sophia',
-                "last_name": 'Müller',
+                "full_name": 'Sophia Müller',
                 "name": 'SM',
                 "color": 'pink'
             }
@@ -172,8 +166,7 @@ let list = [
         'subtasks': [],
         'task_user': [
             {
-                "first_name": 'Michael',
-                "last_name": 'Bauer',
+                "full_name": 'Michael Bauer',
                 "name": 'MB',
                 "color": 'blue'
             }
