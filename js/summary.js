@@ -119,3 +119,4 @@ function createAllTaskCounter(to_do, in_progress, await_feedback, done, summary_
     document.getElementById('summary-done').innerHTML = done;
     document.getElementById('summary-all-tasks').innerHTML = summary_all;
 }
+

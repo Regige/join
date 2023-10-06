@@ -184,4 +184,3 @@ function toggelSubtaskCompleted(id, i, status) {
     loadBoardCard(id);
 }
 
-

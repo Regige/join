@@ -24,3 +24,7 @@ function showPopup(text) {
         }, 500);
     }, 3000);
 }
+
+function openHTML(html){
+    location.href = html;
+}
