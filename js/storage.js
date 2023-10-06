@@ -226,7 +226,19 @@ let list = [
             "text": "Lego kaufen",
             "completed": 0
         }, {
-            "text": "Geburtstagskarte kaufen",
+            "text": "Kekse kaufen",
+            "completed": 1
+        }, {
+            "text": "Kaffee kaufen",
+            "completed": 1
+        }, {
+            "text": "Kuchen kaufen",
+            "completed": 1
+        }, {
+            "text": "Blumen kaufen",
+            "completed": 1
+        }, {
+            "text": "Getränke kaufen",
             "completed": 1
         }],
         'task_user': [
@@ -268,7 +280,7 @@ let list = [
         },
         'date': '11/15/2024',
         'priority': 'Low',
-        'headline': 'Haustier füttern',
+        'headline': 'Haustier füttern, Wasser auffüllen',
         'text': 'Vergessen Sie nicht, Ihr Haustier zu füttern.',
         'subtasks': [],
         'task_user': [

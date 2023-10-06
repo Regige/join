@@ -60,13 +60,13 @@ function createBoradCard(id, story, story_bg, headline, text, date, priority, pr
         <div class="board_detail_text">${text}
         </div>
         <div class="board_fbfb board_detail_date_prio">
-            <div style="width: 20%;">Due date:
+            <div style="width: 130px;">Due date:
             </div>
             <div>${date}
             </div>
         </div>
         <div class="board_fbfb board_detail_date_prio">
-            <div style="width: 20%;">Priority:
+            <div style="width: 130px;">Priority:
             </div>
             <div class="board_fbcc">${priority}<img src="${priority_img}" alt="">
             </div>

@@ -584,6 +584,77 @@ h1 {
     .board_columns_fixed {
         margin-right: 15px;
     }
+
+    .board_detail_card {
+        max-width: 392px;
+    }
+
+    .board_detail_header {
+        height: 27px;
+        padding: 4px, 16px, 4px, 16px;
+        border-radius: 8px;
+        gap: 10px;
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0em;
+        text-align: left;
+    }
+
+    .board_detail_headline {
+        font-family: Inter;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 43px;
+        letter-spacing: 0em;
+        text-align: left;
+    }
+
+    .board_detail_text {
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0em;
+        text-align: left;
+    }
+
+    .board_detail_date_prio {
+
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0em;
+        text-align: left;
+
+    }
+
+    .board_detail_date_prio img {
+        margin-left: 10px;
+    }
+
+    .board_detail_name {
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0em;
+        text-align: left;
+    }
+
+    .board_detail_subtasks {
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0em;
+        text-align: left;
+
+    }
+
+
 }
 
 @media (max-width: 660px) {
@@ -595,6 +666,11 @@ h1 {
         line-height: 56px;
         letter-spacing: 0em;
         text-align: left;
+    }
+
+    .board_body {
+        margin-left: 15px;
+        margin-right: 15px;
     }
 
     .board_button_add_task_small {
@@ -630,7 +706,7 @@ h1 {
     }
 
     .board_box::-webkit-scrollbar-track {
-        background: #ffffff;
+        background: transparent;
     }
 
     .board_box::-webkit-scrollbar-thumb {
@@ -645,6 +721,50 @@ h1 {
     }
 
     .board_note {
+        margin: 3px;
         margin-right: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.08);
+        z-index: 10;
     }
+
+    .board_note:hover {
+        cursor: pointer;
+        transform: none;
+    }
+
+    .board_fixed {
+        position: fixed;
+        right: 16px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .board_detail_box {
+        position: fixed;
+        top: 96px;
+        background-color: rgba(42, 54, 71, 0.2);
+        width: 100%;
+        z-index: 5;
+        bottom: 90px;
+        height: auto;
+    }
+
+    .board_detail_card {
+        position: absolute;
+        top: 1px;
+        background-color: white;
+        border-radius: 0;
+        gap: 24px;
+        margin: 0;
+        overflow: auto;
+        max-height: 100%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        max-width: 100%;
+        padding: 15px;
+    }
+
 }
