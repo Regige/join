@@ -1,11 +1,8 @@
 
 let summary_all = 0;
 let summary_task = [];
-
 let summary_urgent = 0;
 let summary_urgent_date = "";
-
-
 
 
 window.addEventListener('resize', executeOnScreenWidthChange);  // Monitoring the screen width
@@ -14,7 +11,8 @@ let lastScreenWidth = window.innerWidth;                        // Query the scr
 let welcome_text;                                               // Set the welcome text variable
 let user_name = 'TT';                                           // Sets the username
 
-function initsummary() {
+async function initsummary() {
+    list = await JSON.parse(await getItem(user + '-list'));
     GreetingAfterTime();
     OneStartexecuteOnScreenWidthChange();
     loadSummaryTask();

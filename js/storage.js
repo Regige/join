@@ -10,13 +10,17 @@ async function setItem(key, value) {
 
 async function getItem(key) {
     const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
-    return fetch(url).then(res => res.json());
+    return fetch(url).then(res => res.json()).then(res => {
+        if (res.data) { 
+            return res.data.value;
+        } throw `${key} not found`;
+    });
 }
 
-
+let list;
 
 // This is the Guest list
-let list = [
+let listold = [
     {
         'id': 0,
         'task_board': 'to_do',
@@ -172,5 +176,4 @@ let list = [
             }
         ]
     }
-]
-    ;
+];

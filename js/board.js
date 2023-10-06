@@ -1,11 +1,12 @@
 
 
-function initBoard() {
+async function initBoard() {
+    list = await JSON.parse(await getItem(user + '-list'));
     loadTaskBoard();
 }
 
-
-function loadTaskBoard() {
+async function loadTaskBoard() {
+    list = await JSON.parse(await getItem(user + '-list'));
     filterTaskBoard('to_do');
     filterTaskBoard('in_progress');
     filterTaskBoard('await_feedback');
@@ -71,6 +72,7 @@ function allowDrop(ev) {
 
 function moveTo(category) {
     list[draggedElement]['task_board'] = category;
+    setItem(user + '-list', list);
     initBoard();
 }
 

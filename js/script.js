@@ -1,8 +1,6 @@
-let users = [
-    { 'email': 'test@test.de', 'password': 'test' }
-];
+let users ={ 'email': 'test@test.de', 'password': 'test' };
 
-
+const user = users.email;
 
 function showSignUp() {
     document.getElementById('sign-up').classList.remove('d-none');
@@ -32,12 +30,4 @@ function showPopup(text) {
 
 function openHTML(html) {
     location.href = html;
-}
-
-function loadUserData() {
-
-}
-
-function sendUserData() {
-
 }

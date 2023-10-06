@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join/Board</title>
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./fonts.css" />
     <link rel="stylesheet" href="./css/board.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/sidebar.css" />
     <script src="./js/storage.js"></script>
     <script src="./js/script.js"></script>
     <script src="./js/board_template.js"></script>
     <script src="./js/board.js"></script>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/header.css" />
-    <link rel="stylesheet" href="./css/sidebar.css" />
-    <title>Join/Board</title>
     <script src="js/header.js"></script>
     <script src="includeHTML.js"></script>
 
@@ -27,8 +27,8 @@
         <div class="board_header board_fbsbc">
             <div class="board_heder_small">
                 <h1>Board</h1>
-                <div onclick="openHTML('/summary.html')" class="board_button_add_task_small board_fbcc dn"><img src="./img/add.svg"
-                        alt="add Icon">
+                <div onclick="openHTML('/summary.html')" class="board_button_add_task_small board_fbcc dn"><img
+                        src="./img/add.svg" alt="add Icon">
                 </div>
             </div>
             <div class="board_fbsbc board_serch_small">
@@ -37,16 +37,16 @@
                         name="suche" id="search_board">
                     <img class="board_serch_svg" src="./img/search.svg" alt="">
                 </div>
-                <div onclick="openHTML('/summary.html')" class="board_button_add_task board_fbcc">Add task <img src="./img/add.svg"
-                        alt="add Icon">
+                <div onclick="openHTML('/summary.html')" class="board_button_add_task board_fbcc">Add task <img
+                        src="./img/add.svg" alt="add Icon">
                 </div>
             </div>
         </div>
         <div class="board_fbsbcw board_columns_fixed_small">
             <div class="board_fbcco board_columns_fixed ">
                 <div class="board_fbsbc board_columns">
-                    <p id="board_to_do_headline" class="board_p ">To do</p><img class="board_add" onclick="openHTML('/add_task.html')"
-                        src="./img/plus_button.svg" alt="">
+                    <p id="board_to_do_headline" class="board_p ">To do</p><img class="board_add"
+                        onclick="openHTML('/add_task.html')" src="./img/plus_button.svg" alt="">
                 </div>
                 <div id="board_to_do" class=" board_fbcco board_box" ondragleave="removeHighlight('board_to_do')"
                     ondrop="moveTo('to_do') ;removeHighlight('board_to_do')"
@@ -56,8 +56,8 @@
             </div>
             <div class="board_fbcco board_columns_fixed">
                 <div class="board_fbsbc board_columns">
-                    <p id="board_in_progress_headline" class="board_p ">In progress</p><img class="board_add" onclick="openHTML('/add_task.html')"
-                        src="./img/plus_button.svg" alt="">
+                    <p id="board_in_progress_headline" class="board_p ">In progress</p><img class="board_add"
+                        onclick="openHTML('/add_task.html')" src="./img/plus_button.svg" alt="">
                 </div>
                 <div id="board_in_progress" class="board_box board_fbcco"
                     ondragleave="removeHighlight('board_in_progress')"
@@ -68,8 +68,8 @@
             </div>
             <div class="board_fbcco board_columns_fixed">
                 <div class="board_fbsbc board_columns">
-                    <p id="board_await_feedback_headline" class="board_p ">Await feedback</p><img class="board_add" onclick="openHTML('/add_task.html')"
-                        src="./img/plus_button.svg" alt="">
+                    <p id="board_await_feedback_headline" class="board_p ">Await feedback</p><img class="board_add"
+                        onclick="openHTML('/add_task.html')" src="./img/plus_button.svg" alt="">
                 </div>
                 <div id="board_await_feedback" class="board_box board_fbcco"
                     ondragleave="removeHighlight('board_await_feedback')"
