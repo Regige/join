@@ -85,7 +85,7 @@ let listold = [
             'text': 'Privat',
             'color': 'purple'
         },
-        'date': '11/13/2024',
+        'date': '01/10/2024',
         'priority': 'Medium',
         'headline': 'Geburtstags geschenk kaufen',
         'text': 'Besorgen Sie ein Geburtstagsgeschenk für einen Freund.',
@@ -123,7 +123,7 @@ let listold = [
             'text': 'Arbeit',
             'color': 'blue'
         },
-        'date': '11/14/2024',
+        'date': '14/11/2024',
         'priority': 'Urgent',
         'headline': 'Präsentation vorbereiten',
         'text': 'Erstellen Sie eine Präsentation für das Meeting nächste Woche.',
@@ -143,7 +143,7 @@ let listold = [
             'text': 'Sonstiges',
             'color': 'red'
         },
-        'date': '11/15/2024',
+        'date': '15/11/2024',
         'priority': 'Low',
         'headline': 'Haustier füttern, Wasser auffüllen',
         'text': 'Vergessen Sie nicht, Ihr Haustier zu füttern.',
@@ -163,8 +163,8 @@ let listold = [
             'text': 'Einkauf',
             'color': 'green'
         },
-        'date': '11/16/2024',
-        'priority': 'Medium',
+        'date': '17/06/2024',
+        'priority': 'Urgent',
         'headline': 'Kleidung kaufen',
         'text': 'Besorgen Sie neue Kleidung für den kommenden Winter.',
         'subtasks': [],
