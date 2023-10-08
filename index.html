@@ -16,7 +16,7 @@
             <img class="capaImg" src="img/Capa 1.svg">
         </div>
         <div class="login" id="login">
-            <div class="SignupButton" >
+            <div class="SignupButton">
                 <span style="margin-right: 20px;">Not a Join user?</span>
                 <button class="login-button" onclick="showSignUp()">Sign up</button>
             </div>
@@ -32,8 +32,13 @@
                 <input class="password-img" type="password" placeholder="Password">
             </form>
             <div class="checkbox">
-                <input type="checkbox" checked style="cursor: pointer; ">
-                <span>Remember me</span>
+                <div id="check">
+                    <img src="img/Check button none.svg" onclick="toggleCheckmark('check', 'check-none')">
+                </div>
+                <div>
+                    <img id="check-none" class="d-none" src="img/Check button.svg" onclick="toggleCheckmark('check', 'check-none')">
+                </div>
+                <span style="margin-left: 10px;">Remember me</span>
             </div>
             <div>
                 <button class="login-button">Log in</button>
@@ -56,15 +61,20 @@
                 <input class="password-img" type="password" placeholder="Password">
             </form>
             <div class="checkbox-sign-up">
-                <input type="checkbox" checked style="cursor: pointer; ">
-                <span>I accept the <a href="">Privacy policy</a></span>
+                <div id="check-sign-up">
+                    <img src="img/Check button none.svg" onclick="toggleCheckmark('check-sign-up', 'check-none-sign-up')">
+                </div>
+               <div>
+                <img id="check-none-sign-up" class="d-none" src="img/Check button.svg" onclick="toggleCheckmark('check-sign-up', 'check-none-sign-up')">
+               </div>
+                <span style="margin-left: 10px;">I accept the <a href="">Privacy policy</a></span>
             </div>
             <div>
                 <button class="login-button">Sign up</button>
             </div>
         </div>
     </div>
-    
+
     <div class="footer">
         <a href="" target="_blank">Privacy Policy</a>
         <a href="" target="_blank">Legal notice</a>

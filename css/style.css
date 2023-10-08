@@ -108,12 +108,16 @@ body::-webkit-scrollbar-thumb {
 }
 
 .checkbox {
+    display: flex;
+    align-items: center;
     margin-top: -10px;
     margin-left: -190px;
     margin-bottom: 25px;
 }
 
 .checkbox-sign-up {
+    display: flex;
+    align-items: center;
     margin-top: -10px;
     margin-bottom: 25px;
 }
@@ -254,7 +258,7 @@ body::-webkit-scrollbar-thumb {
     gap: 35px;
 }
 
-a{
+a {
     text-decoration: none;
     color: #c0c0c0;
 }
@@ -273,8 +277,26 @@ a{
     z-index: 10;
 }
 
-@media (max-width: 600px){
+@media (max-width: 600px) {
     .SignupButton {
-        bottom: 0;
+        position: absolute;
+        top: 705px;
+        right: 120px;
+    }
+
+    .login {
+        height: 420px;
+        width: 420px; 
+    }
+}
+
+@media (max-width: 440px){
+    .password-login input{
+        width: 290px;
+    }
+
+    .login {
+        height: 420px;
+        width: 320px; 
     }
 }

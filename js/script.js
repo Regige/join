@@ -12,6 +12,23 @@ function hideSignUp() {
     document.getElementById('login').classList.remove('d-none');
 }
 
+function toggleCheckmark(elementId, elementIdNone) {
+    const element = document.getElementById(elementId);
+    const elementNone = document.getElementById(elementIdNone);
+
+    if (element.classList.contains('d-none')) {
+        element.classList.remove('d-none');
+        elementNone.classList.add('d-none');
+    } else {
+        element.classList.add('d-none');
+        elementNone.classList.remove('d-none');
+    }
+}
+
+
+
+
+
 function openPage(page) {
     window.location.href = page;
 }
