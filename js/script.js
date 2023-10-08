@@ -12,6 +12,14 @@ function hideSignUp() {
     document.getElementById('login').classList.remove('d-none');
 }
 
+
+function openPage(page) {
+    window.location.href = page;
+}
+
+
+
+
 function showPopup(text) {
     var popup = document.createElement("div");
     popup.textContent = text;

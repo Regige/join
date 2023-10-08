@@ -272,3 +272,9 @@ a{
     top: -100px;
     z-index: 10;
 }
+
+@media (max-width: 600px){
+    .SignupButton {
+        bottom: 0;
+    }
+}
