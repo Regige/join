@@ -8,32 +8,40 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="fonts.css" />
     <link rel="stylesheet" href="./css/contacts.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/sidebar.css" />
 
     <script src="./js/script.js"></script>
     <script src="./js/contacts.js" defer></script>
+    <script src="js/header.js"></script>
+    <script src="includeHTML.js"></script>
   </head>
-  <body class="contacts-body" onload="renderContacts()">
-    <div
-      id="contacts-add-bg"
-      class="contacts-add-bg d-none"
-      onclick="closeNewContacts()"
-    ></div>
-    <div class="contacts-list-section">
-      <button
-        class="contacts-button contacts-bt-add contacts-bt-create"
-        onclick="showAddNewContactsPopup()"
-      >
-        Add new contacts<img src="./img/contacts_add_icon.svg" alt="" />
-      </button>
-      <div class="contacts-list" id="contacts-list"></div>
-    </div>
-    <main>
-      <div class="contacts-head">
-        <h2 class="contacts-h2">Contacts</h2>
-        <div class="contacts-hr"></div>
-        <p class="contacts-head-text">Better with a team</p>
+  <body onload="includeHTML(), renderContacts()">
+    <div w3-include-html="/templates/header.html"></div>
+    <div w3-include-html="/templates/sidebar.html"></div>
+    <div class="contacts-body">
+      <div
+        id="contacts-add-bg"
+        class="contacts-add-bg d-none"
+        onclick="closeNewContacts()"
+      ></div>
+      <div class="contacts-list-section">
+        <button
+          class="contacts-button contacts-bt-add contacts-bt-create"
+          onclick="showPopupContact()"
+        >
+          Add new contacts<img src="./img/contacts_add_icon.svg" alt="" />
+        </button>
+        <div class="contacts-list" id="contacts-list"></div>
       </div>
-      <div id="contact-clicked" class="contact-clicked"></div>
-    </main>
+      <main>
+        <div class="contacts-head">
+          <h2 class="contacts-h2">Contacts</h2>
+          <div class="contacts-hr"></div>
+          <p class="contacts-head-text">Better with a team</p>
+        </div>
+        <div id="contact-clicked" class="contact-clicked"></div>
+      </main>
+    </div>
   </body>
 </html>
