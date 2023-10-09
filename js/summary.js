@@ -9,13 +9,14 @@ window.addEventListener('resize', executeOnScreenWidthChange);  // Monitoring th
 let screenWidthThreshold = 950;                                 // Screen resolution when the popup appears
 let lastScreenWidth = window.innerWidth;                        // Query the screen width at the start of the page
 let welcome_text;                                               // Set the welcome text variable
-let user_name = 'Guest';                                           // Sets the username
+let user_name = 'Guest';                                        // Sets the username
 
 async function initsummary() {
     list = await JSON.parse(await getItem(user + '-list'));
     GreetingAfterTime();
     OneStartexecuteOnScreenWidthChange();
     loadSummaryTask();
+    clacDateUrgent();
 }
 
 /** 
@@ -119,24 +120,48 @@ function createAllTaskCounter(to_do, in_progress, await_feedback, done, summary_
     document.getElementById('summary-urgent').innerHTML = urgent_all;
 }
 
-function text() {
-    clacDateUrgent();
-}
-
-
-
 function clacDateUrgent() {
-
     for (let i = 0; i < list.length; i++) {
         const element = list[i];
         if (element.priority == 'Urgent')
-            date_time.push(Number(element.date.replaceAll("/", "")));
+            date_time.push(Number(element.date.replaceAll("-", "")));
     }
     date_time.sort(function (a, b) {
         if (a > b) return 1;
         if (a < b) return -1;
         return 0;
     });
-    console.log(date_time)
+    if (date_time) {
+        formatDateUrgent(date_time[0]);
+    } else {
+        formatDateUrgent(0);
+    }
+}
 
+function formatDateUrgent(date) {
+    if (date != 0) {
+        let date_string = date.toString();
+        let year = date_string.substr(0, 4);
+        let mounth = date_string.substr(4, 2);
+        let day = date_string.substr(6, 2);
+        document.getElementById('urgent-date').innerHTML = setMonth(mounth) + ' ' + day + ', ' + year;
+    } else {
+        document.getElementById('urgent-date').innerHTML = '-';
+    }
+}
+
+
+function setMonth(month) {
+    if (month == 1) { return 'January' }
+    if (month == 2) { return 'February' }
+    if (month == 3) { return 'March' }
+    if (month == 4) { return 'April' }
+    if (month == 5) { return 'May' }
+    if (month == 6) { return 'June' }
+    if (month == 7) { return 'July' }
+    if (month == 8) { return 'August' }
+    if (month == 9) { return 'September' }
+    if (month == 10) { return 'October' }
+    if (month == 11) { return 'November' }
+    if (month == 12) { return 'December' }
 }

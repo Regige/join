@@ -28,7 +28,7 @@ let listold = [
             'text': 'Arbeit',
             'color': 'blue'
         },
-        'date': '11/11/2024',
+        'date': '2023-11-12',
         'priority': 'Medium',
         'headline': 'Projektplanung',
         'text': 'Erstellen Sie einen detaillierten Projektplan für das kommende Projekt.',
@@ -65,7 +65,7 @@ let listold = [
             'text': 'Einkauf',
             'color': 'green'
         },
-        'date': '11/12/2024',
+        'date': '2023-10-22',
         'priority': 'Urgent',
         'headline': 'Einkaufsliste',
         'text': 'Besorgen Sie Lebensmittel für das Wochenende.',
@@ -85,7 +85,7 @@ let listold = [
             'text': 'Privat',
             'color': 'purple'
         },
-        'date': '01/10/2024',
+        'date': '2023-09-11',
         'priority': 'Medium',
         'headline': 'Geburtstags geschenk kaufen',
         'text': 'Besorgen Sie ein Geburtstagsgeschenk für einen Freund.',
@@ -123,7 +123,7 @@ let listold = [
             'text': 'Arbeit',
             'color': 'blue'
         },
-        'date': '14/11/2024',
+        'date': '2023-10-18',
         'priority': 'Urgent',
         'headline': 'Präsentation vorbereiten',
         'text': 'Erstellen Sie eine Präsentation für das Meeting nächste Woche.',
@@ -143,7 +143,7 @@ let listold = [
             'text': 'Sonstiges',
             'color': 'red'
         },
-        'date': '15/11/2024',
+        'date': '2023-05-14',
         'priority': 'Low',
         'headline': 'Haustier füttern, Wasser auffüllen',
         'text': 'Vergessen Sie nicht, Ihr Haustier zu füttern.',
@@ -163,7 +163,7 @@ let listold = [
             'text': 'Einkauf',
             'color': 'green'
         },
-        'date': '17/06/2024',
+        'date': '2023-10-13',
         'priority': 'Urgent',
         'headline': 'Kleidung kaufen',
         'text': 'Besorgen Sie neue Kleidung für den kommenden Winter.',
