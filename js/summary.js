@@ -12,7 +12,7 @@ let welcome_text;                                               // Set the welco
 let user_name = 'Guest';                                        // Sets the username
 
 async function initsummary() {
-    list = await JSON.parse(await getItem(user + '-list'));
+    //list = await JSON.parse(await getItem(user + '-list'));
     GreetingAfterTime();
     OneStartexecuteOnScreenWidthChange();
     loadSummaryTask();

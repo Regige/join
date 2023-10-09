@@ -1,18 +1,21 @@
 const STORAGE_TOKEN = '8A3U4MK7U3QQZFIE9YT3HJC3MLRAQ8J3J7J4DZ5Y';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
-let list;
+//let list;
+let users;
 
 
 async function setItem(key, value) {
     const payload = { key, value, token: STORAGE_TOKEN };
+     console.log(key, value);
     return fetch(STORAGE_URL, { method: 'POST', body: JSON.stringify(payload) })
         .then(res => res.json());
+       
 }
 
 async function getItem(key) {
     const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
     return fetch(url).then(res => res.json()).then(res => {
-        if (res.data) { 
+        if (res.data) {
             return res.data.value;
         } throw `${key} not found`;
     });
@@ -20,8 +23,28 @@ async function getItem(key) {
 
 
 
+
+function saveInLocalStorage() {
+    let listAsText = JSON.stringify(list);
+    localStorage.setItem('list', listAsText);
+}
+
+function loadInLocalStorage() {
+    let listAsText = localStorage.getItem('list');
+    if (listAsText) {
+        list = JSON.parse(listAsText);
+    }
+}
+
+
+
+
+
+
+
+
 // This is the Guest list
-let listold = [
+let list = [
     {
         'id': 0,
         'task_board': 'to_do',

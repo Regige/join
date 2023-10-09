@@ -1,12 +1,12 @@
 
 
 async function initBoard() {
-    list = await JSON.parse(await getItem(user + '-list'));
+    //list = await JSON.parse(await getItem(user + '-list'));
     loadTaskBoard();
 }
 
 async function loadTaskBoard() {
-    list = await JSON.parse(await getItem(user + '-list'));
+    //list = await JSON.parse(await getItem(user + '-list'));
     filterTaskBoard('to_do');
     filterTaskBoard('in_progress');
     filterTaskBoard('await_feedback');
