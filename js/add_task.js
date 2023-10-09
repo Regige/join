@@ -1,5 +1,5 @@
 let taskPrio = "";
-let subtask = [];
+let subtasks = [];
 let allTasks = [];
 
 
@@ -26,7 +26,7 @@ function showAssignedToBt() {
 }
 
 //  Assigned To Field - Popup and Close Function 
-// gerade nicht genutzt, da angeklickte Elemente sonst nicht gespeichert werden
+
 function closeAssignedToField() {
     document.getElementById('task-contacts-list-to-assign').classList.add('d-none');
     document.getElementById('add-new-contact-bt').classList.add('d-none');
@@ -42,7 +42,7 @@ function stopClosing(event) {
 function changeToSubText() {
     let subtaskButtonOpen = document.getElementById('task-sub-bt-open');
     subtaskButtonOpen.classList.add('d-none');
-    let subtaskInputText = document.getElementById('task-sub-input-text');
+    let subtaskInputText = document.getElementById('task-sub-input-text-con');
     subtaskInputText.classList.remove('d-none');
 
 }
@@ -52,13 +52,20 @@ function deleteInputText() {
 }
 
 function saveInputText() {
-    let subtaskInput = document.getElementById('task-sub-input-text').value; 
+    let subtaskInput = document.getElementById('task-sub-input-text'); 
     let subtaskTextCon = document.getElementById('task-sub-text');
+    subtaskTextCon.innerHTML = "";
 
-    subtaskTextCon.innerHTML += /*html*/`
-        <div>${subtaskInput}</div>
-    `;
+    subtasks.push(subtaskInput.value);
     subtaskInput.value = "";
+
+    for (let i = 0; i < subtasks.length; i++) {
+        const subtask = subtasks[i];
+        
+        subtaskTextCon.innerHTML += /*html*/`
+            <div class="task-sub-text-sgl">${subtask}</div>`;
+    }
+
 }
 
 // Create new Task (in progress ...)
@@ -71,15 +78,12 @@ function createNewTask(event) {
     let assignedTo = [];
     let dueDate = document.getElementById('task-date').value;
     let taskCategory = document.getElementById('category').value;
-    // let subtask = document.getElementById('task-subtask').value;
     
     document.querySelectorAll('[type="checkbox"]').forEach(item => {
         if(item.checked === true) {
             assignedTo.push(item.value);
         }
     });
-
-
 
     let newTask = {
         'title': taskTitle,
@@ -88,8 +92,10 @@ function createNewTask(event) {
         'due-date': dueDate,
         'prio': taskPrio,
         'category': taskCategory,
-        // 'subtask': subtask,
+        'subtask': subtasks,
     }
+
+    console.log(newTask);
 
     allTasks.push(newTask);
 
