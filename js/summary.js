@@ -9,7 +9,7 @@ window.addEventListener('resize', executeOnScreenWidthChange);  // Monitoring th
 let screenWidthThreshold = 950;                                 // Screen resolution when the popup appears
 let lastScreenWidth = window.innerWidth;                        // Query the screen width at the start of the page
 let welcome_text;                                               // Set the welcome text variable
-let user_name = 'TT';                                           // Sets the username
+let user_name = 'Guest';                                           // Sets the username
 
 async function initsummary() {
     list = await JSON.parse(await getItem(user + '-list'));
