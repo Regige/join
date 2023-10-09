@@ -235,8 +235,17 @@
 .task-sub-text {
     background-color: white;
     position: absolute;
-    top: 88px;
-    
+    top: 82px;
+    /* margin-top: -10px; */
+    /* z-index: -1; */
+    width: 100%;
+    max-height: 124px;
+    overflow: scroll;
+    border-radius: 0 0 10px 10px;
+}
+
+.task-sub-text-sgl {
+    padding: 4px 10px;
 }
 
 /*  */
@@ -299,3 +308,20 @@
     justify-content: space-between;
     align-items: center;
 }
+
+
+
+
+/* Media QUery */
+
+@media (max-width: 1264px) {
+
+    .task-hr {
+        display: none;
+    }
+
+    .task-input-con {
+        flex-direction: column;
+    }
+}
+
