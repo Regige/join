@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin-left: 232px;
 }
 
 .task-h2 {
@@ -95,6 +96,9 @@
 }
 
 .task-assigned-to {
+    background-image: url(/img/arrow_drop_dow.svg);
+    background-position: 95% 50%;
+    background-repeat: no-repeat;
     color: #D1D1D1;
     font-size: 20px;
     line-height: 24px;
@@ -140,16 +144,31 @@
 
 /* Form field - Prio Button */
 
-.task-con-prio {
+.task-prio-bt-con {
     display: flex;
     gap: 16px;
+    position: relative;
 }
 .task-prio-bt {
-    align-items: center;
-    display: flex;
     flex: 1;
-    justify-content: center;
-    padding: 16px 10px;
+    padding: 12px 40px 12px 16px;
+    width: 100%;
+    
+}
+.prio-u {
+    background-image: url(/img/task-prio-u.svg);
+    background-position: 85% 50%;;
+    background-repeat: no-repeat;
+}
+.prio-m {
+    background-image: url(/img/task-prio-m.svg);
+    background-position: 90% 50%;
+    background-repeat: no-repeat;
+}
+.prio-l {
+    background-image: url(/img/task-prio-l.svg);
+    background-position: 85% 50%;
+    background-repeat: no-repeat;
 }
 
 /*  */
@@ -159,11 +178,17 @@
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
-    padding: 2px 0;
+    padding: 2px 4px 2px 0;
 }
 
+/* 
 .task-sub-input-con img {
-    padding-right: 16px;
+    margin-right: 16px;
+} */
+
+.task-sub-input-con img:hover {
+    background-color: #d1d1d1;
+    border-radius: 10px;
 }
 
 .task-sub-input {
@@ -181,6 +206,37 @@
 
 .task-sub-input:focus {
     outline: none;
+}
+
+.task-sub-bt-open-con{
+    width: 100%;
+}
+.task-sub-input-text-con {
+    width: 100%;
+}
+
+.task-sub-icons {
+    align-items: center;
+}
+.task-sub-hr {
+    background-color: #D1D1D1;
+    width: 1px;
+    height: 32px;
+    margin: 0 4px;
+}
+
+.task-sub-input-img {
+    width: 32px;
+}
+
+.subtask-lable {
+    position: relative;
+}
+.task-sub-text {
+    background-color: white;
+    position: absolute;
+    top: 88px;
+    
 }
 
 /*  */
@@ -217,14 +273,26 @@
 .task-bt-clear {
     background-color: white;
     color: #2A3647;
+    padding-right: 40px;
+    background-image: url(/img/task_cancel.svg);
+    background-position: 85% 50%;
+    background-repeat: no-repeat;
 }
 
 .task-bt-create {
     background-color: #2A3647;
     color: white;
+    padding-right: 56px;
+    background-image: url(/img/task_check.svg);
+    background-position: 85% 50%;
+    background-repeat: no-repeat;
 }
 
 /* Allg. */
+
+.flx {
+    display: flex;
+}
 
 .flex-just-btw-ct {
     display: flex;

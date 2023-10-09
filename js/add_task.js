@@ -1,4 +1,5 @@
 let taskPrio = "";
+let subtask = [];
 let allTasks = [];
 
 
@@ -14,13 +15,18 @@ function showAssignedToBt() {
         const contact = contacts[i];
         
         contactsListToAssignCon.innerHTML += /*html*/`
-            <div class="task-contacts-list-to-assign-sub"><div class="flex-just-btw-ct"><div class="task-contacts-color-icon"></div><label for="contact-${i}">${contact['name']}</label></div><input type="checkbox" name="" id="contact-${i}"></div>
-        `;
+            <div class="task-contacts-list-to-assign-sub">
+                <div class="flex-just-btw-ct">
+                    <div class="task-contacts-color-icon"></div>
+                    <label for="contact-${i}">${contact['name']}</label>
+                </div>
+                <input type="checkbox" name="contact" id="contact-${i}" value="${contact['name']}">
+            </div>`;
     }
 }
 
 //  Assigned To Field - Popup and Close Function 
-
+// gerade nicht genutzt, da angeklickte Elemente sonst nicht gespeichert werden
 function closeAssignedToField() {
     document.getElementById('task-contacts-list-to-assign').classList.add('d-none');
     document.getElementById('add-new-contact-bt').classList.add('d-none');
@@ -31,22 +37,54 @@ function stopClosing(event) {
 }
 
 
+// subtask input field
+
+function changeToSubText() {
+    let subtaskButtonOpen = document.getElementById('task-sub-bt-open');
+    subtaskButtonOpen.classList.add('d-none');
+    let subtaskInputText = document.getElementById('task-sub-input-text');
+    subtaskInputText.classList.remove('d-none');
+
+}
+
+function deleteInputText() {
+    document.getElementById('task-sub-input-text').value = "";
+}
+
+function saveInputText() {
+    let subtaskInput = document.getElementById('task-sub-input-text').value; 
+    let subtaskTextCon = document.getElementById('task-sub-text');
+
+    subtaskTextCon.innerHTML += /*html*/`
+        <div>${subtaskInput}</div>
+    `;
+    subtaskInput.value = "";
+}
+
 // Create new Task (in progress ...)
 
-function createNewTask() {
+function createNewTask(event) {
+    event.preventDefault();
+
     let taskTitle = document.getElementById('task-title').value;
     let taskDescription = document.getElementById('task-description').value;
-    // mit einer for-Schleife alle checkboxen abfragen? + in einer variable alle namen in einem array abspeichern
-    // let assignedTo = document.getElementById('').; 
+    let assignedTo = [];
     let dueDate = document.getElementById('task-date').value;
     let taskCategory = document.getElementById('category').value;
     // let subtask = document.getElementById('task-subtask').value;
+    
+    document.querySelectorAll('[type="checkbox"]').forEach(item => {
+        if(item.checked === true) {
+            assignedTo.push(item.value);
+        }
+    });
+
 
 
     let newTask = {
         'title': taskTitle,
         'description': taskDescription,
-        // 'assigned-to': [assignedTo],
+        'assigned-to': [assignedTo],
         'due-date': dueDate,
         'prio': taskPrio,
         'category': taskCategory,
@@ -65,7 +103,6 @@ function setTaskPrio(prio) {
 
     setPrioButtonColor(prio);
 }
-
 
 function setPrioButtonColor(prio) {
     let prios = ['Urgent', 'Medium', 'Low'];

@@ -27,9 +27,9 @@
         class="contacts-add-bg d-none"
         onclick="closeNewContacts()"
       ></div> -->
-      <main>
+      <main onclick="closeAssignedToField()">
         <h2 class="task-h2">Add Task</h2>
-        <form action="" class="task-form">
+        <form action="" class="task-form" onsubmit="createNewTask(event)">
           <div class="task-input-con">
             <div class="task-input-left">
               <label class="task-label"
@@ -57,15 +57,12 @@
               <label class="task-label"
                 >Assigned to
                 <div class="task-assigned-to-con">
-                  <button
-                    onclick="showAssignedToBt()"
+                  <input
+                    type="button"
+                    value="Select contacts to assign"
+                    onclick="stopClosing(event), showAssignedToBt()"
                     class="task-sub-input-con task-assigned-to"
-                  >
-                    Select contacts to assign<img
-                      src="./img/arrow_drop_dow.svg"
-                      alt=""
-                    />
-                  </button>
+                  />
                   <div
                     onclick="stopClosing(event)"
                     id="task-contacts-list-to-assign"
@@ -98,52 +95,28 @@
               </label>
               <label class="task-label"
                 >Prio
-                <div class="task-con-prio">
-                  <div>
-                    <input
-                      id="prio-bt-Urgent"
-                      type="button"
-                      value="Urgent"
-                      onclick="setTaskPrio('Urgent')"
-                    /><img src="./img/task-prio-u.svg" alt="" />
-                  </div>
-                  <!-- <button
+                <div class="task-prio-bt-con">
+                  <input
                     id="prio-bt-Urgent"
-                    class="task-input-fd task-prio-bt"
+                    type="button"
+                    value="Urgent"
+                    class="task-input-fd task-prio-bt prio-u"
                     onclick="setTaskPrio('Urgent')"
-                  >
-                    Urgent &nbsp;<img src="./img/task-prio-u.svg" alt="" />
-                  </button> -->
-                  <div>
-                    <input
-                      id="prio-bt-Medium"
-                      type="button"
-                      value="Medium"
-                      onclick="setTaskPrio('Medium')"
-                    /><img src="./img/task-prio-m.svg" alt="" />
-                  </div>
-                  <!-- <button
+                  />
+                  <input
                     id="prio-bt-Medium"
-                    class="task-input-fd task-prio-bt"
+                    type="button"
+                    value="Medium"
+                    class="task-input-fd task-prio-bt prio-m"
                     onclick="setTaskPrio('Medium')"
-                  >
-                    Medium &nbsp;<img src="./img/task-prio-m.svg" alt="" />
-                  </button> -->
-                  <div>
-                    <input
-                      id="prio-bt-Low"
-                      type="button"
-                      value="Low"
-                      onclick="setTaskPrio('Low')"
-                    /><img src="./img/task-prio-l.svg" alt="" />
-                  </div>
-                  <!-- <button
+                  />
+                  <input
                     id="prio-bt-Low"
-                    class="task-input-fd task-prio-bt"
+                    type="button"
+                    value="Low"
+                    class="task-input-fd task-prio-bt prio-l"
                     onclick="setTaskPrio('Low')"
-                  >
-                    Low &nbsp;<img src="./img/task-prio-l.svg" alt="" />
-                  </button> -->
+                  />
                 </div>
               </label>
               <label class="task-label"
@@ -155,19 +128,48 @@
                   placeholder="Select task category"
                 >
                   <option value="">Select task category</option>
-                  <option value="Technical Task">Technical Task</option>
-                  <option value="User Story">User Story</option>
+                  <option value="Technical Task">Work</option>
+                  <option value="User Story">Privat</option>
+                  <option value="User Story">Shopping</option>
+                  <option value="User Story">Other</option>
                 </select>
               </label>
-              <label class="task-label"
+              <label class="task-label subtask-lable"
                 >Subtasks
-                <div class="task-sub-input-con">
-                  <input
-                    id="task-subtask"
-                    type="text"
-                    placeholder="Add new subtask"
-                    class="task-sub-input"
-                  /><img src="./img/add_black.svg" alt="" /></div
+                <div class="task-sub-input-con" onclick="changeToSubText()">
+                  <div id="task-sub-bt-open" class="flx task-sub-bt-open-con">
+                    <input
+                      type="text"
+                      placeholder="Add new subtask"
+                      class="task-sub-input"
+                    /><img src="./img/add_black.svg" alt="" />
+                  </div>
+                  <div
+                    id="task-sub-input-text"
+                    class="d-none flx task-sub-input-text-con"
+                  >
+                    <input
+                      id="task-sub-input-text"
+                      type="text"
+                      placeholder=""
+                      class="task-sub-input"
+                    />
+                    <div class="flx task-sub-icons">
+                      <div onclick="deleteInputText()" class="flx">
+                        <img src="/img/Close.svg" alt="" />
+                      </div>
+                      <div class="task-sub-hr"></div>
+                      <div onclick="saveInputText()" class="flx">
+                        <img
+                          class="task-sub-input-img"
+                          src="/img/task_check_bl.svg"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="task-sub-text" class="task-sub-text"></div
               ></label>
             </div>
           </div>
@@ -176,16 +178,16 @@
               ><span class="task-star">*</span>This field is requierd</span
             >
             <div class="task-button-con">
-              <button class="task-button task-bt-clear">
-                Clear<img src="./img/task_cancel.svg" alt="" />
-              </button>
-              <button
+              <input
+                type="button"
+                value="Clear"
+                class="task-button task-bt-clear"
+              />
+              <input
+                type="submit"
+                value="Create Task"
                 class="task-button task-bt-create"
-                onclick="createNewTask()"
-              >
-                Create Task<img src="./img/task_check.svg" alt="" />
-              </button>
-              <!-- <input type="submit" value="Create Task" /> -->
+              />
             </div>
           </div>
         </form>

@@ -42,6 +42,7 @@
     padding-left: 52px;
     padding-right: 52px;
     box-shadow: 4px 0px 8px 0px rgba(0, 0, 0, 0.1);
+    margin-left: 232px;
 }
 
 .contacts-bt-add {
@@ -181,6 +182,7 @@
 
 .contacts-add-bg {
     position: fixed;
+    z-index: 6;
     top: 0;
     right: 0;
     bottom: 0;
