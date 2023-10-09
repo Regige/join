@@ -161,7 +161,7 @@ function createBordCardUsers(id, users) {
 }
 
 function createBordCardSubtasks(id, subtasks) {
-
+    console.log('brauche ich:',id, subtasks);
     document.getElementById(`board-card-subtasks${id}`).innerHTML = "";
     if (subtasks.length >= 1) {
         document.getElementById(`board-card-subtasks${id}`).innerHTML = 'Subtasks';
@@ -183,6 +183,7 @@ function toggelSubtaskCompleted(id, i, status) {
     } else {
         list[id].subtasks[i].completed = 1;
     }
-    loadBoardCard(id);
+    console.log('habe ich :',id,list[id]['subtasks'])
+    createBordCardSubtasks(id,list[id]['subtasks'])
 }
 

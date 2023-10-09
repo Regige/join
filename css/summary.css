@@ -136,6 +136,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: start;
+    margin-left: 25px;
 }
 
 .summary_left_start {
@@ -144,7 +145,6 @@ body {
     width: 264px;
     border-radius: 30px;
     background-color: white;
-    transition: all 0.05s;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
 }
@@ -172,12 +172,6 @@ body {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.summary_left_start_center {
-    position: relative;
-    height: 168px;
-    width: 264px;
-    border-radius: 30px;
-}
 
 .summary_left_center:hover {
     margin: 0;
@@ -187,6 +181,15 @@ body {
     padding: 10px;
     transition: all 0.05s;
 }
+
+.summary_left_start_center {
+    position: relative;
+    height: 168px;
+    width: 264px;
+    border-radius: 30px;
+    transition: all 0.05s;
+}
+
 
 .summary_left_ende {
     position: relative;
@@ -288,7 +291,7 @@ body {
 
 @keyframes fadeInOut {
     0% {
-        opacity: 0;
+        opacity: 1;
         transform: translate(-100%, -100%);
         /* Startposition oberhalb des Bildschirms */
     }
