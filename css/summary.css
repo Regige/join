@@ -144,12 +144,20 @@ body {
     width: 264px;
     border-radius: 30px;
     background-color: white;
+    transition: all 0.05s;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
 }
 
 .summary_left_start:hover {
+    margin: 0;
     cursor: pointer;
-    background-color: rgb(0, 0, 0, 0.05);
+    background-color: #2A3647;
+    color: white;
+    padding: 10px;
+    transition: all 0.05s;
 }
+
 
 .summary_box_margin {
     margin: 10px;
@@ -161,6 +169,7 @@ body {
     height: 168px;
     border-radius: 30px;
     background-color: white;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .summary_left_start_center {
@@ -171,8 +180,12 @@ body {
 }
 
 .summary_left_center:hover {
+    margin: 0;
     cursor: pointer;
-    background-color: rgb(0, 0, 0, 0.05);
+    background-color: #2A3647;
+    color: white;
+    padding: 10px;
+    transition: all 0.05s;
 }
 
 .summary_left_ende {
@@ -181,11 +194,16 @@ body {
     height: 168px;
     border-radius: 30px;
     background-color: white;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .summary_left_ende:hover {
+    margin: 0;
     cursor: pointer;
-    background-color: rgb(0, 0, 0, 0.05);
+    background-color: #2A3647;
+    color: white;
+    padding: 10px;
+    transition: all 0.05s;
 }
 
 .summary_left_ende-box {
@@ -215,7 +233,6 @@ body {
     font-size: 20px;
     font-weight: 400;
     line-height: 24px;
-    color: #2A3647;
     margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 20px;
@@ -223,7 +240,7 @@ body {
 }
 
 .summary_text_date {
-    color: #2A3647;
+
     margin-bottom: 15px;
     font-size: 21px;
     line-height: 25px;
@@ -265,7 +282,7 @@ body {
     border: 1px solid #ccc;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     border-radius: 30px;
-    animation: fadeInOut 3s ease forwards;
+    animation: fadeInOut 2s ease forwards;
     /* Einblenden und Ausblenden in 4 Sekunden */
 }
 
@@ -276,13 +293,13 @@ body {
         /* Startposition oberhalb des Bildschirms */
     }
 
-    15% {
+    10% {
         opacity: 1;
         transform: translate(-100%, -100%);
         /* Einblenden */
     }
 
-    70% {
+    90% {
         opacity: 1;
         transform: translate(-100%, -100%);
         /* Sichtbar bleiben */
@@ -297,7 +314,7 @@ body {
 
 @media (max-width: 1100px) {
 
-    .summary_greeting{
+    .summary_greeting {
         display: none;
     }
 }

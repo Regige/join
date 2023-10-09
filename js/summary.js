@@ -88,7 +88,7 @@ function showPopupSlider() {
     setTimeout(function () {
         popup.style.display = "none";
         popup.remove();
-    }, 4000);
+    }, 2000);
 }
 
 function loadSummaryTask() {
@@ -164,4 +164,23 @@ function setMonth(month) {
     if (month == 10) { return 'October' }
     if (month == 11) { return 'November' }
     if (month == 12) { return 'December' }
+}
+
+
+function summaryIconChangeHover(icon) {
+    if (icon == 'pen_icon') {
+        document.getElementById('summary_edit_icon').src = './img/pen_icon_withe.svg';
+    }
+    if (icon == 'check_icon') {
+        document.getElementById('summary_check_icon').src = './img/check_icon_withe.svg';
+    }
+}
+
+function summaryIconChangeOut(icon) {
+    if (icon == 'pen_icon') {
+        document.getElementById('summary_edit_icon').src = './img/pen_icon.svg';
+    }
+    if (icon == 'check_icon') {
+        document.getElementById('summary_check_icon').src = './img/check_icon.svg';
+    }
 }

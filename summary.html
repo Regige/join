@@ -58,17 +58,17 @@
                     <div class="summary_fbcco summary_task">
 
                         <div class=" summary_fbsbc">
-                            <div onclick="openHTML('/board.html')"
+                            <div onclick="openHTML('/board.html')" onmouseover="summaryIconChangeHover('pen_icon')" onmouseout="summaryIconChangeOut('pen_icon')"
                                 class="summary_left_start summary_fbcc summary_box_margin">
-                                <div><img class="summary_icon" src="./img/pen_icon.svg" alt="Edit-Icon"></div>
+                                <div><img id="summary_edit_icon"  class="summary_icon" src="./img/pen_icon.svg" alt="Edit-Icon"></div>
                                 <div class="summary_fbcco">
                                     <div id="summary-to-do" class="summary_number_font">0</div>
                                     <div class="summary_text_font">To-do</div>
                                 </div>
                             </div>
-                            <div onclick="openHTML('/board.html')"
+                            <div onclick="openHTML('/board.html')" onmouseover="summaryIconChangeHover('check_icon')" onmouseout="summaryIconChangeOut('check_icon')"
                                 class="summary_left_start summary_fbcc summary_box_margin">
-                                <div><img class="summary_icon" src="./img/check_icon.svg" alt="Check-Icon"></div>
+                                <div><img id="summary_check_icon"  class="summary_icon" src="./img/check_icon.svg" alt="Check-Icon"></div>
                                 <div class="summary_fbcco">
                                     <div id="summary-done" class="summary_number_font">0</div>
                                     <div class="summary_text_font">Done</div>
