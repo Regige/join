@@ -24,6 +24,11 @@ async function getItem(key) {
 
 
 
+
+
+
+
+
 function saveInLocalStorage() {
     let listAsText = JSON.stringify(list);
     localStorage.setItem('list', listAsText);
