@@ -71,7 +71,7 @@ function saveInputText() {
 // Create new Task (in progress ...)
 
 function createNewTask(event) {
-    event.preventDefault();
+    // event.preventDefault();
 
     let taskTitle = document.getElementById('task-title').value;
     let taskDescription = document.getElementById('task-description').value;

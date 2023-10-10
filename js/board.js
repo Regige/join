@@ -1,19 +1,27 @@
-
-
+/**
+ * This function initializes the board page
+ */
 async function initBoard() {
-    //list = await JSON.parse(await getItem(user + '-list'));
+    loadInLocalStorage();
     loadTaskBoard();
 }
 
+/**
+ * This function loads all Borad tasks
+ */
 async function loadTaskBoard() {
-    //list = await JSON.parse(await getItem(user + '-list'));
+    loadInLocalStorage();
     filterTaskBoard('to_do');
     filterTaskBoard('in_progress');
     filterTaskBoard('await_feedback');
     filterTaskBoard('done');
 }
 
-
+/**
+ * This function loads all individual tasks filtered
+ * 
+ * @param {String} task_board This string contains the individual tasks
+ */
 function filterTaskBoard(task_board) {
     let filter = list.filter(t => t['task_board'] == task_board);
     if (filter.length) {
@@ -31,12 +39,23 @@ function filterTaskBoard(task_board) {
     }
 }
 
+/**
+ * This function loads an empty task if none exists
+ * 
+ * @param {String} task This string contains the individual tasks
+ */
 function taskBoardEmpty(task) {
     let tasktext = document.getElementById(`board_${task}_headline`).innerHTML;
     document.getElementById('board_' + task).innerHTML = `
         <div class="board_no_task board_fbccco">No tasks ${tasktext}</div>`;
 }
 
+/**
+ * This function loads all added users to the respective tasks
+ * 
+ * @param {Number} id           ID of the user in the task
+ * @param {String} task_user    User task of the individual tasks
+ */
 function loadBoardUsers(id, task_user) {
     for (let i = 0; i < task_user.length; i++) {
         const element = task_user[i];
@@ -45,6 +64,12 @@ function loadBoardUsers(id, task_user) {
     };
 }
 
+/**
+ * This function loads all task to the respective tasks
+ * 
+ * @param {id} id           ID of the task 
+ * @param {String} subtasks Sub task of the individual tasks
+ */
 function loadBoardSubtasks(id, subtasks) {
     var element_subtask = 0;
     var element_percent = 0;
@@ -62,29 +87,56 @@ function loadBoardSubtasks(id, subtasks) {
     };
 }
 
+/**
+ * This function uses the ID to determine the Dropbox
+ * 
+ * @param {Number} id Dropbox number
+ */
 function startDragging(id) {
     draggedElement = id;
 }
 
-function allowDrop(ev) {
-    ev.preventDefault();
+/**
+ * This function is a standard function from w3 schools which executes a drop event
+ * 
+ * @param {String} event Standard string from W3 schools
+ */
+function allowDrop(event) {
+    event.preventDefault();
 }
 
+/**
+ * This function loads the respective Dropbox into the released Dropbox and saves it in the local storag
+ * 
+ * @param {String} category Submission of the task as a string
+ */
 function moveTo(category) {
     list[draggedElement]['task_board'] = category;
-    setItem(user + '-list', list);
+    SaveInLocalStorageAndServer(user);
     initBoard();
 }
 
+/**
+ * This function lights up the Dropbox window
+ * 
+ * @param {Number} id ID of Box
+ */
 function highlight(id) {
     document.getElementById(id).classList.add('board_box_highlight');
 }
 
+/**
+ * This function removes the highlight of the Dropbox window
+ * 
+ * @param {Number} id ID of Box
+ */
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('board_box_highlight');
-
 }
 
+/**
+ * This function starts the search function in the Board Task area
+ */
 function searchAllNote() {
     var search = document.getElementById('search_board').value;
     search = search.toLowerCase();
@@ -95,6 +147,16 @@ function searchAllNote() {
     };
 }
 
+/**
+ * This function searches the entire task board for the input
+ * 
+ * @param {Number} i        ID in which task is being searched
+ * @param {String} search   The search text
+ * @param {Number} found    Indicates how many were found
+ * @param {String} headline Search the heading
+ * @param {String} text     Search the text
+ * @returns                 returns the found element
+ */
 function searchNote(i, search, found, headline, text) {
     if (headline.toLowerCase().includes(search) || text.toLowerCase().includes(search)) {
         document.getElementById(i).classList.remove('dn');
@@ -105,26 +167,45 @@ function searchNote(i, search, found, headline, text) {
     return found;
 }
 
+
+/**
+ * This function is needed to close a DIV container in the background
+ * 
+ * @param {String} event Standard string from W3 schools
+ */
 function notClose(event) {
     event.stopPropagation();
 }
 
+/**
+ * This function opens the detail boardtask view
+ */
 function closeBoardCard() {
     document.getElementById('board_detail').innerHTML = "";
     loadTaskBoard();
     document.getElementById('board_body').classList.remove('board_fixed');
 }
 
+
+/**
+ * This function deletes a task from the list based on the ID
+ * 
+ * @param {Number} id ID for Tasks
+ */
 function deleteTask(id) {
     list[id] = "";
+    SaveInLocalStorageAndServer(user);
     closeBoardCard();
     loadTaskBoard();
     showPopup("Task deleted");
 }
 
-function editTask(id) {
-}
 
+/**
+ * This function loads the board card detail view
+ * 
+ * @param {Number} id ID of TTasks
+ */
 function loadBoardCard(id) {
     document.getElementById('board_body').classList.add('board_fixed');
     for (let i = 0; i < list.length; i++) {
@@ -138,6 +219,12 @@ function loadBoardCard(id) {
     }
 }
 
+/**
+ * This function loads the data of the selected task and then returns it
+ * 
+ * @param {String} element  Data for Task 
+ * @returns                 returns the completed generated task
+ */
 function generateTaskData(element) {
     story = element.category.text;
     story_bg = element.category.color;
@@ -149,6 +236,12 @@ function generateTaskData(element) {
     return;
 }
 
+/**
+ * This function creates the associated users in the detail board map
+ * 
+ * @param {Number} id       ID for Card
+ * @param {String} users    User for Card
+ */
 function createBordCardUsers(id, users) {
     document.getElementById(`board-card-users${id}`).innerHTML = "";
     if (users.length >= 1) {
@@ -160,8 +253,14 @@ function createBordCardUsers(id, users) {
     }
 }
 
+/**
+ * This function creates the individual subtasks in the board task detail view
+ * 
+ * @param {Number} id           ID for Card
+ * @param {String} subtasks     Subtask for Card
+ */
 function createBordCardSubtasks(id, subtasks) {
-    console.log('brauche ich:',id, subtasks);
+    console.log('brauche ich:', id, subtasks);
     document.getElementById(`board-card-subtasks${id}`).innerHTML = "";
     if (subtasks.length >= 1) {
         document.getElementById(`board-card-subtasks${id}`).innerHTML = 'Subtasks';
@@ -175,15 +274,24 @@ function createBordCardSubtasks(id, subtasks) {
             document.getElementById(`board-card-subtasks${id}`).innerHTML += createBoardCardSubtaks(id, i, element.completed, element.text, completed);
         }
     }
+    loadBoardSubtasks(id, subtasks);
 }
 
+
+/**
+ * This function asks whether the individual substacks have already been completed. These are then saved locally
+ * 
+ * @param {Number} id ID of the Task
+ * @param {*} i       ID of the Subtask
+ * @param {*} status  status of the individual task
+ */
 function toggelSubtaskCompleted(id, i, status) {
     if (status == 1) {
         list[id].subtasks[i].completed = 0;
     } else {
         list[id].subtasks[i].completed = 1;
     }
-    console.log('habe ich :',id,list[id]['subtasks'])
-    createBordCardSubtasks(id,list[id]['subtasks'])
+    console.log('habe ich :', id, list[id]['subtasks'])
+    createBordCardSubtasks(id, list[id]['subtasks'])
+    SaveInLocalStorageAndServer(user);
 }
-
