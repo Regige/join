@@ -78,6 +78,7 @@ header{
 
 .btn-logout:hover{
     background-color: #2a4468;
+    border-radius: 10px;
 }
 
 .d-none {

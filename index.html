@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="css/style.css">
 
     <script src="js/script.js"></script>
-    <script src="js/storage.js"></script>
+    <script src="js/register.js"></script>
 </head>
 
-<body>
+<body onload="init()">
 
     <div class="begin">
         <div class="capaAnimation">
@@ -30,8 +30,8 @@
                 <img class="VectorImg" src="img/Vector 5.svg">
             </div>
             <form class="password-login email-login">
-                <input required class="mail-img" type="email" placeholder="Email">
-                <input required class="password-img" type="password" placeholder="Password">
+                <input style="margin-top: 30px;" required class="mail-img" type="email" placeholder="Email">
+                <input style="margin-top: 34px;" required class="password-img" type="password" placeholder="Password">
             </form>
             <div class="checkbox">
                 <div id="check">
@@ -51,15 +51,16 @@
         <div class="sign-up d-none" id="sign-up">
             <div>
                 <img onclick="hideSignUp()" class="arrow-img" src="img/arrow-left-line.svg">
-                <h1 class="login-headline">Sign up</h1>
+                <h1 class="sign-up-headline">Sign up</h1>
             </div>
             <div>
                 <img class="VectorImg" src="img/Vector 5.svg">
             </div>
-            <form class="password-login email-login">
+            <form onsubmit="register(); return false;" class="form password-login email-login">
                 <input required class="name-img" type="text" placeholder="Name">
-                <input required class="mail-img" type="email" placeholder="Email">
-                <input required class="password-img" type="password" placeholder="Password">
+                <input required class="mail-img" type="email" placeholder="Email" id="email">
+                <input required class="password-img" type="password" placeholder="Password" id="password">
+                <button style="margin-top: 60px;" id="registerBtn" class="login-button">Sign up</button>
             </form>
             <div class="checkbox-sign-up">
                 <div id="check-sign-up">
@@ -70,9 +71,7 @@
                </div>
                 <span style="margin-left: 10px;">I accept the <a href="">Privacy policy</a></span>
             </div>
-            <div>
-                <button class="login-button">Sign up</button>
-            </div>
+            
         </div>
     </div>
 
