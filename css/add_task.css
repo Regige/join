@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     margin-left: 232px;
+    /* margin-bottom: 80px; */
 }
 
 .task-h2 {
@@ -19,17 +19,18 @@
 .task-form {
     display: flex;
     flex-direction: column;
+justify-content: space-between;
 }
 
 .task-input-con {
     display: flex;
-    width: 976.25px;
+    /* width: 976.25px; */
 }
 
 .task-input-left {
     display: flex;
     flex-direction: column;
-    gap: 34px;
+    gap: 30px;
     width: 440px;
 }
 
@@ -43,7 +44,8 @@
 .task-input-right {
     display: flex;
     flex-direction: column;
-    height: 416px;
+    gap: 30px;
+    /* height: 416px; */
     justify-content: space-between;
     width: 440px;
 }
@@ -112,6 +114,7 @@
     overflow: scroll;
     height: 150px;
     width: 100%;
+    z-index: 1;
 }
 
 .task-contacts-list-to-assign-sub {
@@ -140,6 +143,7 @@
     width: 100%;
     position: absolute;
     top: 190px;
+    z-index: 1;
 }
 
 /* Form field - Prio Button */
@@ -148,6 +152,7 @@
     display: flex;
     gap: 16px;
     position: relative;
+    /* z-index: -1; */
 }
 .task-prio-bt {
     flex: 1;
@@ -255,6 +260,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 138px;
+    margin-bottom: 56px;
 }
 
 .task-foot-text {
@@ -310,18 +316,112 @@
 }
 
 
-
-
-/* Media QUery */
+/* Media Query */
 
 @media (max-width: 1264px) {
-
     .task-hr {
         display: none;
+    }
+    .task-h2 {
+        margin: 32px 0 24px 0;
     }
 
     .task-input-con {
         flex-direction: column;
+        width: auto;
+        overflow: scroll;
+        height: calc(100vh - 363px);
+    }
+    .task-input-left {
+        width: 640px;
+        margin-bottom: 30px;
+    }
+    .task-input-right {
+        width: 640px;
+    }
+
+    .task-foot-con {
+        margin-top: 48px;
+        margin-bottom: 32px;
     }
 }
 
+@media (max-width: 950px) {
+    .task-body {
+        margin-left: 0;
+    }
+    .task-h2 {
+        margin: 24px 0 10px 0;
+        font-size: 56px;
+    }
+    .task-foot-con {
+        margin-top: 24px;
+        margin-bottom: 16px;
+    }
+    .task-input-con {
+        height: calc(100vh - 391px);
+    }
+}
+
+@media (max-width: 700px) {
+    .task-input-left {
+            width: 464px;
+        }
+    
+        .task-input-right {
+            width: 464px;
+        }
+        .task-bt-clear {
+            display: none;
+        }
+    }
+
+@media (max-width: 500px) {
+    .task-h2 {
+        margin: 16px 0 0 0;
+        font-size: 47px;
+        line-height: 56.4px;
+    }
+    .task-input-left {
+        width: 360px;
+    }
+    .task-input-right {
+        width: 360px;
+    }
+    .task-label {
+        font-size: 16px;
+        line-height: 19.2px;
+    }
+    .task-input-fd {
+        font-size: 16px;
+        line-height: 19.2px;
+    }
+    .task-foot-text {
+        font-size: 16px;
+    }
+    .task-input-con {
+        height: calc(100vh - 356px);
+    }
+}
+
+@media (max-width: 384px) {
+    .task-input-left {
+        width: 300px;
+    }   
+    .task-input-right {
+        width: 300px;
+    }
+    .task-bt-create {
+        padding-right: 32px;
+        background-position: 95% 50%;
+    }
+    .task-prio-bt {
+        padding: 8px 32px 10px 8px;
+    }
+    .prio-u {
+        background-position: 90% 50%;
+    }
+    .task-foot-text {
+        font-size: 12px;
+    }
+}

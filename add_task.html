@@ -20,16 +20,16 @@
   <body onload="includeHTML()">
     <div w3-include-html="/templates/header.html"></div>
     <div w3-include-html="/templates/sidebar.html"></div>
-    <div class="task-body">
-      <!-- Hier muss noch addNewContacts Popup bearbeitet werden, oder auf neue HTML Seite verweisen -->
-      <!-- <div
+    <!-- Hier muss noch addNewContacts Popup bearbeitet werden, oder auf neue HTML Seite verweisen -->
+    <!-- <div
         id="contacts-add-bg"
         class="contacts-add-bg d-none"
         onclick="closeNewContacts()"
       ></div> -->
-      <main onclick="closeAssignedToField()">
-        <h2 class="task-h2">Add Task</h2>
-        <form action="" class="task-form" onsubmit="createNewTask(event)">
+    <main onclick="closeAssignedToField()" class="task-body">
+      <form action="" class="task-form" onsubmit="createNewTask(event)">
+        <div>
+          <h2 class="task-h2">Add Task</h2>
           <div class="task-input-con">
             <div class="task-input-left">
               <label class="task-label"
@@ -173,25 +173,25 @@
               ></label>
             </div>
           </div>
-          <div class="task-foot-con">
-            <span class="task-foot-text"
-              ><span class="task-star">*</span>This field is requierd</span
-            >
-            <div class="task-button-con">
-              <input
-                type="button"
-                value="Clear"
-                class="task-button task-bt-clear"
-              />
-              <input
-                type="submit"
-                value="Create Task"
-                class="task-button task-bt-create"
-              />
-            </div>
+        </div>
+        <div class="task-foot-con">
+          <span class="task-foot-text"
+            ><span class="task-star">*</span>This field is requierd</span
+          >
+          <div class="task-button-con">
+            <input
+              type="button"
+              value="Clear"
+              class="task-button task-bt-clear"
+            />
+            <input
+              type="submit"
+              value="Create Task"
+              class="task-button task-bt-create"
+            />
           </div>
-        </form>
-      </main>
-    </div>
+        </div>
+      </form>
+    </main>
   </body>
 </html>
