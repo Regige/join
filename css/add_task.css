@@ -132,6 +132,10 @@ justify-content: space-between;
     background-color: #FF8190;
     border-radius: 50px;
     margin-right: 12px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .task-bt-add {
@@ -226,7 +230,7 @@ justify-content: space-between;
 .task-sub-hr {
     background-color: #D1D1D1;
     width: 1px;
-    height: 32px;
+    height: 30px;
     margin: 0 4px;
 }
 
@@ -238,19 +242,22 @@ justify-content: space-between;
     position: relative;
 }
 .task-sub-text {
-    background-color: white;
+    /* background-color: white; */
     position: absolute;
     top: 82px;
     /* margin-top: -10px; */
     /* z-index: -1; */
-    width: 100%;
+    margin: 6px 0;
+    padding-right: 5px;
+    width: calc(100% - 45px);
     max-height: 124px;
     overflow: scroll;
-    border-radius: 0 0 10px 10px;
+    /* border-radius: 0 0 10px 10px; */
 }
 
 .task-sub-text-sgl {
-    padding: 4px 10px;
+    padding: 5px 0;
+    word-wrap: break-word;
 }
 
 /*  */

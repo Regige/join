@@ -99,8 +99,19 @@ function showContact(i) {
     let clickedContact = document.getElementById('contact-clicked');
     clickedContact.innerHTML = "";
 
+if (window.matchMedia("(max-width: 700px)").matches) {
+    document.getElementById('contacts-main').classList.remove('d-none');
+    document.getElementById('contacts-list-section').classList.add('d-none');
+}
+
+    // if (window.screen.width <= 700) {
+    //    document.getElementById('contacts-main').classList.remove('d-none');
+    //    document.getElementById('contacts-list-section').classList.add('d-none');
+    // }
+
     renderSglContactHTML(i, contact, firstCha, secondCha, clickedContact);
 }
+
 
 
 function renderSglContactHTML(i, contact, firstCha, secondCha, clickedContact) {

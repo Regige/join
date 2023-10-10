@@ -25,16 +25,20 @@
         class="contacts-add-bg d-none"
         onclick="closeNewContacts()"
       ></div>
-      <div class="contacts-list-section">
+      <div id="contacts-list-section" class="contacts-list-section">
         <button
           class="contacts-button contacts-bt-add contacts-bt-create"
           onclick="showPopupContact()"
         >
-          Add new contacts<img src="./img/contacts_add_icon.svg" alt="" />
+          <span> Add new contacts</span
+          ><img src="./img/contacts_add_icon.svg" alt="" />
         </button>
         <div class="contacts-list" id="contacts-list"></div>
       </div>
-      <main>
+      <main id="contacts-main" class="contacts-main">
+        <div class="d-none contacts-mobil-arrow-back">
+          <img src="./img/arrow-left-line.svg" alt="" />
+        </div>
         <div class="contacts-head">
           <h2 class="contacts-h2">Contacts</h2>
           <div class="contacts-hr"></div>

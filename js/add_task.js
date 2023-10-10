@@ -17,13 +17,14 @@ function showAssignedToBt() {
         contactsListToAssignCon.innerHTML += /*html*/`
             <div class="task-contacts-list-to-assign-sub">
                 <div class="flex-just-btw-ct">
-                    <div class="task-contacts-color-icon"></div>
+                    <div class="task-contacts-color-icon">${contact['logogram']}</div>
                     <label for="contact-${i}">${contact['name']}</label>
                 </div>
                 <input type="checkbox" name="contact" id="contact-${i}" value="${contact['name']}">
             </div>`;
     }
 }
+
 
 //  Assigned To Field - Popup and Close Function 
 
@@ -44,29 +45,81 @@ function changeToSubText() {
     subtaskButtonOpen.classList.add('d-none');
     let subtaskInputText = document.getElementById('task-sub-input-text-con');
     subtaskInputText.classList.remove('d-none');
-
 }
+
 
 function deleteInputText() {
     document.getElementById('task-sub-input-text').value = "";
 }
 
+
 function saveInputText() {
     let subtaskInput = document.getElementById('task-sub-input-text'); 
-    let subtaskTextCon = document.getElementById('task-sub-text');
-    subtaskTextCon.innerHTML = "";
 
     subtasks.push(subtaskInput.value);
     subtaskInput.value = "";
+
+    renderInputText();
+}
+
+
+function renderInputText() {
+    let subtaskTextCon = document.getElementById('task-sub-text');
+    subtaskTextCon.innerHTML = "";
 
     for (let i = 0; i < subtasks.length; i++) {
         const subtask = subtasks[i];
         
         subtaskTextCon.innerHTML += /*html*/`
-            <div class="task-sub-text-sgl">${subtask}</div>`;
+        <div id="subtask-field-${i}" class="d-none flex-just-btw-ct">
+            <input id="subtask-input-field-${i}" type="text" class="task-sub-input" minlength="1"/>
+            <div class="flex-just-btw-ct">
+                <div onclick="deleteSubtask(${i})"><img src="/img/delete.svg" alt=""/></div>
+                <div class="task-sub-hr"></div>
+                <div onclick="saveEditedSubtask(${i})" class="flx"><img class="task-sub-input-img" 
+                    src="/img/task_check_bl.svg" alt=""/>
+                </div>
+            </div>
+        </div>
+        <div id="subtask-li-${i}" class="flex-just-btw-ct">
+            <li class="task-sub-text-sgl">
+                ${subtask}
+            </li>
+            <div class="flx">                        
+                <div onclick="editSubtask(${i})"><img src="/img/edit.svg" alt=""/></div>
+                <div class="task-sub-hr"></div>
+                <div onclick="deleteSubtask(${i})"><img src="/img/delete.svg" alt=""/></div>
+            </div>
+        </div>`;
     }
-
 }
+
+
+function deleteSubtask(i) {
+    subtasks.splice(i,1);
+
+    renderInputText();
+}
+
+
+function editSubtask(i) {
+    document.getElementById(`subtask-field-${i}`).classList.remove('d-none');
+    document.getElementById(`subtask-li-${i}`).classList.add('d-none');
+    let subtaskInputField = document.getElementById(`subtask-input-field-${i}`);
+    subtaskInputField.value = subtasks[i];
+}
+
+
+function saveEditedSubtask(i) {
+    let subtaskInputField = document.getElementById(`subtask-input-field-${i}`);
+    subtasks[i] = subtaskInputField.value;
+
+    document.getElementById(`subtask-field-${i}`).classList.add('d-none');
+    document.getElementById(`subtask-li-${i}`).classList.remove('d-none');
+
+    renderInputText();
+}
+
 
 // Create new Task (in progress ...)
 
@@ -109,6 +162,7 @@ function setTaskPrio(prio) {
 
     setPrioButtonColor(prio);
 }
+
 
 function setPrioButtonColor(prio) {
     let prios = ['Urgent', 'Medium', 'Low'];
