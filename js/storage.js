@@ -1,15 +1,16 @@
 const STORAGE_TOKEN = '8A3U4MK7U3QQZFIE9YT3HJC3MLRAQ8J3J7J4DZ5Y';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
-//let list;
-let users;
 
+
+let user = 'test@test.de'; //User1: test@test.de //User2: 1234@test.de
+let list;
+
+SaveDataInLocalStorageFromServer(user);
 
 async function setItem(key, value) {
     const payload = { key, value, token: STORAGE_TOKEN };
-     console.log(key, value);
     return fetch(STORAGE_URL, { method: 'POST', body: JSON.stringify(payload) })
         .then(res => res.json());
-       
 }
 
 async function getItem(key) {
@@ -21,12 +22,17 @@ async function getItem(key) {
     });
 }
 
-
-
-
-function saveInLocalStorage() {
+async function SaveDataInLocalStorageFromServer(user) {
+    let list = await JSON.parse(await getItem(user + '-list'));
     let listAsText = JSON.stringify(list);
     localStorage.setItem('list', listAsText);
+}
+
+async function SaveInLocalStorageAndServer(user) {
+    let listAsText = JSON.stringify(list);
+    localStorage.setItem('list', listAsText);
+    setItem(user + '-list', list);
+    console.log('Liste:', list, 'wurde zum User:', user + '-list', 'hinzugefügt')
 }
 
 function loadInLocalStorage() {
@@ -38,13 +44,13 @@ function loadInLocalStorage() {
 
 
 
-
-
-
+function deleteLocalStorage() {
+    localStorage.clear();
+}
 
 
 // This is the Guest list
-let list = [
+let geustlist = [
     {
         'id': 0,
         'task_board': 'to_do',
