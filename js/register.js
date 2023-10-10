@@ -33,11 +33,6 @@ async function loadUsers(){
 
 
 async function register() {
-    const registrationForm = document.getElementById('registrationForm');
-    const registerBtn = document.getElementById('registerBtn');
-    const email = document.getElementById('email');
-    const password = document.getElementById('password');
-
     registerBtn.disabled = true;
     users.push({
         email: email.value,
