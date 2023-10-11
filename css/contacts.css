@@ -134,8 +134,8 @@
 
 .con-icon-sz {
     aspect-ratio: 1;
-    height: 120px !important;
-    width: 120px !important;
+    height: 120px;
+    width: 120px;
     border-radius: 70px;
     font-size: 47px;
     font-weight: 500;
@@ -206,7 +206,7 @@
 }
 
 .contacts-add-con-left {
-    border-radius: 16px 0 0 16px;
+    border-radius: 30px 0 0 30px;
     background-color: #2A3647;
     color: white;
     height: 462px;
@@ -238,7 +238,7 @@
 
 
 .contacts-add-con-right {
-    border-radius: 0 16px 16px 0;
+    border-radius: 0 30px 30px 0;
     background-color: white;
     height: 498px;
     width: 649px;
@@ -272,6 +272,14 @@
     width: 120px;
     margin-left: 35px;
     margin-bottom: 72px;
+}
+.contacts-user-popup {
+    border-radius: 70px;
+    margin-right: 0;
+    font-size: 47px;
+    font-weight: 500;
+    line-height: 56.4px;
+    box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
 .contacts-form {
@@ -377,7 +385,7 @@
     margin: 0 40px 40px 40px;
     }
 .contacts-list-section {
-    min-width: 260px;
+    width: 260px;
     padding-left: 24px;
     padding-right: 24px;
 }
@@ -405,8 +413,8 @@
     margin: 16px 0;
 }
 .con-icon-sz {
-    height: 104px !important;
-    width: 104px !important;
+    height: 104px;
+    width: 104px;
     font-size: 40px;
     line-height: 48px;
     margin-right: 24px;
@@ -435,8 +443,10 @@
 
 @media (max-width: 700px) {
 .contacts-main {
-    display: none;
     position: relative;
+}
+.d-none-700 {
+    display: none;
 }
 .contacts-list-section {
     width: 100vw;
@@ -494,4 +504,152 @@
         line-height: 43.2px;
         font-weight: 700;
     }
+}
+
+
+/* Media Query PopUp Window - add new / edit Contact */
+
+@media (max-width: 1264px) {
+.contacts-add-con-left {
+    height: auto;
+    width: auto;
+    padding: 28px 28px;
+}
+.contacts-add-con-right {
+    padding: 28px 28px;
+    height: auto;
+    width: auto;
+    justify-self: unset;
+    gap: unset;
+}
+.contacts-con-sub {
+    flex-direction: column;
+    justify-content: unset;
+}
+.contacts-user-logo {
+    margin-left: 0;
+    margin-bottom: 24px;
+}
+.contacts-form {
+    gap: 24px;
+}
+.contacts-button-con {
+    margin-top: 24px;
+}
+.contacts-user-popup {
+    margin-right: 0;
+}
+}
+
+
+@media (max-width: 950px) {
+    .contacts-add-con {
+        flex-direction: column;
+        position: relative;
+    }
+    .contacts-add-con-left {
+        border-radius: 30px 30px 0 0;
+        height: 295px;
+    }
+    .contacts-join-logo {
+        display: none;
+    }
+    .contacts-add-text {
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 400;
+    }
+    .contacts-hr-ho {
+        margin-bottom: 0;
+    }
+    .contacts-add-con-right {
+        border-radius: 0 0 30px 30px;
+    }
+    /* hier muss das img getauscht werden */
+    .contacts-add-close-con {
+        position: absolute;
+        top: 28px;
+        right: 28px;
+        background-color: white;
+    }
+    .contacts-user-logo {
+        margin-top: -90px;
+    }
+    .contacts-user-popup {
+        margin-top: -90px;
+    }
+    .contacts-form {
+        gap: 20px;
+    }
+    .contacts-button-con {
+        justify-content: center;
+        margin-top: 0;
+    }
+    .contacts-bt-clear {
+        display: none;
+    }
+}
+
+
+@media (max-width: 700px) {
+    .contacts-add-con-left {
+        height: 256px;
+    }
+    .contacts-h2 {
+        font-size: 47px;
+        line-height: 56.4px;
+        font-weight: 700;
+    }
+    .contacts-input-con {
+        width: 296px;
+    }
+    .contacts-input {
+        padding: 4px 10px;
+    }
+    .contacts-bt-ft {
+        padding: 10px;
+    }
+}
+
+
+
+@media (max-width: 400px) {
+    .contacts-add-con-left {
+        height: 232px;
+        padding: 16px;
+    }
+    .contacts-h2 {
+        font-size: 40px;
+        line-height: 41.4px;
+    }
+    .contacts-add-text {
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .contacts-add-con-right {
+        padding: 16px;
+    }
+    .contacts-user-popup {
+        font-size: 47px;
+        line-height: 56.4px;
+        font-weight: 500;
+        border: 3px solid white;
+    }
+    .contacts-user-logo {
+        margin-bottom: 16px;
+    }
+    .contacts-form {
+        gap: 16px;
+    }
+    .contacts-bt-ft {
+        width: auto;
+        height: auto;
+        border-radius: 10px;
+        position: unset;
+        top: 0;
+    }
+    .contacts-input-con {
+        width: 238px;
+    }
+
 }

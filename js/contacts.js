@@ -31,6 +31,7 @@ let contacts = [
     },
 ];
 
+
 let letters = [];
 
 // Variable for function createContact()
@@ -99,19 +100,14 @@ function showContact(i) {
     let clickedContact = document.getElementById('contact-clicked');
     clickedContact.innerHTML = "";
 
-if (window.matchMedia("(max-width: 700px)").matches) {
-    document.getElementById('contacts-main').classList.remove('d-none');
+    
+    if (window.matchMedia("(max-width: 700px)").matches) {
+    document.getElementById('contacts-main').classList.remove('d-none-700');
     document.getElementById('contacts-list-section').classList.add('d-none');
 }
 
-    // if (window.screen.width <= 700) {
-    //    document.getElementById('contacts-main').classList.remove('d-none');
-    //    document.getElementById('contacts-list-section').classList.add('d-none');
-    // }
-
     renderSglContactHTML(i, contact, firstCha, secondCha, clickedContact);
 }
-
 
 
 function renderSglContactHTML(i, contact, firstCha, secondCha, clickedContact) {
@@ -136,6 +132,11 @@ function renderSglContactHTML(i, contact, firstCha, secondCha, clickedContact) {
             </div>
         </div>
     `
+}
+
+function backToContactsList() {
+    document.getElementById('contacts-main').classList.add('d-none-700');
+    document.getElementById('contacts-list-section').classList.remove('d-none');
 }
 
 
@@ -235,7 +236,7 @@ function showPopupExistContact(i) {
     document.getElementById('popup-contact-header').innerHTML = "Edit contact";
     document.getElementById('popup-contact-p').innerHTML = "";
     document.getElementById('popuo-contact-user-icon').innerHTML = /*html*/`
-        <div class="contacts-color-icon con-icon-sz">${contacts[i]['logogram']}</div>`;
+        <div class="contacts-color-icon contacts-user-logo contacts-user-popup">${contacts[i]['logogram']}</div>`;
     document.getElementById('popup-contact-name').value = `${contacts[i]['name']}`;
     document.getElementById('popup-contact-email').value = `${contacts[i]['email']}`; 
     document.getElementById('popup-contact-phone').value = `${contacts[i]['phone']}`; 
