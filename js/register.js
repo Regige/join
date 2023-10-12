@@ -1,23 +1,4 @@
-const STORAGE_TOKEN = '8A3U4MK7U3QQZFIE9YT3HJC3MLRAQ8J3J7J4DZ5Y';
-const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
-
 let users = [];
-
-async function setItem(key, value) {
-    const payload = { key, value, token: STORAGE_TOKEN };
-    return fetch(STORAGE_URL, { method: 'POST', body: JSON.stringify(payload) })
-        .then(res => res.json());
-}
-
-async function getItem(key) {
-    const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
-    return fetch(url).then(res => res.json()).then(res => {
-        // Verbesserter code
-        if (res.data) { 
-            return res.data.value;
-        } throw `Could not find data with key "${key}".`;
-    });
-}
 
 async function init(){
     loadUsers();
@@ -31,20 +12,38 @@ async function loadUsers(){
     }
 }
 
-
 async function register() {
+    let email = document.getElementById('emailregister');
+    let password = document.getElementById('passwordregister');
+    let name = document.getElementById('nameregister');
     registerBtn.disabled = true;
     users.push({
+        name: name.value,
         email: email.value,
         password: password.value,
     });
     await setItem('users', JSON.stringify(users));
+    window.location.href = 'index.html';
     resetForm();
 }
 
 function resetForm() {
-    email.value = '';
-    password.value = '';
+    nameregister.value = '';
+    emailregister.value = '';
+    passwordregister.value = '';
     registerBtn.disabled = false;
 }
 
+async function login(){
+    let emailLogin = document.getElementById('email');
+    let passwordLogin = document.getElementById('password');
+    let user = users.find(u => u.email == emailLogin.value && u.password == passwordLogin.value);
+    console.log(user);
+    if (user) {
+        console.log('user gefunden');
+        window.location.href = 'summary.html';
+    } else {
+        console.log('Falsche Anmeldeinformationen');
+        document.getElementById("login-error").style.display = "block";
+    }
+}

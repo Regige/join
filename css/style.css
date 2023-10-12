@@ -43,10 +43,10 @@ body::-webkit-scrollbar-thumb {
     z-index: 2;
 }
 
-.login-headline{
+.login-headline {
     font-size: 40px;
     margin-bottom: 0px;
-    margin-top: -30px;
+    margin-top: 40px;
 }
 
 .sign-up-headline {
@@ -70,7 +70,7 @@ body::-webkit-scrollbar-thumb {
     width: 380px;
     padding: 10px;
     margin-top: 17px;
-    
+
 }
 
 .mail-img {
@@ -80,11 +80,11 @@ body::-webkit-scrollbar-thumb {
     background-repeat: no-repeat !important;
 }
 
-.form{
+.form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 14px;
     margin-bottom: 60px;
 }
 
@@ -123,11 +123,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 .checkbox {
+    position: absolute;
     display: flex;
     align-items: center;
-    margin-top: 2px;
-    margin-left: -190px;
-    margin-bottom: 20px;
+    margin-top: 150px;
+    margin-left: -170px;
 }
 
 .checkbox-sign-up {
@@ -293,6 +293,14 @@ a {
     z-index: 10;
 }
 
+.error-message {
+    position: fixed;
+    top: 38vh;
+    margin-left: -135px;
+    font-size: 14px;
+    color: rgb(227, 100, 100);
+}
+
 @media (max-width: 600px) {
     .SignupButton {
         position: absolute;
@@ -302,17 +310,17 @@ a {
 
     .login {
         height: 420px;
-        width: 420px; 
+        width: 420px;
     }
 }
 
-@media (max-width: 440px){
-    .password-login input{
+@media (max-width: 440px) {
+    .password-login input {
         width: 290px;
     }
 
     .login {
         height: 420px;
-        width: 320px; 
+        width: 320px;
     }
 }
