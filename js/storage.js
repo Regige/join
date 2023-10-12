@@ -1,7 +1,7 @@
 const STORAGE_TOKEN = '8A3U4MK7U3QQZFIE9YT3HJC3MLRAQ8J3J7J4DZ5Y';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
-
-let list;
+let user = 'test@test.de';
+//let list;
 
 
 async function setItem(key, value) {
@@ -29,7 +29,7 @@ async function SaveInLocalStorageAndServer(users) {
     let listAsText = JSON.stringify(list);
     localStorage.setItem('list', listAsText);
     setItem(users + '-list', list);
-    console.log('Liste:', list, 'wurde zum User:', users + '-list', 'hinzugefügt')
+   console.log('Liste:', list, 'wurde zum User:', users + '-list', 'hinzugefügt')
 }
 
 function loadInLocalStorage() {
@@ -45,7 +45,7 @@ function deleteLocalStorage() {
 
 
 // This is the Guest list
-let geustlist = [
+let list = [
     {
         'id': 0,
         'task_board': 'to_do',
@@ -115,6 +115,24 @@ let geustlist = [
         'headline': 'Geburtstags geschenk kaufen',
         'text': 'Besorgen Sie ein Geburtstagsgeschenk für einen Freund.',
         'subtasks': [{
+            "text": "Lego kaufen",
+            "completed": 0
+        }, {
+            "text": "Kekse kaufen",
+            "completed": 1
+        }, {
+            "text": "Kaffee kaufen",
+            "completed": 1
+        }, {
+            "text": "Kuchen kaufen",
+            "completed": 1
+        }, {
+            "text": "Blumen kaufen",
+            "completed": 1
+        }, {
+            "text": "Getränke kaufen",
+            "completed": 1
+        },{
             "text": "Lego kaufen",
             "completed": 0
         }, {

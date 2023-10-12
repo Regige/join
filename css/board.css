@@ -493,23 +493,6 @@ h1 {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media (max-width: 1000px) {
 
     .board_heder_small {
@@ -654,7 +637,9 @@ h1 {
 
     }
 
-
+    .board_columns_fixed_small {
+        margin-bottom: 90px;
+    }
 }
 
 @media (max-width: 660px) {
@@ -718,6 +703,7 @@ h1 {
     .board_columns_fixed_small {
         flex-direction: column;
         width: 100%;
+        margin-bottom: 90px;
     }
 
     .board_note {
@@ -767,4 +753,21 @@ h1 {
         padding: 15px;
     }
 
+    .board_detail_del_edit {
+        position: fixed;
+        cursor: pointer;
+        width: 100%;
+        bottom: 100px;
+        right: 30px;
+    }
+
+
+    .board_detail_fixed_close {
+        position: fixed;
+        top: 113px;
+        right: 30px;
+    }
+    .board_detail_date_prio{
+        margin-bottom: 40px;
+    }
 }

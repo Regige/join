@@ -53,8 +53,10 @@ function createBoradCard(id, story, story_bg, headline, text, date, priority, pr
     <div class="board_detail_card" onclick="notClose(event)">
         <div class="board_fbsbc">
             <div id="Card_story${id}" class="board_detail_header board_fbcc"  style="background-color: ${story_bg};">${story}</div>
+            <div class="board_detail_fixed_close">
             <img onclick="closeBoardCard()" src="./img/Close.svg" alt="">
-        </div>
+        </div></div>
+        <div>
         <div class="board_detail_headline">${headline}
         </div>
         <div class="board_detail_text">${text}
@@ -92,7 +94,8 @@ function createBoradCard(id, story, story_bg, headline, text, date, priority, pr
                 <img class="board_fbcc" src="./img/Check button none.svg" alt="">
                 <span class="board_detail_subtasks"> Implement Recipe Recommendation</span>
             </div>
-        </div>
+            </div>
+            </div>
         <div class="board_dfec board_detail_del_edit" style="margin-top: 30px;">
             <div onclick="deleteTask(${id})" class="board_dfcb"><img  src="./img/delete.svg" alt="">Delete
                 <img style="cursor: default;" src="./img/stroked_vertically.svg" alt="">
@@ -113,7 +116,7 @@ function createBoardCardUsers(first_name, user, color) {
     </div>`;
 }
 
-function createBoardCardSubtaks(id,i,status, text, img) {
+function createBoardCardSubtaks(id, i, status, text, img) {
     return `
     <div id="completed${id}-${i}" class=" board_detail_subtasks board_dfcb" style="margin-top: 20px;margin-left: 5px;">
     <img onclick="toggelSubtaskCompleted(${id},${i},${status})" class="board_fbcc" src="${img}" alt="">

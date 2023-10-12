@@ -1,6 +1,9 @@
 /**
  * This function initializes the board page
  */
+
+
+
 async function initBoard() {
     loadInLocalStorage();
     loadTaskBoard();
@@ -28,7 +31,7 @@ function filterTaskBoard(task_board) {
         document.getElementById('board_' + task_board).innerHTML = "";
         for (let i = 0; i < filter.length; i++) {
             const element = filter[i];
-            let priority_img = './img/task-prio-' + element.priority.charAt(0).toLowerCase() + '.svg'
+            let priority_img = './img/task-prio-' + element.priority.charAt(0).toLowerCase() + '.svg';
             document.getElementById('board_' + task_board).innerHTML +=
                 createBoardTasks(element.id, element.category, element.headline, element.text, priority_img);
             loadBoardUsers(element.id, element.task_user);
@@ -295,3 +298,15 @@ function toggelSubtaskCompleted(id, i, status) {
     createBordCardSubtasks(id, list[id]['subtasks'])
     SaveInLocalStorageAndServer(user);
 }
+
+//var obj123 = document.getElementById('1');
+//console.log(obj123)
+//obj123.addEventListener('touchmove', function(event) {
+//  // If there's exactly one finger inside this element
+//  if (event.targetTouches.length == 1) {
+//    var touch = event.targetTouches[0];
+//    // Place element where the finger is
+//    obj.style.left = touch.pageX + 'px';
+//    obj.style.top = touch.pageY + 'px';
+//  }
+//}, false);
