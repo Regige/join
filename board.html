@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/header.css" />
     <link rel="stylesheet" href="./css/sidebar.css" />
+    
     <script src="./js/storage.js"></script>
     <script src="./js/script.js"></script>
     <script src="./js/board_template.js"></script>
@@ -49,7 +50,7 @@
                     <p id="board_to_do_headline" class="board_p ">To do</p><img class="board_add"
                         onclick="openHTML('/add_task.html')" src="./img/plus_button.svg" alt="">
                 </div>
-                <div id="board_to_do" class=" board_fbcco board_box" ondragleave="removeHighlight('board_to_do')"
+                <div id="board_to_do" class=" board_fbcco board_box board_to_do" ondragleave="removeHighlight('board_to_do')"
                     ondrop="moveTo('to_do') ;removeHighlight('board_to_do')"
                     ondragover="allowDrop(event); highlight('board_to_do')">
                     <div class="board_no_task board_fbccco">No tasks To do</div>
@@ -83,7 +84,7 @@
                 <div class="board_fbsbc board_columns">
                     <p id="board_done_headline" class="board_p">Done</p>
                 </div>
-                <div id="board_done" class="board_box board_fbcco" ondragleave="removeHighlight('board_done')"
+                <div id="board_done" class="board_box board_fbcco board_done" ondragleave="removeHighlight('board_done')"
                     ondrop="moveTo('done');removeHighlight('board_done')"
                     ondragover="allowDrop(event); highlight('board_done')" touchstart>
                     <div class="board_no_task board_fbccco">No tasks Done</div>

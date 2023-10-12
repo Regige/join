@@ -726,7 +726,12 @@ h1 {
 }
 
 @media (max-width: 500px) {
-
+.board_columns_fixed_small{
+    position: relative;
+}
+.board_note{
+    position: relative;
+}
     .board_detail_box {
         position: fixed;
         top: 96px;
