@@ -677,7 +677,7 @@ h1 {
     .board_box {
         display: -webkit-inline-box;
         width: 100%;
-        min-height: 80px;
+        min-height: 50px;
         justify-content: flex-start;
         align-items: flex-start;
         flex-direction: initial;

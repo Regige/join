@@ -46,10 +46,15 @@ function filterTaskBoard(task_board) {
  * 
  * @param {String} task This string contains the individual tasks
  */
-function taskBoardEmpty(task) {
+function taskBoardEmpty(task, option) {
     let tasktext = document.getElementById(`board_${task}_headline`).innerHTML;
-    document.getElementById('board_' + task).innerHTML = `
+    if (option != true) {
+        document.getElementById('board_' + task).innerHTML = `
         <div class="board_no_task board_fbccco">No tasks ${tasktext}</div>`;
+    } else {
+        document.getElementById('board_' + task).innerHTML += `
+        <div class="board_no_task board_fbccco">No tasks ${tasktext}</div>`;
+    }
 }
 
 /**
