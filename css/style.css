@@ -18,7 +18,6 @@ body::-webkit-scrollbar-thumb {
     border: 3px solid #ffffff;
 }
 
-
 .d-none {
     display: none !important;
 }
@@ -179,6 +178,10 @@ body::-webkit-scrollbar-thumb {
     right: 120px;
 }
 
+.SignupBtn{
+    margin-right: 20px;
+}
+
 .capaAnimation {
     animation: background-fade 1.2s ease-in-out;
     position: absolute;
@@ -301,11 +304,27 @@ a {
     color: rgb(227, 100, 100);
 }
 
+@media (max-width: 1000px){
+    .capaImg{
+        top: 50px;
+        width: 50px;
+    }
+}
+
 @media (max-width: 600px) {
     .SignupButton {
         position: absolute;
-        top: 705px;
+        top: 660px;
         right: 120px;
+        display: flex;
+        flex-direction: column;
+        margin-right: 0px;
+        align-items: center;
+    }
+
+    .SignupBtn{
+        margin-bottom: 12px;
+        margin-right: 0px;
     }
 
     .login {
