@@ -45,7 +45,7 @@ function deleteLocalStorage() {
 
 
 // This is the Guest list
-let list = [
+let listold = [
     {
         'id': 0,
         'task_board': 'to_do',

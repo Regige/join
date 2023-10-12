@@ -211,7 +211,7 @@ h1 {
 
 .board_no_task:hover {
     cursor: default;
-    background-color: rgba(231, 231, 231, 0.7);
+    background-color: rgba(231, 231, 231, 0.1);
 }
 
 .board_note {
@@ -677,7 +677,7 @@ h1 {
     .board_box {
         display: -webkit-inline-box;
         width: 100%;
-        min-height: auto;
+        min-height: 80px;
         justify-content: flex-start;
         align-items: flex-start;
         flex-direction: initial;
@@ -688,6 +688,7 @@ h1 {
 
     .board_box::-webkit-scrollbar {
         width: 16px;
+        height: 24px;
     }
 
     .board_box::-webkit-scrollbar-track {
@@ -696,7 +697,7 @@ h1 {
 
     .board_box::-webkit-scrollbar-thumb {
         background-color: #6C757D;
-        border-radius: 10px;
+        border-radius: 12px;
         border: 3px solid #ffffff;
     }
 
@@ -729,9 +730,7 @@ h1 {
 .board_columns_fixed_small{
     position: relative;
 }
-.board_note{
-    position: relative;
-}
+
     .board_detail_box {
         position: fixed;
         top: 96px;

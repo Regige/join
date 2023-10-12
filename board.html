@@ -17,12 +17,13 @@
     <script src="./js/script.js"></script>
     <script src="./js/board_template.js"></script>
     <script src="./js/board.js"></script>
+    <script src="./js/touch.js"></script>
     <script src="js/header.js"></script>
     <script src="includeHTML.js"></script>
 
 </head>
 
-<body onload="includeHTML();initBoard()">
+<body onload="includeHTML();initBoard();calcPositionTasks();">
     <div w3-include-html="/templates/header.html"></div>
     <div w3-include-html="/templates/sidebar.html"></div>
     <div id="board_body" class="board_body">
@@ -52,7 +53,7 @@
                 </div>
                 <div id="board_to_do" class=" board_fbcco board_box board_to_do" ondragleave="removeHighlight('board_to_do')"
                     ondrop="moveTo('to_do') ;removeHighlight('board_to_do')"
-                    ondragover="allowDrop(event); highlight('board_to_do')">
+                    ondragover="allowDrop(event); highlight('board_to_do')"  touchcancel="touchEnd('to_do')">
                     <div class="board_no_task board_fbccco">No tasks To do</div>
                 </div>
             </div>
@@ -61,10 +62,10 @@
                     <p id="board_in_progress_headline" class="board_p ">In progress</p><img class="board_add"
                         onclick="openHTML('/add_task.html')" src="./img/plus_button.svg" alt="">
                 </div>
-                <div id="board_in_progress" class="board_box board_fbcco"
+                <div id="board_in_progress" class="board_box board_fbcco board_in_progress"
                     ondragleave="removeHighlight('board_in_progress')"
                     ondrop="moveTo('in_progress');removeHighlight('board_in_progress')"
-                    ondragover="allowDrop(event); highlight('board_in_progress')">
+                    ondragover="allowDrop(event); highlight('board_in_progress')"  touchcancel="touchEnd('in_progress')">
                     <div class="board_no_task board_fbccco">No tasks In progress</div>
                 </div>
             </div>
@@ -73,10 +74,10 @@
                     <p id="board_await_feedback_headline" class="board_p ">Await feedback</p><img class="board_add"
                         onclick="openHTML('/add_task.html')" src="./img/plus_button.svg" alt="">
                 </div>
-                <div id="board_await_feedback" class="board_box board_fbcco"
+                <div id="board_await_feedback" class="board_box board_fbcco board_await_feedback"
                     ondragleave="removeHighlight('board_await_feedback')"
                     ondrop="moveTo('await_feedback');removeHighlight('board_await_feedback')"
-                    ondragover="allowDrop(event); highlight('board_await_feedback')">
+                    ondragover="allowDrop(event); highlight('board_await_feedback')" touchcancel="touchEnd('await_feedback')">
                     <div class="board_no_task board_fbccco">No tasks container Await feedback</div>
                 </div>
             </div>
@@ -86,7 +87,7 @@
                 </div>
                 <div id="board_done" class="board_box board_fbcco board_done" ondragleave="removeHighlight('board_done')"
                     ondrop="moveTo('done');removeHighlight('board_done')"
-                    ondragover="allowDrop(event); highlight('board_done')" touchstart>
+                    ondragover="allowDrop(event); highlight('board_done')" touchcancel="touchEnd('done')"t>
                     <div class="board_no_task board_fbccco">No tasks Done</div>
                 </div>
             </div>

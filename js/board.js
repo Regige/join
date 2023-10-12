@@ -1,57 +1,3 @@
-let task;
-let toDo;
-let done;
-let toDoPos;
-let donePos;
-
-
-
-
-
-function addStart(elem) {
-    elem.addEventListener('touchstart', e => {
-        console.log(e);
-
-        let startX = e.changedTouches[0].clientX;
-        let startY = e.changedTouches[0].clientY;
-
-        elem.addEventListener('touchmove', eve => {
-            eve.preventDefault();
-
-            let nextX = eve.changedTouches[0].clientX;
-            let nextY = eve.changedTouches[0].clientY;
-
-            elem.style.left = nextX - startX + 'px';
-            elem.style.top = nextY - startY + 'px';
-            elem.style.zIndex = 99;
-
-        });
-    });
-}
-
-
-
-
-
-
-function loadTouch() {
-
-    task = document.querySelectorAll('.board_note');
-    toDo = document.querySelector('.board_to_do');
-    done = document.querySelector('.board_done');
-    toDoPos = toDo.getBoundingClientRect();
-    donePos = done.getBoundingClientRect();
-    console.log(toDoPos);
-    task.forEach(addStart);
-}
-
-
-
-
-
-
-
-
 /**
  * This function initializes the board page
  */
@@ -70,6 +16,7 @@ async function loadTaskBoard() {
     filterTaskBoard('in_progress');
     filterTaskBoard('await_feedback');
     filterTaskBoard('done');
+    loadTouch();
 }
 
 /**
