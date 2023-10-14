@@ -11,12 +11,13 @@
     <link rel="stylesheet" href="./css/header.css" />
     <link rel="stylesheet" href="./css/sidebar.css" />
 
+    <script src="includeHTML.js"></script>
+    <script src="js/header.js"></script>
+    <script src="./js/storage.js"></script>
     <script src="./js/script.js"></script>
     <script src="./js/contacts.js" defer></script>
-    <script src="js/header.js"></script>
-    <script src="includeHTML.js"></script>
   </head>
-  <body onload="includeHTML(), renderContacts()">
+  <body onload="includeHTML(), initContacts()">
     <div w3-include-html="/templates/header.html"></div>
     <div w3-include-html="/templates/sidebar.html"></div>
     <div class="contacts-body">

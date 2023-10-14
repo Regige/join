@@ -1,4 +1,4 @@
-let contacts = [
+let contactsGuest = [
     {
         'name': 'Anton Mayer',
         'email': 'anton@gmail.com',
@@ -39,10 +39,27 @@ let allContacts = [];
 
 // show contacts list on the side
 
+function initContacts() {
+    loadFromLocalStorageContacts(contactsString);
+    // sortContacts();
+    renderContacts();
+}
+
+// function sortContacts() {
+//     let contactsNames = [];
+//     for (let i = 0; i < contacts.length; i++) {
+//         const contact = contacts[i];
+
+//         contactsNames.push(contact['name'])
+//     }
+//     contactsNames.sort();
+// }
+
 function renderContacts() {
+    if(contacts) {
     let contactsList = document.getElementById('contacts-list');
     contactsList.innerHTML = "";
-    
+
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
         let firstCha = getfirstLetter(i);
@@ -54,7 +71,7 @@ function renderContacts() {
         }
 // Wenn Kürzel im Server gespeichert werden kann, dann können firstCha und secondCha rausgelöscht werden
         renderContactsHTML(contactsList, i, contact, firstCha, secondCha);
-    };
+    }}
 }
 
 function getfirstLetter(i) {
@@ -171,13 +188,13 @@ function renderPopupContact() {
                     <div id="popuo-contact-user-icon">
                         <img src="./img/contacts-user-logo.svg" alt="" class="contacts-user-logo"/>
                     </div>
-                    <form action="" class="contacts-form">
+                    <form onsubmit="createNewContact(); return false;" class="contacts-form">
                         <div class="contacts-input-con">
-                            <input type="text" name="name" id="popup-contact-name" placeholder="Name" class="contacts-input"/>
+                            <input required type="text" name="name" id="popup-contact-name" placeholder="Name" class="contacts-input"/>
                             <img src="./img/person.svg" alt="" />
                         </div>
                         <div class="contacts-input-con">
-                            <input type="email" name="email" id="popup-contact-email" placeholder="Email" class="contacts-input"/>
+                            <input required type="email" name="email" id="popup-contact-email" placeholder="Email" class="contacts-input"/>
                             <img src="./img/mail.svg" alt="" />
                         </div>
                         <div class="contacts-input-con">
@@ -186,15 +203,9 @@ function renderPopupContact() {
                         </div>
                         <div id="popup-contact-button-con" class="contacts-button-con">
                             <!-- Delete  ohne img-->
-                            <button id="contacts-bt-cancel" onclick="closeNewContacts()" class="contacts-button contacts-bt-clear       contacts-bt-ft">
-                                Cancel
-                                <img id="img_cancel" src="./img/task_cancel.svg" alt=""/>
-                            </button>
+                            <input type="button" value="Cancel" onclick="closeNewContacts()" class="contacts-button contacts-bt-clear contacts-bt-ft contacts-bt-cancel">
                             <!-- Save + img -->
-                            <button onclick="createNewContact()" class="contacts-button contacts-bt-create contacts-bt-ft">
-                                Create contacts
-                                <img src="./img/task_check.svg" alt="" />
-                            </button>
+                            <input type="submit" value="Create contacts" id="create-bt-submit" class="contacts-button contacts-bt-create contacts-bt-ft contacts-bt-check">
                         </div>
                     </form>
                 </div>
@@ -241,23 +252,22 @@ function showPopupExistContact(i) {
     document.getElementById('popup-contact-email').value = `${contacts[i]['email']}`; 
     document.getElementById('popup-contact-phone').value = `${contacts[i]['phone']}`; 
     document.getElementById('popup-contact-button-con').innerHTML = /*html*/`
-        <button id="contacts-bt-cancel" onclick="closeNewContacts()" class="contacts-button contacts-bt-clear       contacts-bt-ft">
-            Delete
-        </button>
-        <button onclick="createNewContact()" class="contacts-button contacts-bt-create contacts-bt-ft">
-            Save
-        <img src="./img/task_check.svg" alt="" />`;
+    <!-- Hier muss noch eine Delete Funktion definiert werden -->
+        <input type="button" value="Delete" onclick="closeNewContacts()" class="contacts-button contacts-bt-clear contacts-bt-ft">
+        <input type="submit" value="Save" class="contacts-button contacts-bt-create contacts-bt-ft contacts-bt-check">`;
 }
 
 
 // Create new Contact (in progress ...)
 
-function createNewContact() {
+async function createNewContact() {
+    // let creteBtSubmit = document.getElementById('create-bt-submit');
     let contactName = document.getElementById('popup-contact-name').value;
     let contactEmail = document.getElementById('popup-contact-email').value;
     let contactPhone = document.getElementById('popup-contact-phone').value;
     let logogram = getLogogram(contactName);
 
+    // creteBtSubmit.disabled = true;
 
     let newContact = {
         'name': contactName,
@@ -266,10 +276,22 @@ function createNewContact() {
         'logogram': logogram
     };
 
-    allContacts.push(newContact);
+    contacts.push(newContact);
 
-    let allContactsAsString = JSON.stringify(allContacts);
+    await SaveInLocalStorageAndServer(user, contactsString, contacts);
+    // await setItem(`${user}-contacts`, JSON.stringify(allContacts));
+
+    resetForm(contactName, contactEmail, contactPhone);
+
+    // let allContactsAsString = JSON.stringify(allContacts);
     // localStorage.setItem('allContacts', allContctsAsString); bzw. auf ext. Server speichern
+}
+
+function resetForm(contactName, contactEmail, contactPhone) {
+    contactName = "";
+    contactEmail = "";
+    contactPhone = "";
+    // creteBtSubmit.disabled = false;
 }
  
 

@@ -344,9 +344,6 @@
     border: 1px solid #29ABE2;
     box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.3);
 }
-/* .contacts-bt-clear img:hover {
-    fill: #29ABE2;
-} */
 
 .contacts-bt-create {
     background-color: #2A3647;
@@ -357,6 +354,23 @@
     background-color: #29ABE2;
     border: 1px solid #29ABE2;
     box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+.contacts-bt-check {
+    padding-right: 40px;
+    background-image: url(/img/task_check.svg);
+    background-position: 92% 50%;
+    background-repeat: no-repeat;
+}
+.contacts-bt-cancel {
+    padding-right: 40px;
+    background-image: url(/img/task_cancel.svg);
+    background-position: 92% 50%;
+    background-repeat: no-repeat;
+}
+.contacts-bt-cancel:hover {
+    background-image: url(/img/task_cancel_blue.svg);
+    background-size: 21%;
 }
 
 

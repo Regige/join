@@ -2,8 +2,13 @@ const STORAGE_TOKEN = '8A3U4MK7U3QQZFIE9YT3HJC3MLRAQ8J3J7J4DZ5Y';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 let user = '1234@test.de'; //User1: test@test.de //User2: 1234@test.de
 let list;
+let contacts;
 
-SaveDataInLocalStorageFromServer(user);
+let listString = 'list';
+let contactsString = 'contacts';
+
+SaveDataInLocalStorageFromServer(user, listString);
+SaveDataInLocalStorageFromServer(user, contactsString);
 
 async function setItem(key, value) {
     const payload = { key, value, token: STORAGE_TOKEN };
@@ -20,23 +25,30 @@ async function getItem(key) {
     });
 }
 
-async function SaveDataInLocalStorageFromServer(users) {
-    let list = await JSON.parse(await getItem(users + '-list'));
-    let listAsText = JSON.stringify(list);
-    localStorage.setItem('list', listAsText);
+async function SaveDataInLocalStorageFromServer(users, keyString) {
+    let data = await JSON.parse(await getItem(users + `-${keyString}`));
+    let dataAsText = JSON.stringify(data);
+    localStorage.setItem(keyString, dataAsText);
 }
 
-async function SaveInLocalStorageAndServer(users) {
-    let listAsText = JSON.stringify(list);
-    localStorage.setItem('list', listAsText);
-    setItem(users + '-list', list);
+async function SaveInLocalStorageAndServer(users, keyString, dataObject) {
+    let dataAsText = JSON.stringify(dataObject); // variable list or contacts 
+    localStorage.setItem(keyString, dataAsText);
+    setItem(users + `-${keyString}`, dataObject);
    //console.log('Liste:', list, 'wurde zum User:', users + '-list', 'hinzugefügt')
 }
 
-function loadInLocalStorage() {
+function loadInLocalStorage() {             // In or from????
     let listAsText = localStorage.getItem('list');
     if (listAsText) {
         list = JSON.parse(listAsText);
+    }
+}
+
+function loadFromLocalStorageContacts(keyString) { 
+    let dataAsText = localStorage.getItem(keyString);
+    if (dataAsText) {
+        contacts = JSON.parse(dataAsText);
     }
 }
 
@@ -221,3 +233,46 @@ let listold = [
         ]
     }
 ];
+
+
+
+// SaveDataInLocalStorageFromServer(user);
+
+// async function setItem(key, value) {
+//     const payload = { key, value, token: STORAGE_TOKEN };
+//     return fetch(STORAGE_URL, { method: 'POST', body: JSON.stringify(payload) })
+//         .then(res => res.json());
+// }
+
+// async function getItem(key) {
+//     const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
+//     return fetch(url).then(res => res.json()).then(res => {
+//         if (res.data) {
+//             return res.data.value;
+//         } throw `${key} not found`;
+//     });
+// }
+
+// async function SaveDataInLocalStorageFromServer(users) {
+//     let list = await JSON.parse(await getItem(users + '-list'));
+//     let listAsText = JSON.stringify(list);
+//     localStorage.setItem('list', listAsText);
+// }
+
+// async function SaveInLocalStorageAndServer(users) {
+//     let listAsText = JSON.stringify(list);
+//     localStorage.setItem('list', listAsText);
+//     setItem(users + '-list', list);
+//    //console.log('Liste:', list, 'wurde zum User:', users + '-list', 'hinzugefügt')
+// }
+
+// function loadInLocalStorage() {
+//     let listAsText = localStorage.getItem('list');
+//     if (listAsText) {
+//         list = JSON.parse(listAsText);
+//     }
+// }
+
+// function deleteLocalStorage() {
+//     localStorage.clear();
+// }
