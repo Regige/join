@@ -119,7 +119,7 @@ function allowDrop(event) {
  */
 function moveTo(category) {
     list[draggedElement]['task_board'] = category;
-    SaveInLocalStorageAndServer(user);
+    SaveInLocalStorageAndServer(user, listString, list);
     initBoard();
 }
 
@@ -201,7 +201,7 @@ function closeBoardCard() {
  */
 function deleteTask(id) {
     list[id] = "";
-    SaveInLocalStorageAndServer(user);
+    SaveInLocalStorageAndServer(user, listString, list);
     closeBoardCard();
     loadTaskBoard();
     showPopup("Task deleted");
@@ -300,7 +300,7 @@ function toggelSubtaskCompleted(id, i, status) {
     }
     console.log('habe ich :', id, list[id]['subtasks'])
     createBordCardSubtasks(id, list[id]['subtasks'])
-    SaveInLocalStorageAndServer(user);
+    SaveInLocalStorageAndServer(user, listString, list);
 }
 
 //var obj123 = document.getElementById('1');

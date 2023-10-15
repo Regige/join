@@ -37,28 +37,25 @@ let letters = [];
 // Variable for function createContact()
 let allContacts = []; 
 
+let contactsNames = [];
 // show contacts list on the side
 
 function initContacts() {
     loadFromLocalStorageContacts(contactsString);
-    // sortContacts();
     renderContacts();
 }
 
-// function sortContacts() {
-//     let contactsNames = [];
-//     for (let i = 0; i < contacts.length; i++) {
-//         const contact = contacts[i];
-
-//         contactsNames.push(contact['name'])
-//     }
-//     contactsNames.sort();
-// }
 
 function renderContacts() {
     if(contacts) {
     let contactsList = document.getElementById('contacts-list');
     contactsList.innerHTML = "";
+
+    contacts = contacts.sort((a,b) => {
+        if(a.name < b.name) {
+            return -1;
+        }
+    })
 
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
