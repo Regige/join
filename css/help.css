@@ -1,12 +1,12 @@
 .help-header {
-    margin: 20px 0px 50px 250px;
+    margin: 0px 0px 50px 250px;
 
 }
 
 .help-content {
     display: flex;
     flex-direction: column;
-    padding: 20px 100px 0px 100px;
+    padding: 100px 100px 0px 100px;
     font-size: 18px;
 }
 
