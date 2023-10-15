@@ -2,6 +2,7 @@ let users = [];
 
 async function init(){
     loadUsers();
+    msgBoxRender();
 }
 
 async function loadUsers(){
@@ -20,20 +21,19 @@ async function register() {
     let name = document.getElementById('nameregister');
     let registerBtn = document.getElementById('registerBtn'); // Hinzugefügt
 
-    if (password1.value !== password2.value) {
-        alert('Die beiden Passwörter stimmen nicht überein.');
-        return;
+    if (password1.value === password2.value) {
+        registerBtn.disabled = true;
+        users.push({
+            name: name.value,
+            email: email.value,
+            password: password1.value,
+        });
+        await setItem('users', JSON.stringify(users));
+        window.location.href = 'index.html?msg=Du hast dich erfolgreich registriert';
+        resetForm();
+    } else {
+        document.getElementById("register-error").style.display = "block";
     }
-
-    registerBtn.disabled = true;
-    users.push({
-        name: name.value,
-        email: email.value,
-        password: password1.value,
-    });
-    await setItem('users', JSON.stringify(users));
-    window.location.href = 'index.html';
-    resetForm();
 }
 
 function resetForm() {
@@ -43,3 +43,4 @@ function resetForm() {
     document.getElementById('passwordregister2').value = '';
     document.getElementById('registerBtn').disabled = false;
 }
+

@@ -304,6 +304,29 @@ a {
     color: rgb(227, 100, 100);
 }
 
+.register-error-message{
+    position: fixed;
+    top: 46vh;
+    margin-left: -167px;
+    font-size: 14px;
+    color: rgb(227, 100, 100);
+}
+
+#msgBox{
+    position: absolute;
+    z-index: 5;
+    top: 17vh;
+    padding: 13px;
+    border-radius: 5px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #2A3647;
+    color: white;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
 @media (max-width: 1000px){
     .capaImg{
         top: 50px;

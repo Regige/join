@@ -24,7 +24,7 @@
                 <span class="SignupBtn">Not a Join user?</span>
                 <button class="login-button" onclick="showSignUp()">Sign up</button>
             </div>
-
+            <div id="msgBox"></div>
             <div>
                 <h1 class="login-headline">Log in</h1>
             </div>
@@ -35,7 +35,7 @@
                 <div style="display: none;" class="error-message" id="login-error">Email and/or password are incorrect.
                 </div>
                 <input required class="mail-img" type="email" placeholder="Email" id="email">
-                <input required class="password-img" type="password" placeholder="Password" id="password">
+                <input required class="password-img" type="password" placeholder="Password" minlength="4" id="password">
                 <div style="margin-top: 60px;">
                     <button class="login-button">Log in</button>
                     <button onclick="openPage('/summary.html')" class="Guest-button">Guest Log in</button>
@@ -64,10 +64,14 @@
                 <img class="VectorImg" src="img/Vector 5.svg">
             </div>
             <form onsubmit="register(); return false;" class="form password-login email-login">
+                <div style="display: none;" class="register-error-message" id="register-error">Your password does not
+                    match.</div>
                 <input required class="name-img" type="text" placeholder="Name" id="nameregister">
                 <input required class="mail-img" type="email" placeholder="Email" id="emailregister">
-                <input required class="password-img" type="password" placeholder="Password" id="passwordregister1">
-                <input required class="password-img" type="password" placeholder="Password" id="passwordregister2">
+                <input required class="password-img" type="password" placeholder="Password" minlength="4"
+                    id="passwordregister1">
+                <input required class="password-img" type="password" placeholder="Password" minlength="4"
+                    id="passwordregister2">
                 <button style="margin-top: 60px;" id="registerBtn" class="login-button">Sign up</button>
             </form>
             <div class="checkbox-sign-up">
