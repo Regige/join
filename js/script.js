@@ -34,7 +34,10 @@ function openPage(page) {
 }
 
 
-
+function setGuestUser() {
+    user = JSON.stringify('guest');
+    localStorage.setItem('user', user);
+}
 
 
 

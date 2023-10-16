@@ -56,7 +56,7 @@ function deleteLocalStorage() {
 }
 
 async function loadUserData() {
-    let userAktiv = await localStorage.getItem('user');
+    let userAktiv = localStorage.getItem('user');
     if (userAktiv) {
         user = JSON.parse(userAktiv);
         console.warn(user)
@@ -70,7 +70,7 @@ function clearLocalStorage() {
 }
 
 // This is the Guest list
-let listold = [
+let guestlist = [
     {
         'id': 0,
         'task_board': 'to_do',
@@ -247,44 +247,87 @@ let listold = [
 ];
 
 
-
-// SaveDataInLocalStorageFromServer(user);
-
-// async function setItem(key, value) {
-//     const payload = { key, value, token: STORAGE_TOKEN };
-//     return fetch(STORAGE_URL, { method: 'POST', body: JSON.stringify(payload) })
-//         .then(res => res.json());
-// }
-
-// async function getItem(key) {
-//     const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
-//     return fetch(url).then(res => res.json()).then(res => {
-//         if (res.data) {
-//             return res.data.value;
-//         } throw `${key} not found`;
-//     });
-// }
-
-// async function SaveDataInLocalStorageFromServer(users) {
-//     let list = await JSON.parse(await getItem(users + '-list'));
-//     let listAsText = JSON.stringify(list);
-//     localStorage.setItem('list', listAsText);
-// }
-
-// async function SaveInLocalStorageAndServer(users) {
-//     let listAsText = JSON.stringify(list);
-//     localStorage.setItem('list', listAsText);
-//     setItem(users + '-list', list);
-//    //console.log('Liste:', list, 'wurde zum User:', users + '-list', 'hinzugefügt')
-// }
-
-// function loadInLocalStorage() {
-//     let listAsText = localStorage.getItem('list');
-//     if (listAsText) {
-//         list = JSON.parse(listAsText);
-//     }
-// }
-
-// function deleteLocalStorage() {
-//     localStorage.clear();
-// }
+let kanban_board = [
+    {
+        'id': 0,
+        'task_board': 'to_do',
+        'category': {
+            'text': 'Arbeit',
+            'color': 'blue'
+        },
+        'date': '2023-11-12',
+        'priority': 'Medium',
+        'headline': 'Projektplanung',
+        'text': 'Erstellen Sie einen detaillierten Projektplan für das kommende Projekt.',
+        'subtasks': [
+            { "text": "Sprache Überarbeiten", "completed": 0 },
+            { "text": "Text Überprüfen", "completed": 1 },
+            { "text": "Layout Prüfen", "completed": 0 },
+            { "text": "Abläufe Prüfen", "completed": 0 }
+        ],
+        'task_user': [
+            { "full_name": 'Lisa Müller', "name": 'LM', "color": 'purple' },
+            { "full_name": 'Max Schmidt', "name": 'MS', "color": 'orange' }
+        ]
+    },
+    {
+        'id': 1,
+        'task_board': 'in_progress',
+        'category': {
+            'text': 'Arbeit',
+            'color': 'blue'
+        },
+        'date': '2023-11-12',
+        'priority': 'Medium',
+        'headline': 'Text Überarbeiten',
+        'text': 'Überarbeiten Sie den Text gemäß den Anforderungen.',
+        'subtasks': [
+            { "text": "Grammatik überprüfen", "completed": 0 },
+            { "text": "Rechtschreibung überprüfen", "completed": 1 },
+            { "text": "Stil überarbeiten", "completed": 0 }
+        ],
+        'task_user': [
+            { "full_name": 'Lisa Müller', "name": 'LM', "color": 'purple' }
+        ]
+    },
+    {
+        'id': 2,
+        'task_board': 'to_do',
+        'category': {
+            'text': 'Arbeit',
+            'color': 'blue'
+        },
+        'date': '2023-11-12',
+        'priority': 'Medium',
+        'headline': 'Layout Prüfen',
+        'text': 'Überprüfen Sie das Layout des Dokuments auf Konsistenz und Benutzerfreundlichkeit.',
+        'subtasks': [
+            { "text": "Farben überprüfen", "completed": 0 },
+            { "text": "Schriftarten überprüfen", "completed": 0 },
+            { "text": "Bilder überprüfen", "completed": 0 }
+        ],
+        'task_user': [
+            { "full_name": 'Max Schmidt', "name": 'MS', "color": 'orange' }
+        ]
+    },
+    {
+        'id': 3,
+        'task_board': 'await_feedback',
+        'category': {
+            'text': 'Arbeit',
+            'color': 'blue'
+        },
+        'date': '2023-11-12',
+        'priority': 'Medium',
+        'headline': 'Abläufe Prüfen',
+        'text': 'Überprüfen Sie die Arbeitsabläufe und stellen Sie sicher, dass sie effizient sind.',
+        'subtasks': [
+            { "text": "Prozesse dokumentieren", "completed": 0 },
+            { "text": "Schwachstellen identifizieren", "completed": 0 },
+            { "text": "Verbesserungsvorschläge ausarbeiten", "completed": 0 }
+        ],
+        'task_user': [
+            { "full_name": 'Max Schmidt', "name": 'MS', "color": 'green' }
+        ]
+    }
+]

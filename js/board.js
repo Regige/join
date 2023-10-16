@@ -1,8 +1,11 @@
 /**
  * This function initializes the board page
  */
+
+
 async function initBoard() {
-    loadInLocalStorage();
+    loadUserData();
+    //loadInLocalStorage();
     loadTaskBoard();
     loadTouch();
 }
@@ -201,11 +204,15 @@ function closeBoardCard() {
  * @param {Number} id ID for Tasks
  */
 function deleteTask(id) {
-    list[id] = "";
-    SaveInLocalStorageAndServer(user, listString, list);
-    closeBoardCard();
-    loadTaskBoard();
-    showPopup("Task deleted");
+    if (user != 'guest') {
+        list[id] = "";
+        SaveInLocalStorageAndServer(user, listString, list);
+        closeBoardCard();
+        loadTaskBoard();
+        showPopup("Task deleted");
+    }else {
+        showPopup('Cannot be deleted as a guest. Please create an account')
+    }
 }
 
 

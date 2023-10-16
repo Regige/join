@@ -272,7 +272,7 @@ h1 {
 
 .board_task_progess_empty {
     background: rgba(244, 244, 244, 1);
-    width: 128px;
+    width: 115px;
     height: 8px;
     top: 4px;
     padding: 0px, 64px, 0px, 0px;
