@@ -206,6 +206,9 @@
     transition: all 825ms ease-in-out;
 }
 .contacts-add-con-show {
+    background-image: url(/img/task_cancel_blue.svg);
+    background-repeat: no-repeat;
+    /* background-position: ; */
     transform: translateX(0);
 }
 
@@ -626,7 +629,7 @@
         padding: 4px 10px;
     }
     .contacts-bt-ft {
-        padding: 10px;
+        padding: 10px 40px 10px 10px;
     }
 }
 

@@ -31,13 +31,12 @@ let contactsGuest = [
     },
 ];
 
+let letters = [];       // Variable (renderContacts()) to render contacts list letters
 
-let letters = [];
 
-// Variable for function createContact()
-let allContacts = []; 
+let allContacts = [];       // Variable for function createContact()
 
-let contactsNames = [];
+
 // show contacts list on the side
 
 function initContacts() {
@@ -50,36 +49,33 @@ function renderContacts() {
     if(contacts) {
     let contactsList = document.getElementById('contacts-list');
     contactsList.innerHTML = "";
+    letters = [];
 
+        sortContactsList();
+
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+        let firstCha = contact['logogram'].charAt(0);
+        
+        checkContactsListLetter(firstCha, contactsList);
+        renderContactsHTML(contactsList, i, contact);
+    }}
+}
+
+function sortContactsList() {
     contacts = contacts.sort((a,b) => {
         if(a.name < b.name) {
             return -1;
         }
     })
-
-    for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
-        let firstCha = getfirstLetter(i);
-        let secondCha = getsecondLetter(i);
-        
-        if(!letters.includes(firstCha)) {
-            letters.push(firstCha);
-            renderContactsListLetters(firstCha, contactsList);
-        }
-// Wenn Kürzel im Server gespeichert werden kann, dann können firstCha und secondCha rausgelöscht werden
-        renderContactsHTML(contactsList, i, contact, firstCha, secondCha);
-    }}
 }
 
-function getfirstLetter(i) {
-        return contacts[i]['name'].charAt(0);
+function checkContactsListLetter(firstCha, contactsList) {
+    if(!letters.includes(firstCha)) {
+    letters.push(firstCha);
+    renderContactsListLetters(firstCha, contactsList);
+    }
 }
-
-// Kann evtl entfallen, wenn Kürzel im JSON Objekt gespeichert wird! Dann muss firstCha & secondCha in den meisten functions raus gelöscht werden!
-function getsecondLetter(i) {
-    return contacts[i]['name'].trim().split(" ").splice(-1).toString().charAt(0);
-}
-
 
 function renderContactsListLetters(firstCha, contactsList) {
     return contactsList.innerHTML += /*html*/`
@@ -89,10 +85,10 @@ function renderContactsListLetters(firstCha, contactsList) {
         </div>`;
 }
 
-function renderContactsHTML(contactsList, i, contact, firstCha, secondCha) {
+function renderContactsHTML(contactsList, i, contact) {
     return contactsList.innerHTML += /*html*/`
             <div id="contact-con-${i}" class="contacts-list-sgl-con" onclick="showContact(${i})">
-                <div class="contacts-color-icon">${firstCha}${secondCha}</div>
+                <div class="contacts-color-icon">${contact['logogram']}</div>
                 <div>
                     <h3 class="contact-name" id="contact-${i}">${contact['name']}</h3>
                     <div class="contact-email" id="email-${i}">${contact['email']}</div>
@@ -109,26 +105,23 @@ function showContact(i) {
     // clickedCon.style = "backGround-color: #2A3647";
 
     let contact = contacts[i];
-    let firstCha = getfirstLetter(i);
-    let secondCha = getsecondLetter(i);
     let clickedContact = document.getElementById('contact-clicked');
     clickedContact.innerHTML = "";
 
-    
     if (window.matchMedia("(max-width: 700px)").matches) {
     document.getElementById('contacts-main').classList.remove('d-none-700');
     document.getElementById('contacts-list-section').classList.add('d-none');
 }
 
-    renderSglContactHTML(i, contact, firstCha, secondCha, clickedContact);
+    renderSglContactHTML(i, contact, clickedContact);
 }
 
 
-function renderSglContactHTML(i, contact, firstCha, secondCha, clickedContact) {
+function renderSglContactHTML(i, contact, clickedContact) {
         clickedContact.innerHTML = /*html*/`
         <div id="contact-con-${i}" class="flx-col">
             <div class="contact-sgl-head-con">
-                <div class="contacts-color-icon con-icon-sz">${firstCha}${secondCha}</div>
+                <div class="contacts-color-icon con-icon-sz">${contact['logogram']}</div>
                 <div>
                     <h2 class="contact-name-sgl" id="contact-${i}">${contact['name']}</h2>
                     <div class="flx">
@@ -153,10 +146,22 @@ function backToContactsList() {
     document.getElementById('contacts-list-section').classList.remove('d-none');
 }
 
+// window.addEventListener("resize", function(){
+//     if (window.matchMedia("(max-width: 700px)").matches) {
+//         document.getElementById('contacts-main').classList.remove('d-none-700');
+//         document.getElementById('contacts-list-section').classList.add('d-none');
+// }
+// });
+
+
 
 // Add new contacts - Button + PopUp (in progress...)
 
 function showPopupContact(filter) {
+    // if (window.matchMedia("(max-width: 950px)").matches) {
+    //     document.getElementById('contacts-main').classList.remove('d-none-700');
+    //     document.getElementById('contacts-list-section').classList.add('d-none');
+    // }
     renderPopupContact();
     let filterPlusOne = filter + 1;
     if(filterPlusOne){
@@ -250,48 +255,43 @@ function showPopupExistContact(i) {
     document.getElementById('popup-contact-phone').value = `${contacts[i]['phone']}`; 
     document.getElementById('popup-contact-button-con').innerHTML = /*html*/`
     <!-- Hier muss noch eine Delete Funktion definiert werden -->
-        <input type="button" value="Delete" onclick="closeNewContacts()" class="contacts-button contacts-bt-clear contacts-bt-ft">
-        <input type="submit" value="Save" class="contacts-button contacts-bt-create contacts-bt-ft contacts-bt-check">`;
+        <input type="button" value="Delete" onclick="deleteContacts(${i})" class="contacts-button contacts-bt-clear contacts-bt-ft">
+        <input type="submit" value="Save" onclick="saveChangedContact(${i})" class="contacts-button contacts-bt-create contacts-bt-ft contacts-bt-check">`;
 }
 
 
-// Create new Contact (in progress ...)
+
+// Create new Contact
 
 async function createNewContact() {
-    // let creteBtSubmit = document.getElementById('create-bt-submit');
-    let contactName = document.getElementById('popup-contact-name').value;
-    let contactEmail = document.getElementById('popup-contact-email').value;
-    let contactPhone = document.getElementById('popup-contact-phone').value;
-    let logogram = getLogogram(contactName);
-
-    // creteBtSubmit.disabled = true;
-
+    let contactName = document.getElementById('popup-contact-name');
+    let contactEmail = document.getElementById('popup-contact-email');
+    let contactPhone = document.getElementById('popup-contact-phone');
+    let contactNameAlterd = contactName.value.charAt(0).toUpperCase() + contactName.value.slice(1)
+    let logogram = getLogogram(contactNameAlterd);
+    
     let newContact = {
-        'name': contactName,
-        'email': contactEmail,
-        'phone': contactPhone,
+        'name': contactNameAlterd,
+        'email': contactEmail.value,
+        'phone': contactPhone.value,
         'logogram': logogram
     };
 
     contacts.push(newContact);
 
     await SaveInLocalStorageAndServer(user, contactsString, contacts);
-    // await setItem(`${user}-contacts`, JSON.stringify(allContacts));
 
     resetForm(contactName, contactEmail, contactPhone);
-
-    // let allContactsAsString = JSON.stringify(allContacts);
-    // localStorage.setItem('allContacts', allContctsAsString); bzw. auf ext. Server speichern
+    closeNewContacts();
+    renderContacts();
 }
 
 function resetForm(contactName, contactEmail, contactPhone) {
-    contactName = "";
-    contactEmail = "";
-    contactPhone = "";
-    // creteBtSubmit.disabled = false;
+    contactName.value = "";
+    contactEmail.value = "";
+    contactPhone.value = "";
 }
  
-
 function getLogogram(name) {
     let firstCha = name.toString().charAt(0);
     let secondCha = name.toString().trim().split(" ").splice(-1).toString().charAt(0);
@@ -299,3 +299,45 @@ function getLogogram(name) {
     return firstCha + secondCha;
 }
 
+
+
+// Delete Contacts
+
+async function deleteContacts(i) {
+    contacts.splice(i,1);
+
+    await SaveInLocalStorageAndServer(user, contactsString, contacts);
+    renderContacts();
+    closeNewContacts();
+    removeFromMainPage();
+}
+
+function removeFromMainPage() {
+    document.getElementById('contact-clicked').innerHTML = "";
+}
+
+
+
+// Save changed contact
+
+async function saveChangedContact(i) {
+    let contactName = document.getElementById('popup-contact-name');
+    let contactEmail = document.getElementById('popup-contact-email');
+    let contactPhone = document.getElementById('popup-contact-phone');
+    let contactNameAlterd = contactName.value.charAt(0).toUpperCase() + contactName.value.slice(1)
+    let logogram = getLogogram(contactNameAlterd);
+
+    let newContact = {
+        'name': contactNameAlterd,
+        'email': contactEmail.value,
+        'phone': contactPhone.value,
+        'logogram': logogram
+    };
+
+    contacts.splice(i, 1, newContact);
+    await SaveInLocalStorageAndServer(user, contactsString, contacts);
+    renderContacts();
+    resetForm(contactName, contactEmail, contactPhone);
+    closeNewContacts();
+    removeFromMainPage();
+}
