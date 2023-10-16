@@ -119,7 +119,8 @@ function allowDrop(event) {
  */
 function moveTo(category) {
     list[draggedElement]['task_board'] = category;
-    SaveInLocalStorageAndServer(user, listString, list);
+    SaveInLocalStorageAndServer(user, 'list', list);
+    console.log('hier');
     initBoard();
 }
 

@@ -1,14 +1,13 @@
 const STORAGE_TOKEN = '8A3U4MK7U3QQZFIE9YT3HJC3MLRAQ8J3J7J4DZ5Y';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
-let user = '1234@test.de'; //User1: test@test.de //User2: 1234@test.de
+let user;// = '1234@test.de'; //User1: test@test.de //User2: 1234@test.de
 let list;
 let contacts;
 
 let listString = 'list';
 let contactsString = 'contacts';
 
-SaveDataInLocalStorageFromServer(user, listString);
-SaveDataInLocalStorageFromServer(user, contactsString);
+
 
 async function setItem(key, value) {
     const payload = { key, value, token: STORAGE_TOKEN };
@@ -35,7 +34,7 @@ async function SaveInLocalStorageAndServer(users, keyString, dataObject) {
     let dataAsText = JSON.stringify(dataObject); // variable list or contacts 
     localStorage.setItem(keyString, dataAsText);
     setItem(users + `-${keyString}`, dataObject);
-   //console.log('Liste:', list, 'wurde zum User:', users + '-list', 'hinzugefügt')
+    //console.log('Liste:', list, 'wurde zum User:', users + '-list', 'hinzugefügt')
 }
 
 function loadInLocalStorage() {             // In or from????
@@ -45,7 +44,7 @@ function loadInLocalStorage() {             // In or from????
     }
 }
 
-function loadFromLocalStorageContacts(keyString) { 
+function loadFromLocalStorageContacts(keyString) {
     let dataAsText = localStorage.getItem(keyString);
     if (dataAsText) {
         contacts = JSON.parse(dataAsText);
@@ -56,6 +55,19 @@ function deleteLocalStorage() {
     localStorage.clear();
 }
 
+async function loadUserData() {
+    let userAktiv = await localStorage.getItem('user');
+    if (userAktiv) {
+        user = JSON.parse(userAktiv);
+        console.warn(user)
+        await SaveDataInLocalStorageFromServer(user, listString);
+        await SaveDataInLocalStorageFromServer(user, contactsString);
+    }
+}
+
+function clearLocalStorage() {
+    localStorage.clear();
+}
 
 // This is the Guest list
 let listold = [
@@ -145,7 +157,7 @@ let listold = [
         }, {
             "text": "Getränke kaufen",
             "completed": 1
-        },{
+        }, {
             "text": "Lego kaufen",
             "completed": 0
         }, {

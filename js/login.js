@@ -21,12 +21,14 @@ async function login() {
     let user = users.find(u => u.email == emailLogin.value && u.password == passwordLogin.value);
     console.log(user);
     if (user) {
-
-
+        saveUserinLocalStorge(emailLogin.value);
         window.location.href = 'summary.html';
     } else {
         document.getElementById("login-error").style.display = "block";
     }
 }
 
-
+function saveUserinLocalStorge(u) {
+    user = JSON.stringify(u);
+    localStorage.setItem('user', user);
+}

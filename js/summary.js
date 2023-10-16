@@ -14,8 +14,12 @@ let user_name = 'Guest';                                        // Sets the user
 /**
  * This function initializes the summary page
  */
+
+
+
 async function initsummary() {
-    loadInLocalStorage();
+    await loadUserData();
+    await loadInLocalStorage();
     GreetingAfterTime();
     OneStartexecuteOnScreenWidthChange();
     loadSummaryTask();
