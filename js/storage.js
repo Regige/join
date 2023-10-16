@@ -37,7 +37,7 @@ async function SaveInLocalStorageAndServer(users, keyString, dataObject) {
     //console.log('Liste:', list, 'wurde zum User:', users + '-list', 'hinzugefügt')
 }
 
-function loadInLocalStorage() {             // In or from????
+function loadFromLocalStorage() {             // In or from????
     let listAsText = localStorage.getItem('list');
     if (listAsText) {
         list = JSON.parse(listAsText);

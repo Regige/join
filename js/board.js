@@ -5,7 +5,7 @@
 
 async function initBoard() {
     loadUserData();
-    //loadInLocalStorage();
+    //loadFromLocalStorage();
     loadTaskBoard();
     loadTouch();
 }
@@ -14,7 +14,7 @@ async function initBoard() {
  * This function loads all Borad tasks
  */
 async function loadTaskBoard() {
-    loadInLocalStorage();
+    loadFromLocalStorage();
     filterTaskBoard('to_do');
     filterTaskBoard('in_progress');
     filterTaskBoard('await_feedback');
