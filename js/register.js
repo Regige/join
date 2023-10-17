@@ -1,14 +1,14 @@
 let users = [];
 
-async function init(){
+async function init() {
     loadUsers();
     msgBoxRender();
 }
 
-async function loadUsers(){
+async function loadUsers() {
     try {
         users = JSON.parse(await getItem('users'));
-    } catch(e){
+    } catch (e) {
         console.error('Loading error:', e);
     }
 }
@@ -29,6 +29,8 @@ async function register() {
             password: password1.value,
         });
         await setItem('users', JSON.stringify(users));
+        await loadStandardUserListAndContacts(email.value);
+        window.location.href = 'index.html?msg=Du hast dich erfolgreich registriert';
 
         resetForm();
     } else {
@@ -42,5 +44,12 @@ function resetForm() {
     document.getElementById('passwordregister1').value = '';
     document.getElementById('passwordregister2').value = '';
     document.getElementById('registerBtn').disabled = false;
+}
+
+async function loadStandardUserListAndContacts(user) {
+    let new_list = JSON.parse(await getItem('guest-list'));
+    await setItem(user + '-list', new_list);
+    let new_contact = JSON.parse(await getItem('guest-contacts'));
+    await setItem(user + '-contacts', new_contact);
 }
 
