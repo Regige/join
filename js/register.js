@@ -29,7 +29,7 @@ async function register() {
             password: password1.value,
         });
         await setItem('users', JSON.stringify(users));
-        window.location.href = 'index.html?msg=Du hast dich erfolgreich registriert';
+        
         resetForm();
     } else {
         document.getElementById("register-error").style.display = "block";

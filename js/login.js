@@ -32,3 +32,4 @@ function saveUserinLocalStorge(u) {
     user = JSON.stringify(u);
     localStorage.setItem('user', user);
 }
+
