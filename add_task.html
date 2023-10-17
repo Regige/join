@@ -5,19 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join/Add Task</title>
+    <link rel="icon" href="./img/Logo_for_Favicon.png" />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./fonts.css" />
     <link rel="stylesheet" href="./css/add_task.css" />
     <link rel="stylesheet" href="./css/header.css" />
     <link rel="stylesheet" href="./css/sidebar.css" />
 
+    <script src="includeHTML.js"></script>
+    <script src="js/header.js"></script>
+    <script src="./js/storage.js"></script>
     <script src="./js/script.js"></script>
     <script src="./js/add_task.js"></script>
     <script src="./js/contacts.js"></script>
-    <script src="js/header.js"></script>
-    <script src="includeHTML.js"></script>
   </head>
-  <body onload="includeHTML()">
+  <body onload="includeHTML(), initAddTask()">
     <div w3-include-html="/templates/header.html"></div>
     <div w3-include-html="/templates/sidebar.html"></div>
     <!-- Hier muss noch addNewContacts Popup bearbeitet werden, oder auf neue HTML Seite verweisen -->
@@ -27,7 +29,11 @@
         onclick="closeNewContacts()"
       ></div> -->
     <main onclick="closeAssignedToField()" class="task-body">
-      <form action="" class="task-form" onsubmit="createNewTask(event)">
+      <form
+        action=""
+        class="task-form"
+        onsubmit="createNewTask(); return false"
+      >
         <div>
           <h2 class="task-h2">Add Task</h2>
           <div class="task-input-con">

@@ -19,7 +19,8 @@
 .task-form {
     display: flex;
     flex-direction: column;
-justify-content: space-between;
+    justify-content: space-between;
+    margin-top: 96px;
 }
 
 .task-input-con {
@@ -110,6 +111,7 @@ justify-content: space-between;
 
 .task-contacts-list-to-assign {
     background-color: white;
+    padding-bottom: 24px;
     position: absolute;
     overflow: scroll;
     height: 150px;
@@ -146,7 +148,7 @@ justify-content: space-between;
     padding: 12px 0;
     width: 100%;
     position: absolute;
-    top: 190px;
+    top: 216px;
     z-index: 1;
 }
 
@@ -251,7 +253,7 @@ justify-content: space-between;
     padding-right: 5px;
     width: calc(100% - 45px);
     max-height: 124px;
-    overflow: scroll;
+    overflow-y: scroll;
     /* border-radius: 0 0 10px 10px; */
 }
 
@@ -336,7 +338,7 @@ justify-content: space-between;
     .task-input-con {
         flex-direction: column;
         width: auto;
-        overflow: scroll;
+        overflow-y: scroll;
         height: calc(100vh - 363px);
     }
     .task-input-left {
@@ -346,7 +348,9 @@ justify-content: space-between;
     .task-input-right {
         width: 640px;
     }
-
+    .task-sub-text {
+        overflow-y: unset;
+    }
     .task-foot-con {
         margin-top: 48px;
         margin-bottom: 32px;

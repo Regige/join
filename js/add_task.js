@@ -2,6 +2,12 @@ let taskPrio = "";
 let subtasks = [];
 let allTasks = [];
 
+async function initAddTask() {
+    await loadUserData();
+    loadFromLocalStorage();
+    loadFromLocalStorageContacts();
+}
+
 
 //  Assigned To Field - render Contacts list 
 function showAssignedToBt() {
@@ -17,7 +23,7 @@ function showAssignedToBt() {
         contactsListToAssignCon.innerHTML += /*html*/`
             <div class="task-contacts-list-to-assign-sub">
                 <div class="flex-just-btw-ct">
-                    <div class="task-contacts-color-icon">${contact['logogram']}</div>
+                    <div style="background-color:${contact['hex_color']};" class="task-contacts-color-icon">${contact['logogram']}</div>
                     <label for="contact-${i}">${contact['name']}</label>
                 </div>
                 <input type="checkbox" name="contact" id="contact-${i}" value="${contact['name']}">
@@ -123,14 +129,12 @@ function saveEditedSubtask(i) {
 
 // Create new Task (in progress ...)
 
-function createNewTask(event) {
-    // event.preventDefault();
-
-    let taskTitle = document.getElementById('task-title').value;
-    let taskDescription = document.getElementById('task-description').value;
+async function createNewTask() {
+    let taskTitle = document.getElementById('task-title');
+    let taskDescription = document.getElementById('task-description');
     let assignedTo = [];
-    let dueDate = document.getElementById('task-date').value;
-    let taskCategory = document.getElementById('category').value;
+    let dueDate = document.getElementById('task-date');
+    let taskCategory = document.getElementById('category');
     
     document.querySelectorAll('[type="checkbox"]').forEach(item => {
         if(item.checked === true) {
@@ -139,23 +143,33 @@ function createNewTask(event) {
     });
 
     let newTask = {
-        'title': taskTitle,
-        'description': taskDescription,
+        'title': taskTitle.value,
+        'description': taskDescription.value,
         'assigned-to': [assignedTo],
-        'due-date': dueDate,
+        'due-date': dueDate.value,
         'prio': taskPrio,
-        'category': taskCategory,
+        'category': taskCategory.value,
         'subtask': subtasks,
     }
 
     console.log(newTask);
 
-    allTasks.push(newTask);
+    list.push(newTask);
 
-    // let allTasksAsString = JSON.stringify(allTasks);
-    // localStorage.setItem('allTasks', allTasksAsString); bzw. auf ext. Server speichern
+    await SaveInLocalStorageAndServer(user, listString, list);
+    resetTaskForm(taskTitle, taskDescription, assignedTo, dueDate, taskCategory);
 }
 
+function resetTaskForm(taskTitle, taskDescription, assignedTo, dueDate, taskCategory) {
+    taskTitle.value = "";
+    taskDescription.value = "";
+    assignedTo = [];
+    dueDate.value = "";
+    taskCategory.value = "";
+    document.getElementById('task-sub-text').innerHTML = "";
+    document.getElementById(`prio-bt-${taskPrio}`).style = null;
+    taskPrio = "";
+}
 
 function setTaskPrio(prio) {
     taskPrio = prio;
