@@ -252,18 +252,18 @@ let kanban_board = [
         'id': 0,
         'task_board': 'to_do',
         'category': {
-            'text': 'Arbeit',
+            'text': 'Work',
             'color': 'blue'
         },
         'date': '2023-11-12',
         'priority': 'Medium',
-        'headline': 'Projektplanung',
-        'text': 'Erstellen Sie einen detaillierten Projektplan für das kommende Projekt.',
+        'headline': 'Project Planning',
+        'text': 'Create a detailed project plan for the upcoming project.',
         'subtasks': [
-            { "text": "Sprache Überarbeiten", "completed": 0 },
-            { "text": "Text Überprüfen", "completed": 1 },
-            { "text": "Layout Prüfen", "completed": 0 },
-            { "text": "Abläufe Prüfen", "completed": 0 }
+            { "text": "Revise Language", "completed": 0 },
+            { "text": "Check Text", "completed": 1 },
+            { "text": "Review Layout", "completed": 0 },
+            { "text": "Check Workflows", "completed": 0 }
         ],
         'task_user': [
             { "full_name": 'Lisa Müller', "name": 'LM', "color": 'purple' },
@@ -274,17 +274,17 @@ let kanban_board = [
         'id': 1,
         'task_board': 'in_progress',
         'category': {
-            'text': 'Arbeit',
-            'color': 'blue'
+            'text': 'Other',
+            'color': 'yellow'
         },
         'date': '2023-11-12',
         'priority': 'Medium',
-        'headline': 'Text Überarbeiten',
-        'text': 'Überarbeiten Sie den Text gemäß den Anforderungen.',
+        'headline': 'Revise Text',
+        'text': 'Revise the text according to the requirements.',
         'subtasks': [
-            { "text": "Grammatik überprüfen", "completed": 0 },
-            { "text": "Rechtschreibung überprüfen", "completed": 1 },
-            { "text": "Stil überarbeiten", "completed": 0 }
+            { "text": "Check Grammar", "completed": 0 },
+            { "text": "Check Spelling", "completed": 1 },
+            { "text": "Revise Style", "completed": 0 }
         ],
         'task_user': [
             { "full_name": 'Lisa Müller', "name": 'LM', "color": 'purple' }
@@ -294,17 +294,17 @@ let kanban_board = [
         'id': 2,
         'task_board': 'to_do',
         'category': {
-            'text': 'Arbeit',
+            'text': 'Work',
             'color': 'blue'
         },
         'date': '2023-11-12',
         'priority': 'Medium',
-        'headline': 'Layout Prüfen',
-        'text': 'Überprüfen Sie das Layout des Dokuments auf Konsistenz und Benutzerfreundlichkeit.',
+        'headline': 'Check Layout',
+        'text': 'Check the document layout for consistency and user-friendliness.',
         'subtasks': [
-            { "text": "Farben überprüfen", "completed": 0 },
-            { "text": "Schriftarten überprüfen", "completed": 0 },
-            { "text": "Bilder überprüfen", "completed": 0 }
+            { "text": "Check Colors", "completed": 0 },
+            { "text": "Check Fonts", "completed": 0 },
+            { "text": "Check Images", "completed": 0 }
         ],
         'task_user': [
             { "full_name": 'Max Schmidt', "name": 'MS', "color": 'orange' }
@@ -314,20 +314,20 @@ let kanban_board = [
         'id': 3,
         'task_board': 'await_feedback',
         'category': {
-            'text': 'Arbeit',
+            'text': 'Work',
             'color': 'blue'
         },
         'date': '2023-11-12',
-        'priority': 'Medium',
-        'headline': 'Abläufe Prüfen',
-        'text': 'Überprüfen Sie die Arbeitsabläufe und stellen Sie sicher, dass sie effizient sind.',
+        'priority': 'Low',
+        'headline': 'Check Workflows',
+        'text': 'Review the workflows and ensure they are efficient.',
         'subtasks': [
-            { "text": "Prozesse dokumentieren", "completed": 0 },
-            { "text": "Schwachstellen identifizieren", "completed": 0 },
-            { "text": "Verbesserungsvorschläge ausarbeiten", "completed": 0 }
+            { "text": "Document Processes", "completed": 0 },
+            { "text": "Identify Weak Points", "completed": 0 },
+            { "text": "Develop Improvement Suggestions", "completed": 0 }
         ],
         'task_user': [
             { "full_name": 'Max Schmidt', "name": 'MS', "color": 'green' }
         ]
     }
-]
+];
