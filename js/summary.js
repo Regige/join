@@ -9,7 +9,8 @@ window.addEventListener('resize', executeOnScreenWidthChange);  // Monitoring th
 let screenWidthThreshold = 950;                                 // Screen resolution when the popup appears
 let lastScreenWidth = window.innerWidth;                        // Query the screen width at the start of the page
 let welcome_text;                                               // Set the welcome text variable
-let user_name = 'Guest';                                        // Sets the username
+
+user_name = 'Guest';                                        // Sets the username
 
 /**
  * This function initializes the summary page
@@ -33,7 +34,6 @@ async function initsummary() {
 function GreetingAfterTime() {
     const jetzt = new Date();
     const stunde = jetzt.getHours();
-
     if (stunde >= 5 && stunde < 12) {
         welcome_text = "Good morning,";
     } else if (stunde >= 12 && stunde < 18) {
@@ -42,6 +42,7 @@ function GreetingAfterTime() {
         welcome_text = "Good evening,";
     }
     document.getElementById('summary_welcome_text').innerHTML = welcome_text;
+    document.getElementById('summary_welcome_text_name').innerHTML = user_name;
 }
 
 /**
@@ -153,15 +154,16 @@ function createAllTaskCounter(to_do, in_progress, await_feedback, done, summary_
 function clacDateUrgent() {
     for (let i = 0; i < list.length; i++) {
         const element = list[i];
-        if (element.priority == 'Urgent')
+        if (element.priority == 'Urgent') {
             date_time.push(Number(element.date.replaceAll("-", "")));
+        }
     }
     date_time.sort(function (a, b) {
         if (a > b) return 1;
         if (a < b) return -1;
         return 0;
     });
-    if (date_time) {
+    if (date_time.length >= 1) {
         formatDateUrgent(date_time[0]);
     } else {
         formatDateUrgent(0);

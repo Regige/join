@@ -123,7 +123,6 @@ function allowDrop(event) {
 function moveTo(category) {
     list[draggedElement]['task_board'] = category;
     SaveInLocalStorageAndServer(user, 'list', list);
-    console.log('hier');
     initBoard();
 }
 
@@ -154,7 +153,7 @@ function searchAllNote() {
     let found = 0;
     for (let i = 0; i < list.length; i++) {
         const element = list[i];
-        found = searchNote(i, search, found, element.headline, element.text);
+        found = searchNote(element.id, search, found, element.headline, element.text);
     };
 }
 
@@ -205,12 +204,17 @@ function closeBoardCard() {
  */
 function deleteTask(id) {
     if (user != 'guest') {
-        list[id] = "";
+        for (let i = 0; i < list.length; i++) {
+            const element = list[i];
+            if (id == element.id) {
+                list.splice(i, 1);
+            }
+        }
         SaveInLocalStorageAndServer(user, listString, list);
         closeBoardCard();
         loadTaskBoard();
         showPopup("Task deleted");
-    }else {
+    } else {
         showPopup('Cannot be deleted as a guest. Please create an account')
     }
 }
@@ -275,7 +279,6 @@ function createBordCardUsers(id, users) {
  * @param {String} subtasks     Subtask for Card
  */
 function createBordCardSubtasks(id, subtasks) {
-    console.log('brauche ich:', id, subtasks);
     document.getElementById(`board-card-subtasks${id}`).innerHTML = "";
     if (subtasks.length >= 1) {
         document.getElementById(`board-card-subtasks${id}`).innerHTML = 'Subtasks';
@@ -306,19 +309,6 @@ function toggelSubtaskCompleted(id, i, status) {
     } else {
         list[id].subtasks[i].completed = 1;
     }
-    console.log('habe ich :', id, list[id]['subtasks'])
     createBordCardSubtasks(id, list[id]['subtasks'])
     SaveInLocalStorageAndServer(user, listString, list);
 }
-
-//var obj123 = document.getElementById('1');
-//console.log(obj123)
-//obj123.addEventListener('touchmove', function(event) {
-//  // If there's exactly one finger inside this element
-//  if (event.targetTouches.length == 1) {
-//    var touch = event.targetTouches[0];
-//    // Place element where the finger is
-//    obj.style.left = touch.pageX + 'px';
-//    obj.style.top = touch.pageY + 'px';
-//  }
-//}, false);

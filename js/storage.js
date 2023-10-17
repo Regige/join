@@ -9,6 +9,7 @@ let contactsString = 'contacts';
 
 
 
+
 async function setItem(key, value) {
     const payload = { key, value, token: STORAGE_TOKEN };
     return fetch(STORAGE_URL, { method: 'POST', body: JSON.stringify(payload) })
@@ -34,7 +35,6 @@ async function SaveInLocalStorageAndServer(users, keyString, dataObject) {
     let dataAsText = JSON.stringify(dataObject); // variable list or contacts 
     localStorage.setItem(keyString, dataAsText);
     setItem(users + `-${keyString}`, dataObject);
-    //console.log('Liste:', list, 'wurde zum User:', users + '-list', 'hinzugefügt')
 }
 
 function loadFromLocalStorage() {             // In or from????
@@ -51,15 +51,15 @@ function loadFromLocalStorageContacts(keyString) {
     }
 }
 
-function deleteLocalStorage() {
-    localStorage.clear();
-}
-
 async function loadUserData() {
     let userAktiv = localStorage.getItem('user');
+    let user_name_Aktiv = localStorage.getItem('name');
     if (userAktiv) {
         user = JSON.parse(userAktiv);
-        console.warn(user)
+        user_name = JSON.parse(user_name_Aktiv);
+        if (user_name == null) {
+            user_name = 'Guest'
+        }
         await SaveDataInLocalStorageFromServer(user, listString);
         await SaveDataInLocalStorageFromServer(user, contactsString);
     }
@@ -70,7 +70,7 @@ function clearLocalStorage() {
 }
 
 // This is the Guest list
-let guestlist = [
+let listold = [
     {
         'id': 0,
         'task_board': 'to_do',
