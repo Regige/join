@@ -683,7 +683,7 @@ h1 {
         justify-content: flex-start;
         align-items: flex-start;
         flex-direction: initial;
-        overflow-x: auto;
+        overflow-x: overlay;
         scrollbar-width: auto;
         scrollbar-color: #6C757D #ffffff;
     }

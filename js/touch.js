@@ -22,6 +22,9 @@ let awaitFeedbackPos;
 let donePos;
 
 
+window.addEventListener('scroll', (event) => {
+    console.log(window.scrollY);
+});
 
 
 function addStart(elem) {
@@ -33,6 +36,7 @@ function addStart(elem) {
         let startY = e.changedTouches[0].clientY;
         elem.addEventListener('touchmove', eve => {
             eve.preventDefault();
+            autoSrcoll(elem.getBoundingClientRect().top);
             let nextX = eve.changedTouches[0].clientX;
             let nextY = eve.changedTouches[0].clientY;
             elem.style.left = nextX - startX + 'px';
@@ -41,6 +45,12 @@ function addStart(elem) {
             elem.style.opacity = '0.9';
             elem.style.zIndex = 10;
             elem.style.position = 'absolute';
+            elem.style.overflow = 'hidden';
+            //console.log(elem.getBoundingClientRect().top)
+
+
+
+
             ist_position = window.scrollY + elem.getBoundingClientRect().top;
             if (ist_position >= toDo_top && ist_position <= toDo_buttom) {
                 highlight('board_to_do');
@@ -179,4 +189,23 @@ function noTasksTouch(id) {
             }
         }
     }
+}
+
+function autoSrcoll(position) {
+    let distance = 200;
+    let window_height = window.innerHeight - distance;
+
+    if (position <= distance && window.scrollY >= 0) {
+        console.log('oben')
+        Y = window.scrollY - 50;
+        //console.warn('top', window.scrollY);
+        scrollTo(0, Y);
+    }
+    if (position >= window_height && window.scrollY <= window_height) {
+        console.log('unten')
+        Y = window.scrollY + 50;
+        // console.warn('buttom', window.scrollY);
+        scrollTo(0, Y);
+    }
+    return scrollY;
 }
