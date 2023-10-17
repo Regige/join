@@ -1,3 +1,16 @@
+let empty_box = 136;
+let box = 325;
+let distance_top = 280;
+
+let toDo_top;
+let toDo_buttom;
+let inProgress_top;
+let inProgress_buttom;
+let awaitFeedback_top;
+let awaitFeedback_buttom;
+let done_top;
+let down_buttom;
+
 let task;
 let toDo;
 let inProgress;
@@ -7,21 +20,18 @@ let toDoPos;
 let inProgressPos;
 let awaitFeedbackPos;
 let donePos;
-let stopDrop;
+
+
 
 
 function addStart(elem) {
-    stopDrop = 0;
     elem.addEventListener('touchstart', e => {
-
-        //console.log('dwddsa', e);
+        counter = calcCounterTasks();
+        noTasksTouch(elem.id);
+        calcPositionTasks();
         let startX = e.changedTouches[0].clientX;
         let startY = e.changedTouches[0].clientY;
-
         elem.addEventListener('touchmove', eve => {
-
-
-
             eve.preventDefault();
             let nextX = eve.changedTouches[0].clientX;
             let nextY = eve.changedTouches[0].clientY;
@@ -31,50 +41,66 @@ function addStart(elem) {
             elem.style.opacity = '0.9';
             elem.style.zIndex = 10;
             elem.style.position = 'absolute';
-            //console.log(elem.id);
-            //console.log(window.scrollY + elem.getBoundingClientRect().top)
-
-            positionTaskTouch(window.scrollY + elem.getBoundingClientRect().top);
-            console.log('vor',stopDrop)
-            if (stopDrop === 0) {
-                noTasksTouch(elem.id);
-                stopDrop = 1;
+            ist_position = window.scrollY + elem.getBoundingClientRect().top;
+            if (ist_position >= toDo_top && ist_position <= toDo_buttom) {
+                highlight('board_to_do');
+            } else {
+                removeHighlight('board_to_do');
             }
-
-
-
-
-            console.log(stopDrop)
+            if (ist_position >= inProgress_top && ist_position <= inProgress_buttom) {
+                highlight('board_in_progress');
+            } else {
+                removeHighlight('board_in_progress');
+            }
+            if (ist_position >= awaitFeedback_top && ist_position <= awaitFeedback_buttom) {
+                highlight('board_await_feedback');
+            } else {
+                removeHighlight('board_await_feedback');
+            }
+            if (ist_position >= done_top && ist_position <= done_buttom) {
+                highlight('board_done');
+            } else {
+                removeHighlight('board_done');
+            }
         });
-
-        //console.log('123', window.scrollY + elem.getBoundingClientRect().top)
         elem.addEventListener('touchend', eve => {
-            if (elem.getBoundingClientRect().top > inProgressPos.top) {
-                //console.log(elem.getBoundingClientRect().top)
+            if (ist_position >= toDo_top && ist_position <= toDo_buttom) {
+                list[elem.id].task_board = 'to_do';
+                removeHighlight('board_to_do');
             }
+            if (ist_position >= inProgress_top && ist_position <= inProgress_buttom) {
+                list[elem.id].task_board = 'in_progress';
+                removeHighlight('board_in_progress');
+            }
+            if (ist_position >= awaitFeedback_top && ist_position <= awaitFeedback_buttom) {
+                list[elem.id].task_board = 'await_feedback';
+                removeHighlight('board_await_feedback');
+
+            }
+            if (ist_position >= done_top && ist_position <= done_buttom) {
+                list[elem.id].task_board = 'done';
+                removeHighlight('board_done');
+            }
+            SaveInLocalStorageAndServer(user, 'list', list);
             loadTaskBoard();
         });
     });
 }
 
-
-
-//window.addEventListener('scroll', () => {
-//    //console.log(window.scrollY)
-//});
-
 function loadTouch() {
-
     task = document.querySelectorAll('.board_note');
     toDo = document.querySelector('.board_to_do');
     inProgress = document.querySelector('.board_in_progress');
+    awaitFeedback = document.querySelector('.board_await_feedback');
+    done = document.querySelector('.board_done');
     toDoPos = toDo.getBoundingClientRect();
     inProgressPos = inProgress.getBoundingClientRect();
-    //console.log(toDoPos);
+    awaitFeedbackPos = awaitFeedback.getBoundingClientRect();
+    donePos = done.getBoundingClientRect();
     task.forEach(addStart);
 }
 
-function calcPositionTasks() {
+function calcCounterTasks() { //hier wird erechnet wlcher platz in der Liste belegt ist
     let counter_to_do = 0;
     let conter_in_progress = 0;
     let counter_await_feedback = 0;
@@ -97,14 +123,36 @@ function calcPositionTasks() {
     return [counter_to_do, conter_in_progress, counter_await_feedback, counter_done];
 }
 
-
-
-
-
+function calcPositionTasks() {
+    if (counter[0] == 0) {
+        toDo_top = distance_top;
+        toDo_buttom = distance_top + empty_box;
+    } else {
+        toDo_top = distance_top;
+        toDo_buttom = distance_top + box;
+    } if (counter[1] == 0) {
+        inProgress_top = toDo_buttom;
+        inProgress_buttom = toDo_buttom + empty_box;
+    } else {
+        inProgress_top = toDo_buttom;
+        inProgress_buttom = toDo_buttom + box;
+    } if (counter[2] == 0) {
+        awaitFeedback_top = inProgress_buttom;
+        awaitFeedback_buttom = inProgress_buttom + empty_box;
+    } else {
+        awaitFeedback_top = inProgress_buttom;
+        awaitFeedback_buttom = inProgress_buttom + box;
+    } if (counter[3] == 0) {
+        done_top = awaitFeedback_buttom;
+        done_buttom = awaitFeedback_buttom + empty_box;
+    } else {
+        done_top = awaitFeedback_buttom;
+        done_buttom = awaitFeedback_buttom + box;
+    }
+}
 
 
 function noTasksTouch(id) {
-    let counter = calcPositionTasks();
 
     for (let i = 0; i < list.length; i++) {
         const element = list[i];
@@ -112,43 +160,23 @@ function noTasksTouch(id) {
             if (element.task_board == 'to_do') {
                 counter[0] = counter[0] - 1;
                 if (counter[0] == 0) {
-                    taskBoardEmpty('to_do', true);
                 }
             }
             if (element.task_board == 'in_progress') {
                 counter[1] = counter[1] - 1;
                 if (counter[1] == 0) {
-                    taskBoardEmpty('in_progress', true);
                 }
             }
             if (element.task_board == 'await_feedback') {
                 counter[2] = counter[2] - 1;
                 if (counter[2] == 0) {
-                    taskBoardEmpty('await_feedback', true);
                 }
             }
             if (element.task_board == 'done') {
                 counter[3] = counter[3] - 1;
                 if (counter[3] == 0) {
-                    taskBoardEmpty('done', true);
                 }
             }
         }
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-function positionTaskTouch(position) {
-    //console.log(position)
-
-
 }

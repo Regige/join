@@ -5,9 +5,8 @@
 
 async function initBoard() {
     loadUserData();
-    //loadFromLocalStorage();
+    checkUserLogin();
     loadTaskBoard();
-    loadTouch();
 }
 
 /**

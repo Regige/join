@@ -20,6 +20,7 @@ user_name = 'Guest';                                        // Sets the username
 
 async function initsummary() {
     await loadUserData();
+    checkUserLogin();
     loadFromLocalStorage();
     GreetingAfterTime();
     OneStartexecuteOnScreenWidthChange();

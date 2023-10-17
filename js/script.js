@@ -26,7 +26,12 @@ function toggleCheckmark(elementId, elementIdNone) {
 }
 
 
-
+function checkUserLogin(){
+    if (user == undefined){
+        console.log('fehler')
+        openPage('/index.html');       
+    }
+}
 
 
 function openPage(page) {
