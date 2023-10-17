@@ -222,10 +222,12 @@ h1 {
     border-radius: 24px;
     gap: 10px;
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+    transition: all 0.25s;
 }
 
 .board_note:hover {
     cursor: pointer;
+    transition: all 0.25s;
     transform: rotate(5deg);
 
 }
@@ -681,7 +683,7 @@ h1 {
         justify-content: flex-start;
         align-items: flex-start;
         flex-direction: initial;
-        overflow-x: auto;
+        overflow-x: overlay;
         scrollbar-width: auto;
         scrollbar-color: #6C757D #ffffff;
     }
