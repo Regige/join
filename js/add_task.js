@@ -1,6 +1,6 @@
 let taskPrio = "";
 let subtasks = [];
-let allTasks = [];
+// let allTasks = [];
 
 async function initAddTask() {
     await loadUserData();
@@ -82,7 +82,7 @@ function renderInputText() {
             <div class="flex-just-btw-ct">
                 <div onclick="deleteSubtask(${i})"><img src="/img/delete.svg" alt=""/></div>
                 <div class="task-sub-hr"></div>
-                <div onclick="saveEditedSubtask(${i})" class="flx"><img class="task-sub-input-img" 
+                <div onclick="saveEditedSubtask(${i})" class="flex"><img class="task-sub-input-img" 
                     src="/img/task_check_bl.svg" alt=""/>
                 </div>
             </div>
@@ -91,10 +91,10 @@ function renderInputText() {
             <li class="task-sub-text-sgl">
                 ${subtask}
             </li>
-            <div class="flx">                        
-                <div onclick="editSubtask(${i})"><img src="/img/edit.svg" alt=""/></div>
+            <div class="flx task-sub-text-sgl-icons">                        
+                <div onclick="editSubtask(${i})" class="flex-just-btw-ct"><img src="/img/edit.svg" alt=""/></div>
                 <div class="task-sub-hr"></div>
-                <div onclick="deleteSubtask(${i})"><img src="/img/delete.svg" alt=""/></div>
+                <div onclick="deleteSubtask(${i})" class="flex-just-btw-ct"><img src="/img/delete.svg" alt=""/></div>
             </div>
         </div>`;
     }

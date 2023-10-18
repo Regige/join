@@ -37,15 +37,15 @@ async function SaveInLocalStorageAndServer(users, keyString, dataObject) {
     setItem(users + `-${keyString}`, dataObject);
 }
 
-function loadFromLocalStorage() {             // In or from????
+function loadFromLocalStorage() {            
     let listAsText = localStorage.getItem('list');
     if (listAsText) {
         list = JSON.parse(listAsText);
     }
 }
 
-function loadFromLocalStorageContacts(keyString) {
-    let dataAsText = localStorage.getItem(keyString);
+function loadFromLocalStorageContacts() {
+    let dataAsText = localStorage.getItem('contacts');
     if (dataAsText) {
         contacts = JSON.parse(dataAsText);
     }

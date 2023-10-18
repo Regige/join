@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./css/add_task.css" />
     <link rel="stylesheet" href="./css/header.css" />
     <link rel="stylesheet" href="./css/sidebar.css" />
+    <link rel="stylesheet" href="./css/contacts.css" />
 
     <script src="includeHTML.js"></script>
     <script src="js/header.js"></script>
@@ -28,6 +29,11 @@
         class="contacts-add-bg d-none"
         onclick="closeNewContacts()"
       ></div> -->
+    <div
+      id="contacts-add-bg"
+      class="contacts-add-bg d-none"
+      onclick="closeNewContacts()"
+    ></div>
     <main onclick="closeAssignedToField()" class="task-body">
       <form
         action=""
@@ -75,7 +81,7 @@
                     class="d-none task-contacts-list-to-assign"
                   ></div>
                   <button
-                    onclick="stopClosing(event), showAddNewContactsPopup()"
+                    onclick="stopClosing(event), showPopupContact()"
                     id="add-new-contact-bt"
                     class="d-none task-button task-bt-create task-bt-add"
                   >
