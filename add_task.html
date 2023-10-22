@@ -18,17 +18,11 @@
     <script src="./js/storage.js"></script>
     <script src="./js/script.js"></script>
     <script src="./js/add_task.js"></script>
-    <script src="./js/contacts.js"></script>
+    <script src="./js/add_task_HTML.js"></script>
   </head>
   <body onload="includeHTML(), initAddTask()">
     <div w3-include-html="/templates/header.html"></div>
     <div w3-include-html="/templates/sidebar.html"></div>
-    <!-- Hier muss noch addNewContacts Popup bearbeitet werden, oder auf neue HTML Seite verweisen -->
-    <!-- <div
-        id="contacts-add-bg"
-        class="contacts-add-bg d-none"
-        onclick="closeNewContacts()"
-      ></div> -->
     <div
       id="contacts-add-bg"
       class="contacts-add-bg d-none"
@@ -75,22 +69,25 @@
                     onclick="stopClosing(event), showAssignedToBt()"
                     class="task-sub-input-con task-assigned-to"
                   />
-                  <div
-                    onclick="stopClosing(event)"
-                    id="task-contacts-list-to-assign"
-                    class="d-none task-contacts-list-to-assign"
-                  ></div>
-                  <button
-                    onclick="stopClosing(event), showPopupContact()"
-                    id="add-new-contact-bt"
-                    class="d-none task-button task-bt-create task-bt-add"
-                  >
-                    Add new contact<img
-                      src="./img/contacts_add_icon.svg"
-                      alt=""
-                    />
-                  </button></div
-              ></label>
+                  <div class="task-assigned-to-sub">
+                    <div
+                      onclick="stopClosing(event)"
+                      id="task-contacts-list-to-assign"
+                      class="d-none task-contacts-list-to-assign"
+                    ></div>
+                    <button
+                      onclick="stopClosing(event), showPopupContact()"
+                      id="add-new-contact-bt"
+                      class="d-none task-button task-bt-create task-bt-add"
+                    >
+                      Add new contact<img
+                        src="./img/contacts_add_icon.svg"
+                        alt=""
+                      />
+                    </button>
+                  </div>
+                </div>
+              </label>
             </div>
             <div class="task-hr"></div>
             <div class="task-input-right">
@@ -139,11 +136,13 @@
                   id="category"
                   placeholder="Select task category"
                 >
-                  <option value="">Select task category</option>
-                  <option value="Technical Task">Work</option>
-                  <option value="User Story">Privat</option>
-                  <option value="User Story">Shopping</option>
-                  <option value="User Story">Other</option>
+                  <option value="" disabled selected>
+                    Select task category
+                  </option>
+                  <option value="Work">Work</option>
+                  <option value="Privat">Privat</option>
+                  <option value="Shopping">Shopping</option>
+                  <option value="Other">Other</option>
                 </select>
               </label>
               <label class="task-label subtask-lable"
@@ -193,6 +192,7 @@
           >
           <div class="task-button-con">
             <input
+              onclick="resetTaskForm()"
               type="button"
               value="Clear"
               class="task-button task-bt-clear"

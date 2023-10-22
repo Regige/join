@@ -69,6 +69,21 @@
     overflow: scroll;
 }
 
+.contacts-list::-webkit-scrollbar {
+    width: 14px;
+}
+
+.contacts-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.contacts-list::-webkit-scrollbar-thumb {
+    background-color: #6C757D;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+}
+
+
 .contacts-list-sgl-con {
     display: flex;
     align-items: start;
@@ -218,7 +233,6 @@
     bottom: 0;
     left: 0;
     background-color: rgba(191,191,191, 0.3);
-    /* background-color: #BFBFBF; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -233,7 +247,6 @@
 .contacts-add-con-show {
     background-image: url(/img/task_cancel_blue.svg);
     background-repeat: no-repeat;
-    /* background-position: ; */
     transform: translateX(0);
 }
 
@@ -354,6 +367,7 @@
 
 
 /* Button Cancel + Create */
+
 .contacts-button-con {
     display: flex;
     gap: 24px;
@@ -673,10 +687,24 @@
 }
 
 
-
 @media (max-width: 400px) {
+    .contacts-add-bg {
+        top: 96px;
+        bottom: 90px;
+    }
+        
+    .contacts-add-con {
+        position: fixed;
+        top: 96px;
+        right: 0;
+        bottom: 90px;
+        left: 0;
+    }
     .contacts-add-con-left {
-        height: 232px;
+        flex: 1;
+        height: auto;
+        border-radius: unset;
+        /* height: 232px; */
         padding: 16px;
     }
     .contacts-h2 {
@@ -688,6 +716,9 @@
         line-height: 20px;
     }
     .contacts-add-con-right {
+        flex: 1;
+        height: auto;
+        border-radius: unset;
         padding: 16px;
     }
     .contacts-user-popup {

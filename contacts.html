@@ -17,6 +17,8 @@
     <script src="./js/storage.js"></script>
     <script src="./js/script.js"></script>
     <script src="./js/contacts.js" defer></script>
+    <script src="./js/contacts_html.js"></script>
+    <script src="./js/add_task.js"></script>
   </head>
   <body onload="includeHTML(), initContacts()">
     <div w3-include-html="/templates/header.html"></div>
@@ -32,7 +34,7 @@
           class="contacts-button contacts-bt-add contacts-bt-create"
           onclick="showPopupContact()"
         >
-          <span> Add new contacts</span
+          <span> Add new contact</span
           ><img src="./img/contacts_add_icon.svg" alt="" />
         </button>
         <div class="contacts-list" id="contacts-list"></div>

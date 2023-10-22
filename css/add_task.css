@@ -3,7 +3,6 @@
     justify-content: center;
     align-items: center;
     margin-left: 232px;
-    /* margin-bottom: 80px; */
 }
 
 .task-h2 {
@@ -25,7 +24,6 @@
 
 .task-input-con {
     display: flex;
-    /* width: 976.25px; */
 }
 
 .task-input-left {
@@ -46,7 +44,6 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
-    /* height: 416px; */
     justify-content: space-between;
     width: 440px;
 }
@@ -97,6 +94,10 @@
 .task-assigned-to-con {
     position: relative;
 }
+.task-assigned-to-sub {
+    position: absolute;
+    width: 100%;
+}
 
 .task-assigned-to {
     background-image: url(/img/arrow_drop_dow.svg);
@@ -111,12 +112,22 @@
 
 .task-contacts-list-to-assign {
     background-color: white;
-    padding-bottom: 24px;
-    position: absolute;
-    overflow: scroll;
-    height: 150px;
+    padding-bottom: 16px;
+    overflow-y: scroll;
+    max-height: 128px;
     width: 100%;
-    z-index: 1;
+}
+
+.task-contacts-list-to-assign::-webkit-scrollbar {
+    width: 12px;
+}  
+.task-contacts-list-to-assign::-webkit-scrollbar-track {
+    background: transparent;
+}
+.task-contacts-list-to-assign::-webkit-scrollbar-thumb {
+    background-color: #6C757D;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
 }
 
 .task-contacts-list-to-assign-sub {
@@ -147,18 +158,14 @@
     line-height: 25.2px !important;
     padding: 12px 0;
     width: 100%;
-    position: absolute;
-    top: 216px;
-    z-index: 1;
 }
+
 
 /* Form field - Prio Button */
 
 .task-prio-bt-con {
     display: flex;
     gap: 16px;
-    position: relative;
-    /* z-index: -1; */
 }
 .task-prio-bt {
     flex: 1;
@@ -182,7 +189,7 @@
     background-repeat: no-repeat;
 }
 
-/*  */
+/* Subtask elements */
 .task-sub-input-con {
     background-color: white;
     border: 1px solid #D1D1D1;
@@ -191,16 +198,6 @@
     justify-content: space-between;
     padding: 2px 4px 2px 0;
 }
-
-/* 
-.task-sub-input-con img {
-    margin-right: 16px;
-} */
-
-/* .task-sub-input-con img:hover {
-    background-color: #d1d1d1;
-    border-radius: 10px;
-} */
 
 .task-sub-input {
     border: none;
@@ -255,25 +252,17 @@
     margin: 0 4px;
 }
 
-.task-sub-input-img {
-    width: 32px;
-}
-
 .subtask-lable {
     position: relative;
 }
 .task-sub-text {
-    /* background-color: white; */
     position: absolute;
     top: 82px;
-    /* margin-top: -10px; */
-    /* z-index: -1; */
     margin: 6px 0;
     padding-right: 5px;
     width: calc(100% - 45px);
     max-height: 124px;
     overflow-y: scroll;
-    /* border-radius: 0 0 10px 10px; */
 }
 
 .task-sub-text-sgl {
@@ -283,11 +272,24 @@
 .task-sub-text-sgl-icons {
     padding-right: 8px;
 }
-.task-sub-text img:hover {
+.task-sub-text-sgl-icons-con {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.task-sub-text-sgl-icons-con img {
+    height: 20px;
+    width: 20px;
+}
+.task-sub-text img:hover, .task-sub-text-sgl-icons-con:hover {
     background-color: #D1D1D1;
     border-radius: 20px;
 }
-/*  */
+
+
+/* Task Footer + Buttons */
 
 .task-foot-con {
     align-items: end;
@@ -364,6 +366,23 @@
 
 /* Media Query */
 
+@media (min-width: 1265px) {
+    .task-sub-text::-webkit-scrollbar {
+        width: 12px;
+    }
+    
+    .task-sub-text::-webkit-scrollbar-track {
+         background: transparent;
+    }
+    
+    .task-sub-text::-webkit-scrollbar-thumb {
+        background-color: #6C757D;
+        border-radius: 10px;
+        border: 3px solid #ffffff;
+    }
+}
+
+
 @media (max-width: 1264px) {
     .task-hr {
         display: none;
@@ -378,6 +397,20 @@
         overflow-y: scroll;
         height: calc(100vh - 363px);
     }
+    .task-input-con::-webkit-scrollbar {
+        width: 16px;
+    }
+
+    .task-input-con::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .task-input-con::-webkit-scrollbar-thumb {
+        background-color: #6C757D;
+        border-radius: 10px;
+        border: 3px solid #ffffff;
+    }
+
     .task-input-left {
         width: 640px;
         margin-bottom: 30px;
@@ -454,14 +487,17 @@
 
 @media (max-width: 384px) {
     .task-input-left {
-        width: 300px;
+        width: 288px;
     }   
     .task-input-right {
-        width: 300px;
+        width: 288px;
     }
     .task-bt-create {
         padding-right: 32px;
         background-position: 95% 50%;
+    }
+    .task-prio-bt-con {
+        gap: 12px;
     }
     .task-prio-bt {
         padding: 8px 32px 10px 8px;
