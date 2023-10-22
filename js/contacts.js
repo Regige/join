@@ -180,7 +180,7 @@ function showPopupExistContact(i) {
     document.getElementById('popup-contact-name').value = `${contacts[i]['name']}`;
     document.getElementById('popup-contact-email').value = `${contacts[i]['email']}`; 
     document.getElementById('popup-contact-phone').value = `${contacts[i]['phone']}`; 
-    document.getElementById('popup-contact-button-con').innerHTML = createPopupExistContactBt();
+    document.getElementById('popup-contact-button-con').innerHTML = createPopupExistContactBt(i);
 }
 
 
@@ -245,12 +245,17 @@ function getContactColor() {
 // Delete Contacts
 
 async function deleteContacts(i) {
+    if(user === 'guest') {
+        showPopup('Create an account');
+        closeNewContacts();
+    } else {
     contacts.splice(i,1);
 
     await SaveInLocalStorageAndServer(user, contactsString, contacts);
     renderContacts();
     closeNewContacts();
     removeFromMainPage();
+    }
 }
 
 function removeFromMainPage() {
@@ -262,6 +267,10 @@ function removeFromMainPage() {
 // Save changed contact
 
 async function saveChangedContact(i) {
+    if(user === 'guest') {
+        showPopup('Create an account');
+        closeNewContacts();
+    } else {
     let contactName = document.getElementById('popup-contact-name');
     let contactEmail = document.getElementById('popup-contact-email');
     let contactPhone = document.getElementById('popup-contact-phone');
@@ -275,6 +284,7 @@ async function saveChangedContact(i) {
     closeNewContacts();
     removeFromMainPage();
     showPopup('Contact changed');
+    }
 }
 
 async function saveContactValues(i, contactName, contactEmail, contactPhone, contactNameAlterd, logogram, contactColor) {

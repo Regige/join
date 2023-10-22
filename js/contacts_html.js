@@ -90,6 +90,6 @@ function createPopupExistContactIcon(i) {
 
 function createPopupExistContactBt(i) {
     return /*html*/`
-        <input type="button" value="Delete" onclick="deleteContacts(${i})" class="contacts-button contacts-bt-delet contacts-bt-ft">
-        <input type="submit" value="Save" onclick="saveChangedContact(${i})" class="contacts-button contacts-bt-create contacts-bt-ft contacts-bt-check">`;
+        <input type="button" value="Delete" id="contacts-bt-delet" onclick="deleteContacts(${i})" class="contacts-button contacts-bt-delet contacts-bt-ft">
+        <input type="button" value="Save" id="contacts-bt-change" onclick="saveChangedContact(${i})" class="contacts-button contacts-bt-create contacts-bt-ft contacts-bt-check">`;
 }
