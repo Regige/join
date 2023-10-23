@@ -36,16 +36,16 @@
 
 @media (max-width: 950px){
     .help-header{
-        margin: 20px 0px 50px 50px;
+        margin: 0px 0px 130px 50px;
     }
 }
 
 @media (max-width: 650px){
     .help-header{
-        margin: 20px 0px 0px 20px;
+        margin: 0px 0px 130px 20px;
     }
 
     .help-content {
-        padding: 20px 20px 0px 5px;
+        padding: 100px 20px 0px 5px;
     }
 }

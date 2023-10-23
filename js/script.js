@@ -82,6 +82,27 @@ function setGuestUser() {
     localStorage.setItem('user', user);
 }
 
+function showPopupAndRedirect(text, url) {
+    // Zeige das Popup
+    var popup = document.createElement("div");
+    popup.textContent = text;
+    popup.classList.add("popup");
+    document.body.appendChild(popup);
+    setTimeout(function () {
+        popup.style.top = "30px";
+    }, 100);
+    setTimeout(function () {
+        popup.style.top = "-100px";
+        setTimeout(function () {
+            document.body.removeChild(popup);
+            // Nachdem das Popup verschwunden ist, leite zur angegebenen URL weiter
+            if (url) {
+                window.location.href = url;
+            }
+        }, 500);
+    }, 3000);
+}
+
 function showPopup(text) {
     var popup = document.createElement("div");
     popup.textContent = text;

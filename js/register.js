@@ -2,7 +2,6 @@ let users = [];
 
 async function init() {
     loadUsers();
-    msgBoxRender();
 }
 
 async function loadUsers() {
@@ -30,8 +29,7 @@ async function register() {
         });
         await setItem('users', JSON.stringify(users));
         await loadStandardUserListAndContacts(email.value);
-        window.location.href = 'index.html?msg=Du hast dich erfolgreich registriert';
-        showPopup('Hallo');
+        showPopupAndRedirect('Du hast dich erfolgreich registriert', 'index.html');
         resetForm();
     } else {
         document.getElementById("register-error").style.display = "block";
