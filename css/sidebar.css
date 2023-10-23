@@ -156,7 +156,7 @@ body {
     }
 }
 
-@media (max-width: 330px){
+@media (max-width: 350px){
     .sidebarBtn{
         padding: 1px;
     }
