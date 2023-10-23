@@ -79,6 +79,11 @@ body {
     transform: scale(1.1);
 }
 
+.sidebarLogo:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
 @media (max-width: 950px) {
     .sidebar {
         height: 90px;
@@ -148,5 +153,19 @@ body {
 
     .sidebarBtn span {
         font-size: 14px;
+    }
+}
+
+@media (max-width: 330px){
+    .sidebarBtn{
+        padding: 1px;
+    }
+
+    .sidebarBtn span {
+        font-size: 13px;
+    }
+
+    .sidebarNav{
+        gap: 1px;
     }
 }
