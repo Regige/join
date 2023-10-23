@@ -357,6 +357,7 @@ h1 {
     gap: 24px;
     margin: 10px;
     overflow: auto;
+    width: 100%;
 }
 
 .board_detail_card img:hover {
@@ -558,7 +559,7 @@ h1 {
 @media (max-width: 950px) {
 
     .board_body {
-        position: absolute;
+        
         left: 0px;
         right: 0;
         top: 100px;
