@@ -11,10 +11,13 @@
     <script src="js/register.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/login.js"></script>
+    <script src="includeHTML.js"></script>
+    <script src="js/summary.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/add_task.js"></script>
 </head>
 
 <body onload="init()">
-
     <div class="begin">
         <div class="capaAnimation">
             <img class="capaImg" src="img/Capa 1.svg">
@@ -22,7 +25,7 @@
         <div class="login" id="login">
             <div class="SignupButton">
                 <span class="SignupBtn">Not a Join user?</span>
-                <button class="login-button" onclick="showSignUp()">Sign up</button>
+                <button class="login-button" onclick="showSignUpHideSignUp('show')">Sign up</button>
             </div>
             <div id="msgBox"></div>
             <div>
@@ -37,27 +40,29 @@
                 <input required class="mail-img" type="email" placeholder="Email" id="email">
                 <input required class="password-img" type="password" placeholder="Password" minlength="4" id="password">
                 <div style="margin-top: 60px;">
-                    <button class="login-button">Log in</button>
-                    <button onclick="openPage('/summary.html');setGuestUser()" class="Guest-button">Guest Log in</button>
+                    <button style="margin-left: -140px;" class="login-button">Log in</button>
                     <div id="registrationSuccess" class="success-message" style="display: none;">Registrierung
                         erfolgreich abgeschlossen.</div>
                 </div>
             </form>
+            <button onclick="openPage('/summary.html');setGuestUser()" class="Guest-button">Guest Log in</button>
             <div class="checkbox">
                 <div id="check">
-                    <img src="img/Check button none.svg" onclick="toggleCheckmark('check', 'check-none')">
-                </div>
-                <div>
-                    <img id="check-none" class="d-none" src="img/Check button.svg"
+                    <img style="cursor: pointer;" src="img/Check button none.svg"
                         onclick="toggleCheckmark('check', 'check-none')">
                 </div>
-                <span style="margin-left: 10px;">Remember me</span>
+                <div>
+                    <img style="cursor: pointer;" id="check-none" class="d-none" src="img/Check button.svg"
+                        onclick="toggleCheckmark('check', 'check-none')">
+                </div>
+                <span style="margin-right: 30px;">Remember me</span>
+                <span class="password" onclick="showForgotPassword('forgot')">Forgot my password</span>
             </div>
         </div>
 
         <div class="sign-up d-none" id="sign-up">
             <div>
-                <img onclick="hideSignUp()" class="arrow-img" src="img/arrow-left-line.svg">
+                <img onclick="showSignUpHideSignUp('hide')" class="arrow-img" src="img/arrow-left-line.svg">
                 <h1 class="sign-up-headline">Sign up</h1>
             </div>
             <div>
@@ -85,13 +90,49 @@
                 </div>
                 <span style="margin-left: 10px;">I accept the <a href="">Privacy policy</a></span>
             </div>
+        </div>
 
+
+        <div id="forgot-password-container" class="forgot-password-container d-none">
+            <div>
+                <img onclick="showSignUpHideSignUp('hide')" class="password-arrow-img" src="img/arrow-left-line.svg">
+                <h1 class="password-headline">I forgot my password</h1>
+            </div>
+            <div>
+                <img class="VectorImg" src="img/Vector 5.svg">
+            </div>
+            <div class="password-span">
+                <span>Don't worry! We will send you an email with the instructions to reset your password.</span>
+            </div>
+            <form class="password-container email-login" onsubmit="return handleForgotPasswordFormSubmit();">
+                <input id="passwordEmail" required class="mail-img" type="email" placeholder="Email" name="email">
+                <button class="password-btn" type="submit">Send me the email</button>
+            </form>
+        </div>
+
+        <div id="password-container" class="forgot-password-container d-none">
+            <div>
+                <img onclick="showSignUpHideSignUp('hide')" class="password-arrow-img" src="img/arrow-left-line.svg">
+                <h1 class="password-headline">Reset your password</h1>
+            </div>
+            <div>
+                <img class="VectorImg" src="img/Vector 5.svg">
+            </div>
+            <div style="margin-top: 17px;" class="password-span">
+                <span>Change your account password</span>
+            </div>
+            <form class="password-container  email-login">
+                <span id="register-error2" class="register-error-message-passwort" style="display: none;">Your password does notmatch.</span>
+                <input id="ForgotPassword1" style="margin-bottom: 12px;" required class="password-img" type="password" placeholder="Password" minlength="4">
+                <input id="ForgotPassword2" required class="password-img" type="password" placeholder="Password" minlength="4">
+                <button class="password-btn" type="submit" onclick="return validatePasswords();">email</button>
+            </form>
         </div>
     </div>
 
     <div class="footer">
-        <a href="" target="_blank">Privacy Policy</a>
-        <a href="" target="_blank">Legal notice</a>
+        <a href="privacy_policy.html" target="_blank">Privacy Policy</a>
+        <a href="legal_notice.html" target="_blank">Legal notice</a>
     </div>
 </body>
 

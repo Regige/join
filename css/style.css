@@ -22,6 +22,7 @@ body::-webkit-scrollbar-thumb {
     display: none !important;
 }
 
+/* Login */
 .begin {
     height: 98vh;
     display: flex;
@@ -126,7 +127,6 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     align-items: center;
     margin-top: 150px;
-    margin-left: -170px;
 }
 
 .checkbox-sign-up {
@@ -134,6 +134,17 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     align-items: center;
     margin-top: 310px;
+}
+
+.password{
+    color: #29ABE2;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.password:hover{
+    transform: scale(1.1);
+    text-decoration: underline;
 }
 
 .login-button {
@@ -155,6 +166,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .Guest-button {
+    position: absolute;
+    top: 564px;
     border-radius: 5px;
     width: 160px;
     height: 42px;
@@ -162,7 +175,7 @@ body::-webkit-scrollbar-thumb {
     font-size: 20px;
     font-weight: bold;
     background-color: white;
-    margin-left: 10px;
+    margin-left: 130px;
     cursor: pointer;
 }
 
@@ -244,7 +257,9 @@ body::-webkit-scrollbar-thumb {
         z-index: -5;
     }
 }
+/* Login */
 
+/* Sign-up */
 .sign-up {
     background-color: white;
     height: 550px;
@@ -265,6 +280,10 @@ body::-webkit-scrollbar-thumb {
     cursor: pointer;
 }
 
+.arrow-img:hover{
+    transform: scale(1.2);
+}
+
 .d-none {
     display: none;
 }
@@ -272,14 +291,22 @@ body::-webkit-scrollbar-thumb {
 .footer {
     display: flex;
     justify-content: center;
+    cursor: pointer;
     width: 100%;
-    margin-top: -50px;
-    gap: 35px;
+    position: absolute;
+    gap: 30px;
+    margin-top: -70px;
+    z-index: 1;
 }
 
-a {
+.footer a {
     text-decoration: none;
-    color: #c0c0c0;
+    color: #b0aeae;
+}
+
+.footer a:hover{
+    transform: scale(1.1);
+    color: #29ABE2;
 }
 
 .popup {
@@ -306,9 +333,17 @@ a {
 }
 
 .register-error-message{
-    position: fixed;
+    position: absolute;
     top: 46vh;
     margin-left: -167px;
+    font-size: 14px;
+    color: rgb(227, 100, 100);
+}
+
+.register-error-message-passwort{
+    position: absolute;
+    margin-top: -5px;
+    margin-left: -170px;
     font-size: 14px;
     color: rgb(227, 100, 100);
 }
@@ -327,6 +362,72 @@ a {
     margin-right: 10px;
     cursor: pointer;
 }
+/* Sign-up */
+
+.forgot-password-container{
+    background-color: white;
+    height: 400px;
+    width: 570px;
+    border-radius: 15px;
+    box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+}
+
+.password-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.password-btn{
+    border-radius: 5px;
+    width: 220px;
+    height: 42px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #2A3647;
+    color: white;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.password-btn:hover {
+    background-color: #29ABE2;
+    box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.7);
+}
+
+.password-headline{
+    font-size: 40px;
+    margin-bottom: 5px;
+    margin-top: -15px;
+}
+
+.password-span{
+    margin-top: 30px;
+    margin-bottom: 10px;
+    padding: 0px 50px 0px 50px;
+}
+
+.password-arrow-img{
+    position: absolute;
+    margin-left: -260px;
+    margin-top: -10px;
+    cursor: pointer;
+}
+
+.password-arrow-img:hover{
+    transform: scale(1.2);
+}
+
+
+
+
 
 @media (max-width: 1000px){
     .capaImg{

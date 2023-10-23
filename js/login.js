@@ -23,6 +23,7 @@ async function login() {
     if (user) {
         saveUserinLocalStorge(user.email,user.name);
         window.location.href = 'summary.html';
+
     } else {
         document.getElementById("login-error").style.display = "block";
     }
@@ -34,4 +35,3 @@ function saveUserinLocalStorge(u,n) {
     localStorage.setItem('user', user);
     localStorage.setItem('name', user_name);
 }
-

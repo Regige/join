@@ -41,10 +41,11 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     margin-left: 40px;
     height: 56px;
     width: 56px;
-    border: 2px solid black;
+    border: 3px solid black;
     border-radius: 50px;
     color: #29ABE2;
     font-weight: bold;
@@ -53,7 +54,7 @@ header{
 }
 
 .user-border-logo:hover{
-    background-color: rgb(220, 218, 218);
+    transform: scale(1.1);
 }
 
 .Logout {
