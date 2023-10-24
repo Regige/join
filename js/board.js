@@ -218,6 +218,11 @@ function deleteTask(id) {
     }
 }
 
+function addGuestTask() {
+        if (user == 'guest') {
+            showPopup('Cannot be deleted as a guest. Please create an account')
+        }
+}
 
 /**
  * This function loads the board card detail view
