@@ -18,7 +18,6 @@ function toggleCheckmark(elementId, elementIdNone) {
     }
 }
 
-
 function showSignUpHideSignUp(action) {
     if (action === 'show') {
         document.getElementById('sign-up').classList.remove('d-none');
@@ -49,10 +48,13 @@ function handleForgotPasswordFormSubmit() {
     document.getElementById('forgot-password-container').classList.add('d-none');
     document.getElementById('password-container').classList.remove('d-none');
     
-    // Zeige das Popup mit der Nachricht "Passwort erfolgreich zurückgesetzt"
     showPopupAndRedirect('Passwort erfolgreich zurückgesetzt', 'index.html');
     
     return false;
+}
+
+function showPopupAndRedirect(message) {
+    alert(message);
 }
 
 function validatePasswords() {
@@ -70,40 +72,6 @@ function validatePasswords() {
     }
 }
 
-function showPopupAndRedirect(message) {
-    alert(message);
-    // Wenn Sie den Benutzer nach dem Anzeigen des Popup-Fensters auf eine andere Seite umleiten möchten, 
-    // können Sie den folgenden Befehl verwenden und die URL entsprechend ändern.
-    // Zum Beispiel: window.location.href = 'https://www.example.com';
-}
-
-
-
-async function resetPassword(email, newPassword) {
-    // Durchsuche die Benutzerdatenbank nach dem Benutzer mit der angegebenen E-Mail-Adresse
-    const userIndex = users.findIndex(user => user.email === email);
-
-    if (userIndex === -1) {
-        showPopup('Benutzer mit dieser E-Mail-Adresse wurde nicht gefunden.');
-        return;
-    }
-
-    // Setze das neue Passwort für den Benutzer
-    users[userIndex].password = newPassword;
-
-    // Speichere die aktualisierte Benutzerliste in deinem Speichermechanismus (z.B. localStorage)
-    await setItem('users', JSON.stringify(users));
-
-    showPopupAndRedirect('Passwort wurde erfolgreich zurückgesetzt.');
-}
-
-
-
-
-
-
-
-
 function checkUserEmail() {
     let passwordEmail = document.getElementById('passwordEmail').value;
 
@@ -118,16 +86,10 @@ function checkUserEmail() {
 }
 
 function handleForgotPasswordFormSubmit() {
-    // Überprüfen Sie die E-Mail-Adresse
     checkUserEmail();
 
-    // Verhindert das tatsächliche Senden des Formulars
     return false;
 }
-
-
-
-
 
 function checkUserLogin() {
     if (user == undefined) {

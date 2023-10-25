@@ -165,7 +165,7 @@ body::-webkit-scrollbar-thumb {
     box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.7);
 }
 
-.Guest-button-div {
+.Guest-button {
     position: absolute;
     margin-bottom: -265px;
     margin-left: 130px;
