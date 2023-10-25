@@ -1,8 +1,25 @@
 let users = [];
 
 async function init() {
-    loadUsers();
+    loadUsersFromLocalStorage();
+    loadUsers(); 
 }
+
+
+function saveUsersToLocalStorage() {
+    localStorage.setItem('users', JSON.stringify(users));
+}
+
+function loadUsersFromLocalStorage() {
+    const storedUsers = localStorage.getItem('users');
+    if (storedUsers) {
+        users = JSON.parse(storedUsers);
+    } else {
+        users = [];
+    }
+}
+
+
 
 async function loadUsers() {
     try {
@@ -11,12 +28,14 @@ async function loadUsers() {
             users = parsedUsers;
         } else {
             console.error('Parsed users is not an array:', parsedUsers);
-            users = []; // Setze users zurück auf ein leeres Array
+            users = [];
         }
+        saveUsersToLocalStorage(); // Speichern Sie die `users` im LocalStorage.
     } catch (e) {
         console.error('Loading error:', e);
     }
 }
+
 
 
 async function register() {
