@@ -15,6 +15,7 @@ let hexColors = ['#FF7A00', '#9327FF', '#6E52FF', '#FC71FF', '#FFBB2B', '#1FD7C1
 
 async function initContacts() {
     await loadUserData();
+    loadFromLocalStorage();
     loadFromLocalStorageContacts();
     renderContacts();
 }
@@ -133,17 +134,17 @@ function backToContactsList() {
 }
 
 window.addEventListener("resize", function() {
-    if (window.matchMedia("(min-width: 701px)").matches) {
+    if (window.matchMedia("(min-width: 701px)").matches && document.URL.includes("contacts.html")) {
     document.getElementById('contacts-list-section').classList.remove('d-none');
   } 
-    if (window.matchMedia("(max-width: 700px)").matches) {
+    if (window.matchMedia("(max-width: 700px)").matches && document.URL.includes("contacts.html")) {
     document.getElementById('contacts-main').classList.add('d-none-700');
   } 
 })
 
 
 
-// Add new contacts - Button + PopUp
+// Button + PopUp (For Add new contacts)
 
 /**
  * This function starts the right function to either show the popup window for adding new contacts 
@@ -212,7 +213,7 @@ function stopClosing(event) {
 
 
 
-// change existing contact - Button + PopUp
+//  Button + PopUp (Change existing contact)
 
 /**
  * This function changes the renderPopupContact() function and creats the html code for an excisting 
@@ -233,7 +234,7 @@ function showPopupExistContact(i) {
 
 
 
-// Create new Contact
+// Create new Contact !!!
 
 /**
  * This function starts the necessary functions to create and save a new contact
@@ -259,10 +260,12 @@ async function createNewContact() {
         sortContactsList();
         renderAssignedToBt();
     } else {
+        let indexContact = contacts.length -1;
+        showContact(indexContact);
         renderContacts();
     };
 
-    showPopup('New Contact created');
+    showPopup('Contact succesfully created');
     }
 }
 
@@ -350,6 +353,8 @@ async function deleteContacts(i) {
     renderContacts();
     closeNewContacts();
     removeFromMainPage();
+    showPopup('Contact deleted');
+    deleteFromList(i);
     }
 }
 
@@ -362,6 +367,35 @@ function removeFromMainPage() {
 }
 
 
+function deleteFromList(i) {
+    let contactName = contacts[i]['name'];
+
+    for (let j = 0; j < list.length; j++) {
+        const task = list[j];
+        const users = task['task_user'];
+
+        for (let k = 0; k < users.length; k++) {
+            const user = users[k];
+            
+            if(user['full_name'] === contactName) {
+                let taskUsers = list[j]['task_user'];
+                taskUsers.splice(k,1);
+
+                let idIndex = list[j]['id'];
+                let taskTitle = list[j]['headline'];
+                let taskDescription = list[j]['Text'];
+                let assignedTo = taskUsers;
+                let dueDate = list[j]['date'];
+                let taskPrio = list[j]['priority'];
+                let taskCategory = list[j]['category'];
+                let subtasks = list[j]['subtasks'];
+                let taskBoard = list[j]['task_board'];
+
+                changeTask(j, idIndex, taskTitle, taskDescription, assignedTo, dueDate, taskPrio, taskCategory, subtasks, taskBoard);
+            }
+        }
+    }
+}
 
 // Save changed contact
 
@@ -383,11 +417,11 @@ async function saveChangedContact(i) {
     let logogram = getLogogram(contactNameAlterd);
     let contactColor = getContactColor();
 
-    await saveContactValues(i, contactName, contactEmail, contactPhone, contactNameAlterd, logogram, contactColor);
+    await saveContactValues(i, contactEmail, contactPhone, contactNameAlterd, logogram, contactColor);
     renderContacts();
     resetForm(contactName, contactEmail, contactPhone);
     closeNewContacts();
-    removeFromMainPage();
+    showContact(i);
     showPopup('Contact changed');
     }
 }
@@ -405,7 +439,7 @@ async function saveChangedContact(i) {
  * @param {string} contactColor This variable is the color for the contacts icon
  */
 
-async function saveContactValues(i, contactName, contactEmail, contactPhone, contactNameAlterd, logogram, contactColor) {
+async function saveContactValues(i, contactEmail, contactPhone, contactNameAlterd, logogram, contactColor) {
     let newContact = {
         'name': contactNameAlterd,
         'email': contactEmail.value,
@@ -417,37 +451,3 @@ async function saveContactValues(i, contactName, contactEmail, contactPhone, con
     contacts.splice(i, 1, newContact);
     await SaveInLocalStorageAndServer(user, contactsString, contacts);
 }
-
-
-let contactsGuestOld = [
-    {
-        'name': 'Anton Mayer',
-        'email': 'anton@gmail.com',
-        'phone': '+49 1111 111 11 1',
-        'logogram': 'AM'
-    },
-    {
-        'name': 'Anna Buk',
-        'email': 'anna@gmail.com',
-        'phone': '+49 2222 222 22 2',
-        'logogram': 'AB'
-    },
-    {
-        'name': 'Benedikt Ziegler',
-        'email': 'benedikt@gmail.com',
-        'phone': '+49 3333 333 33 3',
-        'logogram': 'BZ'
-    },
-    {
-        'name': 'Dara Maria Fischer',
-        'email': 'dara@gmail.com',
-        'phone': '+49 4444 444 44 4',
-        'logogram': 'DF'
-    },
-    {
-        'name': 'Markus Mayer-Schmidt',
-        'email': 'markus@gmail.com',
-        'phone': '+49 5555 555 55 5',
-        'logogram': 'MM'
-    },
-];
