@@ -432,6 +432,18 @@ body::-webkit-scrollbar-thumb {
     transform: scale(1.2);
 }
 
+.privacy_policy a{
+    text-decoration: none;
+    color: #29ABE2;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.privacy_policy a:hover{
+    transform: scale(1.1);
+    text-decoration: underline;
+}
+
 @media (max-width: 1000px) {
     .capaImg {
         top: 50px;
