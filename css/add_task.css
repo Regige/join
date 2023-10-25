@@ -107,14 +107,19 @@
     font-size: 20px;
     line-height: 24px;
     padding: 12px 0 12px 16px !important;
+    position: relative;
     width: 100%;
+    z-index: 1;
 }
 
 .task-contacts-list-to-assign {
     background-color: white;
-    padding-bottom: 16px;
-    overflow-y: scroll;
+    margin-bottom: -10px;
+    margin-top: -10px;
     max-height: 128px;
+    overflow-y: scroll;
+    padding-bottom: 16px;
+    position: relative;
     width: 100%;
 }
 
@@ -171,7 +176,12 @@
     flex: 1;
     padding: 12px 40px 12px 16px;
     width: 100%;
-    
+    border: unset;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+.task-prio-bt:hover {
+    cursor: pointer;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
 }
 .prio-u {
     background-image: url(/img/task-prio-u.svg);
@@ -350,6 +360,12 @@
     border: 1px solid #29ABE2;
     box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.3);
 }
+.task-bt-change {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    padding: 8px 40px 8px 8px !important;
+}
 
 /* Allg. */
 
@@ -361,6 +377,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.pos-rel {
+    position: relative;
 }
 
 
@@ -413,7 +432,7 @@
 
     .task-input-left {
         width: 640px;
-        margin-bottom: 30px;
+        margin-bottom: 48px;
     }
     .task-input-right {
         width: 640px;

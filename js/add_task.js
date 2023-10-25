@@ -3,171 +3,6 @@ let subtasks = [];
 let taskBoardField = "";
 
 
-/**
- * This function starts the functions to load all the necessary data
- */
-
-async function initAddTask() {
-    await loadUserData();
-    loadFromLocalStorage();
-    loadFromLocalStorageContacts();
-    loadStringFromLocalStorage();
-}
-
-
-//  Assigned To Field - render Contacts list 
-
-/**
- * This function handles the appearance of the assigned to Button
- */
-
-function showAssignedToBt() {
-    document.getElementById('task-contacts-list-to-assign').classList.remove('d-none');
-    document.getElementById('add-new-contact-bt').classList.remove('d-none');
-    let contactsListToAssignCon = document.getElementById('task-contacts-list-to-assign');
-
-    if(!contacts) {
-        contactsListToAssignCon.innerHTML = "";
-        contactsListToAssignCon.innerHTML = /*html*/`<p>&emsp; No contacts yet</p>`;
-    } else {
-        renderAssignedToBt();
-    }
-}
-
-/**
- * This function generates the html code for the assigned to Button with all the saved contacts.
- */
-
-function renderAssignedToBt() {
-    let contactsListToAssignCon = document.getElementById('task-contacts-list-to-assign');
-    contactsListToAssignCon.innerHTML = "";
-    for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
-        
-        contactsListToAssignCon.innerHTML += createAssignedToBt(i, contact);
-    }
-}
-
-
-//  Assigned To Field - Popup and Close Function 
-
-/**
- * This function closes the container with all the contacts listed.
- */
-
-function closeAssignedToField() {
-    document.getElementById('task-contacts-list-to-assign').classList.add('d-none');
-    document.getElementById('add-new-contact-bt').classList.add('d-none');
-}
-
-/**
- * This function stops closeAssignedToField() from closing when clicked on that particular element.
- * 
- * @param {*} event 
- */
-
-function stopClosing(event) {
-    event.stopPropagation();
-}
-
-
-// subtask input field
-
-/**
- * This function opens the subtext input by clicking on the subtask Button.
- */
-
-function changeToSubText() {
-    let subtaskButtonOpen = document.getElementById('task-sub-bt-open');
-    subtaskButtonOpen.classList.add('d-none');
-    let subtaskInputText = document.getElementById('task-sub-input-text-con');
-    subtaskInputText.classList.remove('d-none');
-}
-
-/**
- * This function deletes the input value.
- */
-
-function deleteInputText() {
-    document.getElementById('task-sub-input-text').value = "";
-}
-
-/**
- * This function saves the input value as an object in newSubtask and than within the array subtasks.
- */
-
-function saveInputText() {
-    let subtaskInput = document.getElementById('task-sub-input-text'); 
-
-    let newSubtask = {
-        'text': subtaskInput.value,
-        'completed': 0
-    }
-    subtasks.push(newSubtask);
-    subtaskInput.value = "";
-
-    renderInputText();
-}
-
-/**
- * The new subtask within the subtasks array is generated under the subtask Button
- */
-
-function renderInputText() {
-    let subtaskTextCon = document.getElementById('task-sub-text');
-    subtaskTextCon.innerHTML = "";
-
-    for (let i = 0; i < subtasks.length; i++) {
-        const subtask = subtasks[i];
-        
-        subtaskTextCon.innerHTML += createInputText(i, subtask);
-    }
-}
-
-/**
- * This function delets the subtask form the subtasks array and starts the
- * renderInputText() function again.
- * 
- * @param {number} i This is the index of the subtask
- */
-
-function deleteSubtask(i) {
-    subtasks.splice(i,1);
-
-    renderInputText();
-}
-
-/**
- * This fuction opens a new input field with the value of the choosen subtask to be changed.
- * 
- * @param {number} i This is the index of the subtask
- */
-
-function editSubtask(i) {
-    document.getElementById(`subtask-field-${i}`).classList.remove('d-none');
-    document.getElementById(`subtask-li-${i}`).classList.add('d-none');
-    let subtaskInputField = document.getElementById(`subtask-input-field-${i}`);
-    subtaskInputField.value = subtasks[i]['text'];
-}
-
-/**
- * This function saves the changed input value and renders the subtasks again.
- * 
- * @param {number} i This is the index of the subtask
- */
-
-function saveEditedSubtask(i) {
-    let subtaskInputField = document.getElementById(`subtask-input-field-${i}`);
-    subtasks[i]['text'] = subtaskInputField.value;
-
-    document.getElementById(`subtask-field-${i}`).classList.add('d-none');
-    document.getElementById(`subtask-li-${i}`).classList.remove('d-none');
-
-    renderInputText();
-}
-
-
-
 // Create new Task
 
 /**
@@ -191,7 +26,8 @@ async function createNewTask() {
     await saveNewTask(taskTitle, taskDescription, assignedTo, dueDate, taskCategory, idIndex, taskBoard);
     resetTaskForm();
     removeStringFromLocalStorage();
-    showPopup('Task created');
+    showPopup('Task added to board');
+    openHTML('/board.html');
     }
 }
 
@@ -225,6 +61,7 @@ async function saveNewTask(taskTitle, taskDescription, assignedTo, dueDate, task
 
     await SaveInLocalStorageAndServer(user, listString, list);
 }
+
 
 /**
  * This function empties all the input fileds from the form element
@@ -263,7 +100,7 @@ function getAssignedToUsers() {
                 'color': divIcon.style.backgroundColor,
                 'name': divIcon.innerHTML,
             });
-        }
+        } 
     });
 
     return assignedTo;
@@ -422,5 +259,143 @@ function getTaskBoardField() {
         return "to_do";
     } else {
         return taskBoardField;
+    }
+}
+
+
+
+// Edit Task
+
+function editTask(id) {
+    if(user === 'guest') {
+        showPopup('Cannot be changed as a guest. Please create an account');
+        closeNewContacts();
+    } else {
+        let index = getIndexTaskEdit(id);
+        changeBoardDetailCard(id, index);
+        let task = list[index];
+        let taskTitle = document.getElementById('task-title');
+        let taskDescription = document.getElementById('task-description');
+        let dueDate = document.getElementById('task-date');
+        let taskCategory = document.getElementById('category');
+        taskPrio = task['priority'];
+
+        setPrioButtonColor(taskPrio);
+        saveSubtasksListEdit(task);
+        renderInputText();
+
+        taskTitle.value = task['headline'];
+        taskDescription.value = task['text'];
+        dueDate.value = task['date'];
+        taskCategory.value = task['category']['text'];  
+}
+}
+
+
+function changeBoardDetailCard(id, i) {
+        let boardDetailBoxCon = document.getElementById('board_detail_box_content');
+        let cardStroy = document.getElementById(`Card_story${id}`); 
+        let editButton = document.getElementById('board_card_bt_edit');
+        document.getElementById('board_card_bt_delete').innerHTML = "";
+        boardDetailBoxCon.innerHTML = "";
+        cardStroy.innerHTML = "";
+        editButton.innerHTML = "";
+        
+        let formContainer = document.createElement("form");
+        let subButton = document.createElement("input");
+
+        formContainer.innerHTML = createAddTask();
+        boardDetailBoxCon.appendChild(formContainer);
+        formContainer.appendChild(subButton);
+
+        changeBoardAttribute(id, i, formContainer, subButton, );
+        changeBoardStyle(subButton, cardStroy, formContainer);
+}
+
+function changeBoardAttribute(id, i, formContainer, subButton) {
+        formContainer.setAttribute('onsubmit', `changeTask(${id}, ${i}); return false`);
+        formContainer.setAttribute('id', 'edit-task-form');
+        subButton.setAttribute('type', 'submit');
+        subButton.setAttribute('value', 'OK');
+}
+
+function changeBoardStyle(subButton, cardStroy, formContainer) {
+        subButton.classList.add('task-button');
+        subButton.classList.add('task-bt-create');
+        subButton.classList.add('task-bt-change');
+        cardStroy.classList.remove('board_detail_header');
+        formContainer.style = 'overflow-y:scroll; height:68vh;';
+        document.getElementById('board_detail_card').style = 'padding-bottom: 60px';
+        document.getElementById('task-input-left').style.width = '100%';
+        document.getElementById('task-input-right').style.width = '100%';
+        document.getElementById('task-hr').classList.add('d-none');
+}
+
+
+function getIndexTaskEdit(id) {
+        for (let i = 0; i < list.length; i++) {
+            const task = list[i];
+            if(id == task['id']) {
+                return i;
+            }
+        };
+}
+
+function saveSubtasksListEdit(task) {
+        subtasks = [];
+        let taskSubtasks = task['subtasks'];
+        for (let j = 0; j < taskSubtasks.length; j++) {
+            const subtask = taskSubtasks[j];
+                subtasks.push(subtask);
+        }
+}
+
+
+async function changeTask(id, i) {
+    let taskTitle = document.getElementById('task-title');
+    let taskDescription = document.getElementById('task-description');
+    let assignedTo = getAssignedToUsersEditTask(i);
+    let dueDate = document.getElementById('task-date');
+    let taskCategory = getTaskCategory(); 
+    let taskBoard = list[i]['task_board'];
+
+    await saveChangedTask(id, i, taskTitle, taskDescription, assignedTo, dueDate, taskCategory, taskBoard);
+
+    showPopup('Task changed');
+    closeBoardCard();
+    //render or
+    openHTML('/board.html');
+}
+
+async function saveChangedTask(id, i, taskTitle, taskDescription, assignedTo, dueDate, taskCategory, taskBoard) {
+        let changedTask = {
+        'id':id,
+        'headline': taskTitle.value,
+        'text': taskDescription.value,
+        'task_user': assignedTo,
+        'date': dueDate.value,
+        'priority': taskPrio,
+        'category': taskCategory,
+        'subtasks': subtasks,
+        'task_board': taskBoard,
+    }
+
+    list.splice(i, 1, changedTask);
+    await SaveInLocalStorageAndServer(user, listString, list);
+}
+
+
+function getAssignedToUsersEditTask(i) {
+    let assignedToUser = getAssignedToUsers(); 
+    let assignedTo = [];
+    if(assignedToUser.length === 0) {
+        let taskUsers = list[i]['task_user']
+        for (let j = 0; j < taskUsers.length; j++) {
+            const sglContacts = taskUsers[j];
+            assignedTo.push(sglContacts);
+        }
+        return assignedTo;
+    } else {
+        return assignedToUser;
     }
 }

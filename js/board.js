@@ -14,6 +14,7 @@ async function initBoard() {
  */
 async function loadTaskBoard() {
     loadFromLocalStorage();
+    loadFromLocalStorageContacts();
     filterTaskBoard('to_do');
     filterTaskBoard('in_progress');
     filterTaskBoard('await_feedback');
