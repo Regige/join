@@ -81,7 +81,7 @@ function checkUserEmail() {
         document.getElementById('forgot-password-container').classList.add('d-none');
         document.getElementById('password-container').classList.remove('d-none');
     } else {
-        showPopup('Diese E-Mail-Adresse ist nicht registriert. Bitte überprüfen Sie Ihre Eingabe oder registrieren Sie sich.');
+        showPopup('This email address is not registered. Please check your input or register.');
     }
 }
 
