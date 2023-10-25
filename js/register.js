@@ -83,7 +83,7 @@ async function processRegistration() {
         password: password1.value,
     });
     await setItem('users', JSON.stringify(users));
-    await loadStandardUserListAndContacts(email.value);
+    await loadStandardUserListAndContacts(email.value, name.value);
     showPopupAndRedirect('You have successfully registered.', 'index.html');
     resetForm();
 }
@@ -96,9 +96,24 @@ function resetForm() {
     document.getElementById('registerBtn').disabled = false;
 }
 
-async function loadStandardUserListAndContacts(user) {
+async function loadStandardUserListAndContacts(user, name) {
     let new_list = JSON.parse(await getItem('guest-list'));
     await setItem(user + '-list', new_list);
     let new_contact = JSON.parse(await getItem('guest-contacts'));
+    addUserToContacts(user, name, new_contact);
     await setItem(user + '-contacts', new_contact);
+}
+
+function addUserToContacts(user, name, new_contact) {
+    if(user !== 'guest') {
+        let nameAlterd = name.charAt(0).toUpperCase() + name.slice(1);
+        let ownContactData = {
+            'name': nameAlterd,
+            'email': user,
+            'phone': "",
+            'logogram': getLogogram(nameAlterd),
+            'hex_color': getContactColor()
+        }
+        return new_contact.push(ownContactData);
+    }
 }

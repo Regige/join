@@ -30,17 +30,20 @@ function renderContacts() {
     let contactsList = document.getElementById('contacts-list');
     contactsList.innerHTML = "";
     letters = [];
-
         sortContactsList();
 
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
         let firstCha = contact['logogram'].charAt(0);
-        
+        let myData = "";
         checkContactsListLetter(firstCha, contactsList);
-        renderContactsHTML(contactsList, i, contact);
+        if(user === contact['email']){
+            myData = "(me)";
+        } 
+        renderContactsHTML(contactsList, i, contact, myData);
     }}
 }
+
 
 /**
  * This function sorts the elements in the contacts array alphabetically
@@ -86,8 +89,8 @@ function renderContactsListLetters(firstCha, contactsList) {
  * @returns It returns the html code
  */
 
-function renderContactsHTML(contactsList, i, contact) {
-    return contactsList.innerHTML += createContactsHTML(i, contact);
+function renderContactsHTML(contactsList, i, contact, myData) {
+    return contactsList.innerHTML += createContactsHTML(i, contact, myData);
 }
 
 
@@ -245,6 +248,11 @@ async function createNewContact() {
         showPopup('Cannot be created as a guest. Please create an account');
         closeNewContacts();
     } else {
+        await saveNewContact();
+    }
+}
+
+async function saveNewContact() {
     let contactName = document.getElementById('popup-contact-name');
     let contactNameAlterd = contactName.value.charAt(0).toUpperCase() + contactName.value.slice(1);
     let contactEmail = document.getElementById('popup-contact-email');
@@ -260,13 +268,10 @@ async function createNewContact() {
         sortContactsList();
         renderAssignedToBt();
     } else {
-        let indexContact = contacts.length -1;
-        showContact(indexContact);
-        renderContacts();
+        updateContactsPage(contactNameAlterd);
     };
 
     showPopup('Contact succesfully created');
-    }
 }
 
 /**
@@ -332,7 +337,27 @@ function getContactColor() {
     return randomColor;
 }
 
+/**
+ * This function calls the render and showContact functions to show the changes
+ *  that have been made.
+ * 
+ * @param {string} contactNameAlterd This variable is the name of the contact
+ */
 
+function updateContactsPage(contactNameAlterd) {
+    renderContacts();
+    let index;
+        
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+        const contactName = contact['name'];
+        if(contactNameAlterd === contactName) {
+                index = i;
+        }
+    }
+
+    showContact(index);
+}
 
 // Delete Contacts
 
@@ -346,7 +371,11 @@ async function deleteContacts(i) {
     if(user === 'guest') {
         showPopup('Cannot be deleted as a guest. Please create an account');
         closeNewContacts();
+    } if(user === contacts[i]['email']) {
+        showPopup('Cannot be deleted.');
+        closeNewContacts();
     } else {
+    deleteFromList(i);
     contacts.splice(i,1);
 
     await SaveInLocalStorageAndServer(user, contactsString, contacts);
@@ -354,7 +383,6 @@ async function deleteContacts(i) {
     closeNewContacts();
     removeFromMainPage();
     showPopup('Contact deleted');
-    deleteFromList(i);
     }
 }
 
@@ -366,6 +394,12 @@ function removeFromMainPage() {
     document.getElementById('contact-clicked').innerHTML = "";
 }
 
+/**
+ * This function looks for the tasks with the deleted contact and
+ * deletes the contact form that task
+ * 
+ * @param {number} i This variable is the index of the contact
+ */
 
 function deleteFromList(i) {
     let contactName = contacts[i]['name'];
@@ -378,23 +412,36 @@ function deleteFromList(i) {
             const user = users[k];
             
             if(user['full_name'] === contactName) {
-                let taskUsers = list[j]['task_user'];
-                taskUsers.splice(k,1);
-
-                let idIndex = list[j]['id'];
-                let taskTitle = list[j]['headline'];
-                let taskDescription = list[j]['Text'];
-                let assignedTo = taskUsers;
-                let dueDate = list[j]['date'];
-                let taskPrio = list[j]['priority'];
-                let taskCategory = list[j]['category'];
-                let subtasks = list[j]['subtasks'];
-                let taskBoard = list[j]['task_board'];
-
-                changeTask(j, idIndex, taskTitle, taskDescription, assignedTo, dueDate, taskPrio, taskCategory, subtasks, taskBoard);
+                changeUsersInTask(users, k, task, j);
             }
         }
     }
+}
+
+/**
+ * This function defines all the elements of the choosen task again and removes the 
+ * choosen task_user. Than everything is send to saveChangedTask function.
+ * 
+ * @param {object} users 
+ * @param {number} k This varibale is the index of user within the task_user object
+ * @param {object} task 
+ * @param {number} j This variable is the index of the task within the list array
+ */
+
+function changeUsersInTask(users, k, task, j) {
+    users.splice(k,1);
+
+    let id = task['id'];
+    let taskTitle = task['headline'];
+    let taskDescription = task['text'];
+    let assignedTo = users;
+    let dueDate = task['date'];
+    taskPrio = task['priority'];
+    let taskCategory = task['category'];
+    subtasks = task['subtasks'];
+    let taskBoard = task['task_board'];
+
+    saveChangedTask(id, j, taskTitle, taskDescription, assignedTo, dueDate, taskCategory, taskBoard);    
 }
 
 // Save changed contact
@@ -409,7 +456,11 @@ async function saveChangedContact(i) {
     if(user === 'guest') {
         showPopup('Cannot be changed as a guest. Please create an account');
         closeNewContacts();
-    } else {
+    } if(user === contacts[i]['email']) {
+        showPopup('Cannot be changed.');
+        closeNewContacts();
+    }
+    else {
     let contactName = document.getElementById('popup-contact-name');
     let contactEmail = document.getElementById('popup-contact-email');
     let contactPhone = document.getElementById('popup-contact-phone');

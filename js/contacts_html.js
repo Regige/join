@@ -7,12 +7,12 @@ function createContactsListLetters(firstCha) {
 }
 
 
-function createContactsHTML(i, contact) {
+function createContactsHTML(i, contact, myData) {
     return /*html*/`
             <div id="contact-con-${i}" class="contacts-list-sgl-con" onclick="showContact(${i})">
                 <div class="contacts-color-icon" style="background-color:${contact['hex_color']};">${contact['logogram']}</div>
                 <div>
-                    <h3 class="contact-name" id="contact-${i}">${contact['name']}</h3>
+                    <h3 class="contact-name" id="contact-${i}">${contact['name']}&nbsp;${myData}</h3>
                     <div class="contact-email" id="email-${i}">${contact['email']}</div>
                 </div>
             </div>`;

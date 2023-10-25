@@ -1,3 +1,5 @@
+// Add Task page functionality
+
 /**
  * This function starts the functions to load all the necessary data
  */

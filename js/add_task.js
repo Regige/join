@@ -266,11 +266,30 @@ function getTaskBoardField() {
 
 // Edit Task
 
+/**
+ * This function starts the edit function for regular users or shows a popup for 
+ * guest users
+ * 
+ * @param {number} id This variable is the assigned id of the task
+ */
+
 function editTask(id) {
     if(user === 'guest') {
         showPopup('Cannot be changed as a guest. Please create an account');
         closeNewContacts();
     } else {
+        insertInputValues(id);
+}
+}
+
+/**
+ * This function calls changeBoardDetailCard() to change the appearance of the card
+ * and inserts the input values
+ * 
+ * @param {number} id This variable is the assigned id of the task
+ */
+
+function insertInputValues(id) {
         let index = getIndexTaskEdit(id);
         changeBoardDetailCard(id, index);
         let task = list[index];
@@ -287,10 +306,13 @@ function editTask(id) {
         taskTitle.value = task['headline'];
         taskDescription.value = task['text'];
         dueDate.value = task['date'];
-        taskCategory.value = task['category']['text'];  
-}
+        taskCategory.value = task['category']['text']; 
 }
 
+
+/**
+ * This function changes the appearance of the card to a form element
+ */
 
 function changeBoardDetailCard(id, i) {
         let boardDetailBoxCon = document.getElementById('board_detail_box_content');
@@ -312,12 +334,29 @@ function changeBoardDetailCard(id, i) {
         changeBoardStyle(subButton, cardStroy, formContainer);
 }
 
+/**
+ * This function sets attributes to the elements 
+ * 
+ * @param {number} id This variable is the assigned id of the task
+ * @param {number} i This variable is the task index in the list array
+ * @param {*} formContainer 
+ * @param {*} subButton 
+ */
+
 function changeBoardAttribute(id, i, formContainer, subButton) {
         formContainer.setAttribute('onsubmit', `changeTask(${id}, ${i}); return false`);
         formContainer.setAttribute('id', 'edit-task-form');
         subButton.setAttribute('type', 'submit');
         subButton.setAttribute('value', 'OK');
 }
+
+/**
+ * This function sets styles to the elements
+ * 
+ * @param {*} subButton 
+ * @param {*} cardStroy 
+ * @param {*} formContainer 
+ */
 
 function changeBoardStyle(subButton, cardStroy, formContainer) {
         subButton.classList.add('task-button');
@@ -331,6 +370,12 @@ function changeBoardStyle(subButton, cardStroy, formContainer) {
         document.getElementById('task-hr').classList.add('d-none');
 }
 
+/**
+ * This function gets the tasks index 
+ * 
+ * @param {number} id This variable is the assigned id of the task
+ * @returns The index of the task within the list array
+ */
 
 function getIndexTaskEdit(id) {
         for (let i = 0; i < list.length; i++) {
@@ -341,6 +386,12 @@ function getIndexTaskEdit(id) {
         };
 }
 
+/**
+ * This function saves the subtasks in the global array subtasks
+ * 
+ * @param {object} task 
+ */
+
 function saveSubtasksListEdit(task) {
         subtasks = [];
         let taskSubtasks = task['subtasks'];
@@ -350,6 +401,11 @@ function saveSubtasksListEdit(task) {
         }
 }
 
+/**
+ * 
+ * @param {number} id This variable is the assigned id of the task
+ * @param {number} i This variable is the task index in the list array
+ */
 
 async function changeTask(id, i) {
     let taskTitle = document.getElementById('task-title');
@@ -359,21 +415,36 @@ async function changeTask(id, i) {
     let taskCategory = getTaskCategory(); 
     let taskBoard = list[i]['task_board'];
 
-    await saveChangedTask(id, i, taskTitle, taskDescription, assignedTo, dueDate, taskCategory, taskBoard);
+    await saveChangedTask(id, i, taskTitle.value, taskDescription.value, assignedTo, dueDate.value, taskCategory, taskBoard);
 
-    showPopup('Task changed');
     closeBoardCard();
+    showPopup('Task changed');
     //render or
-    openHTML('/board.html');
+    // openHTML('/board.html');
+    loadTaskBoard();
 }
+
+/**
+ * This function saves the values within the variable changedTask and replaces the old task
+ * with the new inside the list array. Than everything is saved in localStorage and on the server agian.
+ * 
+ * @param {number} id This variable is the assigned id of the task
+ * @param {number} i This variable is the task index in the list array
+ * @param {string} taskTitle This variable is the task title
+ * @param {string} taskDescription This variable is the task text
+ * @param {object} assignedTo This variable is the task assigned users in an object
+ * @param {string} dueDate This variable is the due date
+ * @param {object} taskCategory This varibale is the category the task is assigned to
+ * @param {string} taskBoard This varibale is the category for the board fields
+ */
 
 async function saveChangedTask(id, i, taskTitle, taskDescription, assignedTo, dueDate, taskCategory, taskBoard) {
         let changedTask = {
         'id':id,
-        'headline': taskTitle.value,
-        'text': taskDescription.value,
+        'headline': taskTitle,
+        'text': taskDescription,
         'task_user': assignedTo,
-        'date': dueDate.value,
+        'date': dueDate,
         'priority': taskPrio,
         'category': taskCategory,
         'subtasks': subtasks,
@@ -384,6 +455,13 @@ async function saveChangedTask(id, i, taskTitle, taskDescription, assignedTo, du
     await SaveInLocalStorageAndServer(user, listString, list);
 }
 
+/**
+ * This function gets the assigned to users by either the checkbox input or
+ * if it wasn't changed, by the saved values inside the task object.
+ * 
+ * @param {number} i This variable is the task index in the list array
+ * @returns A object with the assigned to users
+ */
 
 function getAssignedToUsersEditTask(i) {
     let assignedToUser = getAssignedToUsers(); 
