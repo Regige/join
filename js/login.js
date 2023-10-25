@@ -8,7 +8,7 @@ async function login() {
         window.location.href = 'summary.html';
 
     } else {
-        document.getElementById("login-error").style.display = "block";
+        showPopup('Email and/or password are incorrect.');
     }
 }
 

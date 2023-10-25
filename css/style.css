@@ -136,13 +136,13 @@ body::-webkit-scrollbar-thumb {
     margin-top: 310px;
 }
 
-.password{
+.password {
     color: #29ABE2;
     font-size: 15px;
     cursor: pointer;
 }
 
-.password:hover{
+.password:hover {
     transform: scale(1.1);
     text-decoration: underline;
 }
@@ -165,9 +165,13 @@ body::-webkit-scrollbar-thumb {
     box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.7);
 }
 
-.Guest-button {
+.Guest-button-div {
     position: absolute;
-    top: 567px;
+    margin-bottom: -265px;
+    margin-left: 130px;
+}
+
+.Guest-button {
     border-radius: 5px;
     width: 160px;
     height: 42px;
@@ -175,7 +179,6 @@ body::-webkit-scrollbar-thumb {
     font-size: 20px;
     font-weight: bold;
     background-color: white;
-    margin-left: 130px;
     cursor: pointer;
 }
 
@@ -186,12 +189,14 @@ body::-webkit-scrollbar-thumb {
 }
 
 .SignupButton {
+    display: flex;
+    align-items: center;
     position: absolute;
     top: 75px;
     right: 120px;
 }
 
-.SignupBtn{
+.SignupBtn {
     margin-right: 20px;
 }
 
@@ -257,6 +262,7 @@ body::-webkit-scrollbar-thumb {
         z-index: -5;
     }
 }
+
 /* Login */
 
 /* Sign-up */
@@ -280,7 +286,7 @@ body::-webkit-scrollbar-thumb {
     cursor: pointer;
 }
 
-.arrow-img:hover{
+.arrow-img:hover {
     transform: scale(1.2);
 }
 
@@ -304,7 +310,7 @@ body::-webkit-scrollbar-thumb {
     color: #b0aeae;
 }
 
-.footer a:hover{
+.footer a:hover {
     transform: scale(1.1);
     color: #29ABE2;
 }
@@ -332,7 +338,7 @@ body::-webkit-scrollbar-thumb {
     color: rgb(227, 100, 100);
 }
 
-.register-error-message{
+.register-error-message {
     position: absolute;
     top: 46vh;
     margin-left: -167px;
@@ -340,7 +346,7 @@ body::-webkit-scrollbar-thumb {
     color: rgb(227, 100, 100);
 }
 
-.register-error-message-passwort{
+.register-error-message-passwort {
     position: absolute;
     margin-top: -5px;
     margin-left: -170px;
@@ -348,23 +354,23 @@ body::-webkit-scrollbar-thumb {
     color: rgb(227, 100, 100);
 }
 
-#msgBox{
-    position: absolute;
-    z-index: 5;
-    top: 17vh;
-    padding: 13px;
-    border-radius: 5px;
-    border: none;
-    font-size: 20px;
-    font-weight: bold;
-    background-color: #2A3647;
-    color: white;
-    margin-right: 10px;
+.sign-up-privacy {
+    color: #29ABE2;
+    font-size: 15px;
     cursor: pointer;
+    text-decoration: none;
+    margin-left: 6px;
+    margin-bottom: 1px;
+}
+
+.sign-up-privacy:hover{
+    transform: scale(1.1);
+    text-decoration: underline;
+    
 }
 /* Sign-up */
 
-.forgot-password-container{
+.forgot-password-container {
     background-color: white;
     height: 400px;
     width: 570px;
@@ -378,13 +384,13 @@ body::-webkit-scrollbar-thumb {
     z-index: 2;
 }
 
-.password-container{
+.password-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.password-btn{
+.password-btn {
     border-radius: 5px;
     width: 220px;
     height: 42px;
@@ -402,59 +408,96 @@ body::-webkit-scrollbar-thumb {
     box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.7);
 }
 
-.password-headline{
+.password-headline {
     font-size: 40px;
     margin-bottom: 5px;
     margin-top: -15px;
+    padding: 0px 50px 0px 50px;
 }
 
-.password-span{
+.password-span {
     margin-top: 30px;
     margin-bottom: 10px;
     padding: 0px 50px 0px 50px;
 }
 
-.password-arrow-img{
+.password-arrow-img {
     position: absolute;
     margin-left: -260px;
     margin-top: -10px;
     cursor: pointer;
 }
 
-.password-arrow-img:hover{
+.password-arrow-img:hover {
     transform: scale(1.2);
 }
 
-
-
-
-
-@media (max-width: 1000px){
-    .capaImg{
+@media (max-width: 1000px) {
+    .capaImg {
         top: 50px;
+        left: 50px;
         width: 50px;
     }
+
+    @keyframes logoAnimation {
+        from {
+            top: calc(100vh - 50%);
+            left: calc(100vw - 50%);
+            scale: 200%;
+        }
+    
+        to {
+            top: 50px;
+            left: 50px;
+        }
+    }
+
+
 }
 
 @media (max-width: 600px) {
     .SignupButton {
-        position: absolute;
-        top: 660px;
-        right: 120px;
-        display: flex;
-        flex-direction: column;
-        margin-right: 0px;
-        align-items: center;
+        top: auto;
+        bottom: 72px;
+        left: 50%;
+        transform: translateX(-50%);
+        right: unset;
+        width: 250px;
+        gap: 20px;
     }
 
-    .SignupBtn{
-        margin-bottom: 12px;
+    .footer {
+        margin-top: -30px;
+    }
+
+    .SignupBtn {
         margin-right: 0px;
     }
 
     .login {
         height: 420px;
         width: 420px;
+    }
+
+    .sign-up {
+        height: 550px;
+        width: 420px;
+    }
+
+    .forgot-password-container{
+        width: 420px;
+    }
+
+    .arrow-img {
+        margin-left: -60px;
+    }
+
+    .password-arrow-img{
+        margin-left: -140px;
+    }
+
+    .forgot-password-container{
+        height: 430px;
     }
 }
 
@@ -463,8 +506,60 @@ body::-webkit-scrollbar-thumb {
         width: 290px;
     }
 
+    .email-login input{
+        width: 290px;
+    }
+
     .login {
         height: 420px;
         width: 320px;
+    }
+
+    .sign-up {
+        height: 550px;
+        width: 320px;
+    }
+
+    .forgot-password-container{
+        width: 320px;
+    }
+
+    .register-error-message{
+        margin-left: -80px;
+    }
+
+    .register-error-message-passwort{
+        margin-left: -80px;
+    }
+
+    .capaImg {
+        top: 25px;
+        left: 25px;
+        width: 40px;
+    }
+
+    @keyframes logoAnimation {
+        from {
+            top: calc(100vh - 50%);
+            left: calc(100vw - 50%);
+            scale: 200%;
+        }
+    
+        to {
+            top: 25px;
+            left: 25px;
+        }
+    }
+
+    .password-img {
+        background-position: 260px 8px !important;
+    }
+
+    .mail-img {
+        background-position: 260px 8px !important;
+    }
+
+    .name-img {
+        background-position: 260px 8px !important;
     }
 }

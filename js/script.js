@@ -5,15 +5,19 @@
 function toggleCheckmark(elementId, elementIdNone) {
     const element = document.getElementById(elementId);
     const elementNone = document.getElementById(elementIdNone);
+    const checkbox = document.getElementById('privacyPolicyCheckbox');
 
     if (element.classList.contains('d-none')) {
         element.classList.remove('d-none');
         elementNone.classList.add('d-none');
+        checkbox.checked = false;
     } else {
         element.classList.add('d-none');
         elementNone.classList.remove('d-none');
+        checkbox.checked = true;
     }
 }
+
 
 function showSignUpHideSignUp(action) {
     if (action === 'show') {
@@ -34,7 +38,7 @@ function showForgotPassword(mode) {
     } else if (mode === 'reset') {
         document.getElementById('password-container').classList.remove('d-none');
         document.getElementById('forgot-password-container').classList.add('d-none');
-        showPopup('Hallo');
+        
     }
 }
 
@@ -44,28 +48,91 @@ function handleForgotPasswordFormSubmit() {
 
     document.getElementById('forgot-password-container').classList.add('d-none');
     document.getElementById('password-container').classList.remove('d-none');
+    
+    // Zeige das Popup mit der Nachricht "Passwort erfolgreich zurückgesetzt"
+    showPopupAndRedirect('Passwort erfolgreich zurückgesetzt', 'index.html');
+    
     return false;
 }
 
 function validatePasswords() {
     const password1 = document.getElementById('ForgotPassword1').value;
     const password2 = document.getElementById('ForgotPassword2').value;
-    const errorElement = document.getElementById("register-error2");
-
+    const errorMessage = document.getElementById('register-error2');
     if (password1 !== password2) {
-        errorElement.style.display = "block"; // Zeigt die Fehlermeldung an, wenn die Passwörter nicht übereinstimmen.
-        return false; // Stoppt den Formular-Submit
+        
+        showPopup('Your password does not match.')
+        return false; // Verhindert das Absenden des Formulars
     } else {
-        errorElement.style.display = "none"; // Versteckt die Fehlermeldung, falls sie zuvor angezeigt wurde.
-        // Weitere Logik kann hier hinzugefügt werden, falls erforderlich (z.B. Formular abschicken, Daten speichern, etc.)
-        return true; // Erlaubt den Formular-Submit
+        errorMessage.style.display = 'none';
+         // Hier wird das Passwort zurückgesetzt
+        return true; // Lässt das Formular absenden
     }
 }
 
-function checkUserLogin(){
-    if (user == undefined){
+function showPopupAndRedirect(message) {
+    alert(message);
+    // Wenn Sie den Benutzer nach dem Anzeigen des Popup-Fensters auf eine andere Seite umleiten möchten, 
+    // können Sie den folgenden Befehl verwenden und die URL entsprechend ändern.
+    // Zum Beispiel: window.location.href = 'https://www.example.com';
+}
+
+
+
+async function resetPassword(email, newPassword) {
+    // Durchsuche die Benutzerdatenbank nach dem Benutzer mit der angegebenen E-Mail-Adresse
+    const userIndex = users.findIndex(user => user.email === email);
+
+    if (userIndex === -1) {
+        showPopup('Benutzer mit dieser E-Mail-Adresse wurde nicht gefunden.');
+        return;
+    }
+
+    // Setze das neue Passwort für den Benutzer
+    users[userIndex].password = newPassword;
+
+    // Speichere die aktualisierte Benutzerliste in deinem Speichermechanismus (z.B. localStorage)
+    await setItem('users', JSON.stringify(users));
+
+    showPopupAndRedirect('Passwort wurde erfolgreich zurückgesetzt.');
+}
+
+
+
+
+
+
+
+
+function checkUserEmail() {
+    let passwordEmail = document.getElementById('passwordEmail').value;
+
+    let user = users.find(u => u.email === passwordEmail);
+    if (user) {
+        // Wenn der Benutzer in der Liste gefunden wurde
+        document.getElementById('forgot-password-container').classList.add('d-none');
+        document.getElementById('password-container').classList.remove('d-none');
+    } else {
+        showPopup('Diese E-Mail-Adresse ist nicht registriert. Bitte überprüfen Sie Ihre Eingabe oder registrieren Sie sich.');
+    }
+}
+
+function handleForgotPasswordFormSubmit() {
+    // Überprüfen Sie die E-Mail-Adresse
+    checkUserEmail();
+
+    // Verhindert das tatsächliche Senden des Formulars
+    return false;
+}
+
+
+
+
+
+function checkUserLogin() {
+    if (user == undefined) {
         console.log('fehler')
-        openPage('/index.html');       
+        openPage('/index.html');
     }
 }
 
