@@ -10,7 +10,7 @@ let screenWidthThreshold = 950;                                 // Screen resolu
 let lastScreenWidth = window.innerWidth;                        // Query the screen width at the start of the page
 let welcome_text;                                               // Set the welcome text variable
 
-user_name = 'Guest';                                        // Sets the username
+user_name = 'Guest';                                            // Sets the username
 
 /**
  * This function initializes the summary page

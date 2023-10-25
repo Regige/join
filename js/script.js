@@ -1,6 +1,3 @@
-//let users ={ 'email': 'test@test.de', 'password': 'test' };
-
-//const user = users.email;
 
 function toggleCheckmark(elementId, elementIdNone) {
     const element = document.getElementById(elementId);
@@ -132,6 +129,11 @@ function showPopupAndRedirect(text, url) {
     }, 3000);
 }
 
+/**
+ * This function generates a popup window which is displayed in the top center
+ * 
+ * @param {String} text text that should be displayed
+ */
 function showPopup(text) {
     var popup = document.createElement("div");
     popup.textContent = text;

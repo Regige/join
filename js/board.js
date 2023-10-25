@@ -1,8 +1,6 @@
 /**
  * This function initializes the board page
  */
-
-
 async function initBoard() {
     loadUserData();
     checkUserLogin();
