@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: board.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: board.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * This function initializes the board page
+ */
+async function initBoard() {
+    loadUserData();
+    checkUserLogin();
+    loadTaskBoard();
+}
+
+/**
+ * This function loads all Borad tasks
+ */
+async function loadTaskBoard() {
+    loadFromLocalStorage();
+    loadFromLocalStorageContacts();
+    filterTaskBoard('to_do');
+    filterTaskBoard('in_progress');
+    filterTaskBoard('await_feedback');
+    filterTaskBoard('done');
+    loadTouch();
+}
+
+/**
+ * This function loads all individual tasks filtered
+ * 
+ * @param {String} task_board This string contains the individual tasks
+ */
+function filterTaskBoard(task_board) {
+    let filter = list.filter(t => t['task_board'] == task_board);
+    if (filter.length) {
+        document.getElementById('board_' + task_board).innerHTML = "";
+        for (let i = 0; i &lt; filter.length; i++) {
+            const element = filter[i];
+            let priority_img = '../img/task-prio-' + element.priority.charAt(0).toLowerCase() + '.svg';
+            document.getElementById('board_' + task_board).innerHTML +=
+                createBoardTasks(element.id, element.category, element.headline, element.text, priority_img);
+            loadBoardUsers(element.id, element.task_user);
+            loadBoardSubtasks(element.id, element.subtasks);
+        }
+    } else {
+        taskBoardEmpty(task_board);
+    }
+}
+
+/**
+ * This function loads an empty task if none exists
+ * 
+ * @param {String} task This string contains the individual tasks
+ */
+function taskBoardEmpty(task, option) {
+    let tasktext = document.getElementById(`board_${task}_headline`).innerHTML;
+    if (option != true) {
+        document.getElementById('board_' + task).innerHTML = `
+        &lt;div class="board_no_task board_fbccco">No tasks ${tasktext}&lt;/div>`;
+    } else {
+        document.getElementById('board_' + task).innerHTML += `
+        &lt;div class="board_no_task board_fbccco">No tasks ${tasktext}&lt;/div>`;
+    }
+}
+
+/**
+ * This function loads all added users to the respective tasks
+ * 
+ * @param {Number} id           ID of the user in the task
+ * @param {String} task_user    User task of the individual tasks
+ */
+function loadBoardUsers(id, task_user) {
+    for (let i = 0; i &lt; task_user.length; i++) {
+        const element = task_user[i];
+        let task_user_number = `task_user${id}`;
+        document.getElementById(task_user_number).innerHTML += createBoardUsers(element.color, element.name);
+    };
+}
+
+/**
+ * This function loads all task to the respective tasks
+ * 
+ * @param {id} id           ID of the task 
+ * @param {String} subtasks Sub task of the individual tasks
+ */
+function loadBoardSubtasks(id, subtasks) {
+    var element_subtask = 0;
+    var element_percent = 0;
+    let subtask_number = `task_subtask${id}`;
+    for (let i = 0; i &lt; subtasks.length; i++) {
+        const element = subtasks[i];
+        element_subtask = element_subtask + element.completed;
+        element_percent = element.completed + element_percent;
+    }
+    if (subtasks.length) {
+        percent = (element_percent / subtasks.length) * 100;
+        document.getElementById(subtask_number).innerHTML = createBoardSubtasks(element_subtask, subtasks.length, percent);
+    } else {
+        document.getElementById(subtask_number).innerHTML = "";
+    };
+}
+
+/**
+ * This function uses the ID to determine the Dropbox
+ * 
+ * @param {Number} id Dropbox number
+ */
+function startDragging(id) {
+    draggedElement = id;
+}
+
+/**
+ * This function is a standard function from w3 schools which executes a drop event
+ * 
+ * @param {String} event Standard string from W3 schools
+ */
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+/**
+ * This function loads the respective Dropbox into the released Dropbox and saves it in the local storag
+ * 
+ * @param {String} category Submission of the task as a string
+ */
+function moveTo(category) {
+    list[draggedElement]['task_board'] = category;
+    SaveInLocalStorageAndServer(user, 'list', list);
+    initBoard();
+}
+
+/**
+ * This function lights up the Dropbox window
+ * 
+ * @param {Number} id ID of Box
+ */
+function highlight(id) {
+    document.getElementById(id).classList.add('board_box_highlight');
+}
+
+/**
+ * This function removes the highlight of the Dropbox window
+ * 
+ * @param {Number} id ID of Box
+ */
+function removeHighlight(id) {
+    document.getElementById(id).classList.remove('board_box_highlight');
+}
+
+/**
+ * This function starts the search function in the Board Task area
+ */
+function searchAllNote() {
+    var search = document.getElementById('search_board').value;
+    search = search.toLowerCase();
+    let found = 0;
+    for (let i = 0; i &lt; list.length; i++) {
+        const element = list[i];
+        found = searchNote(element.id, search, found, element.headline, element.text);
+    };
+}
+
+/**
+ * This function searches the entire task board for the input
+ * 
+ * @param {Number} i        ID in which task is being searched
+ * @param {String} search   The search text
+ * @param {Number} found    Indicates how many were found
+ * @param {String} headline Search the heading
+ * @param {String} text     Search the text
+ * @returns                 returns the found element
+ */
+function searchNote(i, search, found, headline, text) {
+    if (headline.toLowerCase().includes(search) || text.toLowerCase().includes(search)) {
+        document.getElementById(i).classList.remove('dn');
+        found++;
+    } else {
+        document.getElementById(i).classList.add('dn');
+    };
+    return found;
+}
+
+
+/**
+ * This function is needed to close a DIV container in the background
+ * 
+ * @param {String} event Standard string from W3 schools
+ */
+function notClose(event) {
+    event.stopPropagation();
+}
+
+/**
+ * This function opens the detail boardtask view
+ */
+function closeBoardCard() {
+    document.getElementById('board_detail').innerHTML = "";
+    loadTaskBoard();
+    document.getElementById('board_body').classList.remove('board_fixed');
+}
+
+
+/**
+ * This function deletes a task from the list based on the ID
+ * 
+ * @param {Number} id ID for Tasks
+ */
+function deleteTask(id) {
+    if (user != 'guest') {
+        for (let i = 0; i &lt; list.length; i++) {
+            const element = list[i];
+            if (id == element.id) {
+                list.splice(i, 1);
+            }
+        }
+        SaveInLocalStorageAndServer(user, listString, list);
+        closeBoardCard();
+        loadTaskBoard();
+        showPopup("Task deleted");
+    } else {
+        showPopup('Cannot be deleted as a guest. Please create an account')
+    }
+}
+
+function addGuestTask() {
+        if (user == 'guest') {
+            showPopup('Cannot be deleted as a guest. Please create an account')
+        }
+}
+
+/**
+ * This function loads the board card detail view
+ * 
+ * @param {Number} id ID of TTasks
+ */
+function loadBoardCard(id) {
+    document.getElementById('board_body').classList.add('board_fixed');
+    for (let i = 0; i &lt; list.length; i++) {
+        const element = list[i];
+        if (element.id == id) {
+            generateTaskData(element);
+            document.getElementById('board_detail').innerHTML = createBoradCard(id, story, story_bg, headline, text, date, priority, priority_img);
+            createBordCardUsers(id, element.task_user);
+            createBordCardSubtasks(id, element.subtasks);
+        }
+    }
+}
+
+/**
+ * This function loads the data of the selected task and then returns it
+ * 
+ * @param {String} element  Data for Task 
+ * @returns                 returns the completed generated task
+ */
+function generateTaskData(element) {
+    story = element.category.text;
+    story_bg = element.category.color;
+    headline = element.headline;
+    text = element.text;
+    date = element.date;
+    priority = element.priority;
+    priority_img = '../img/task-prio-' + element.priority.charAt(0).toLowerCase() + '.svg'
+    return;
+}
+
+/**
+ * This function creates the associated users in the detail board map
+ * 
+ * @param {Number} id       ID for Card
+ * @param {String} users    User for Card
+ */
+function createBordCardUsers(id, users) {
+    document.getElementById(`board-card-users${id}`).innerHTML = "";
+    if (users.length >= 1) {
+        document.getElementById(`board-card-users${id}`).innerHTML = 'Assigned To:';
+        for (let i = 0; i &lt; users.length; i++) {
+            const element = users[i];
+            document.getElementById(`board-card-users${id}`).innerHTML += createBoardCardUsers(element.full_name, element.name, element.color)
+        }
+    }
+}
+
+/**
+ * This function creates the individual subtasks in the board task detail view
+ * 
+ * @param {Number} id           ID for Card
+ * @param {String} subtasks     Subtask for Card
+ */
+function createBordCardSubtasks(id, subtasks) {
+    document.getElementById(`board-card-subtasks${id}`).innerHTML = "";
+    if (subtasks.length >= 1) {
+        document.getElementById(`board-card-subtasks${id}`).innerHTML = 'Subtasks';
+        for (let i = 0; i &lt; subtasks.length; i++) {
+            const element = subtasks[i];
+            if (element.completed == 1) {
+                var completed = '../img/Check button.svg';
+            } else {
+                var completed = '../img/Check button none.svg';
+            }
+            document.getElementById(`board-card-subtasks${id}`).innerHTML += createBoardCardSubtaks(id, i, element.completed, element.text, completed);
+        }
+    }
+    loadBoardSubtasks(id, subtasks);
+}
+
+
+/**
+ * This function asks whether the individual substacks have already been completed. These are then saved locally
+ * 
+ * @param {Number} id ID of the Task
+ * @param {*} i       ID of the Subtask
+ * @param {*} status  status of the individual task
+ */
+function toggelSubtaskCompleted(id, i, status) {
+    if (status == 1) {
+        list[id].subtasks[i].completed = 0;
+    } else {
+        list[id].subtasks[i].completed = 1;
+    }
+    createBordCardSubtasks(id, list[id]['subtasks'])
+    SaveInLocalStorageAndServer(user, listString, list);
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#GreetingAfterTime">GreetingAfterTime</a></li><li><a href="global.html#OneStartexecuteOnScreenWidthChange">OneStartexecuteOnScreenWidthChange</a></li><li><a href="global.html#SaveDataInLocalStorageFromServer">SaveDataInLocalStorageFromServer</a></li><li><a href="global.html#SaveInLocalStorageAndServer">SaveInLocalStorageAndServer</a></li><li><a href="global.html#addStart">addStart</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#autoSrcoll">autoSrcoll</a></li><li><a href="global.html#backToContactsList">backToContactsList</a></li><li><a href="global.html#calcCounterAllTasks">calcCounterAllTasks</a></li><li><a href="global.html#calcCounterTasks">calcCounterTasks</a></li><li><a href="global.html#calcPositionTasks">calcPositionTasks</a></li><li><a href="global.html#calcPositionTasksAwaitFeedback">calcPositionTasksAwaitFeedback</a></li><li><a href="global.html#calcPositionTasksDone">calcPositionTasksDone</a></li><li><a href="global.html#calcPositionTasksInProgess">calcPositionTasksInProgess</a></li><li><a href="global.html#calcPositionTasksToDo">calcPositionTasksToDo</a></li><li><a href="global.html#changeBoardAttribute">changeBoardAttribute</a></li><li><a href="global.html#changeBoardDetailCard">changeBoardDetailCard</a></li><li><a href="global.html#changeBoardStyle">changeBoardStyle</a></li><li><a href="global.html#changeTask">changeTask</a></li><li><a href="global.html#changeToSubText">changeToSubText</a></li><li><a href="global.html#changeUsersInTask">changeUsersInTask</a></li><li><a href="global.html#checkContactsListLetter">checkContactsListLetter</a></li><li><a href="global.html#checkTouchEnd">checkTouchEnd</a></li><li><a href="global.html#clacDateUrgent">clacDateUrgent</a></li><li><a href="global.html#clearLocalStorage">clearLocalStorage</a></li><li><a href="global.html#closeAssignedToField">closeAssignedToField</a></li><li><a href="global.html#closeBoardCard">closeBoardCard</a></li><li><a href="global.html#closeNewContacts">closeNewContacts</a></li><li><a href="global.html#createAllTaskCounter">createAllTaskCounter</a></li><li><a href="global.html#createBordCardSubtasks">createBordCardSubtasks</a></li><li><a href="global.html#createBordCardUsers">createBordCardUsers</a></li><li><a href="global.html#createNewContact">createNewContact</a></li><li><a href="global.html#createNewTask">createNewTask</a></li><li><a href="global.html#defineNewTask">defineNewTask</a></li><li><a href="global.html#deleteContacts">deleteContacts</a></li><li><a href="global.html#deleteFromList">deleteFromList</a></li><li><a href="global.html#deleteInputText">deleteInputText</a></li><li><a href="global.html#deleteSubtask">deleteSubtask</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#editSubtask">editSubtask</a></li><li><a href="global.html#editTask">editTask</a></li><li><a href="global.html#empty_box">empty_box</a></li><li><a href="global.html#executeOnScreenWidthChange">executeOnScreenWidthChange</a></li><li><a href="global.html#filterTaskBoard">filterTaskBoard</a></li><li><a href="global.html#formatDateUrgent">formatDateUrgent</a></li><li><a href="global.html#generateTaskData">generateTaskData</a></li><li><a href="global.html#getAssignedToUsers">getAssignedToUsers</a></li><li><a href="global.html#getAssignedToUsersEditTask">getAssignedToUsersEditTask</a></li><li><a href="global.html#getContactColor">getContactColor</a></li><li><a href="global.html#getFreeIdIndex">getFreeIdIndex</a></li><li><a href="global.html#getIdIndex">getIdIndex</a></li><li><a href="global.html#getIndexTaskEdit">getIndexTaskEdit</a></li><li><a href="global.html#getItem">getItem</a></li><li><a href="global.html#getLogogram">getLogogram</a></li><li><a href="global.html#getTaskBoardField">getTaskBoardField</a></li><li><a href="global.html#getTaskCategory">getTaskCategory</a></li><li><a href="global.html#highlight">highlight</a></li><li><a href="global.html#initAddTask">initAddTask</a></li><li><a href="global.html#initBoard">initBoard</a></li><li><a href="global.html#initContacts">initContacts</a></li><li><a href="global.html#initsummary">initsummary</a></li><li><a href="global.html#insertInputValues">insertInputValues</a></li><li><a href="global.html#loadBoardCard">loadBoardCard</a></li><li><a href="global.html#loadBoardSubtasks">loadBoardSubtasks</a></li><li><a href="global.html#loadBoardUsers">loadBoardUsers</a></li><li><a href="global.html#loadFromLocalStorage">loadFromLocalStorage</a></li><li><a href="global.html#loadFromLocalStorageContacts">loadFromLocalStorageContacts</a></li><li><a href="global.html#loadStringFromLocalStorage">loadStringFromLocalStorage</a></li><li><a href="global.html#loadSummaryCategory">loadSummaryCategory</a></li><li><a href="global.html#loadSummaryTask">loadSummaryTask</a></li><li><a href="global.html#loadTaskBoard">loadTaskBoard</a></li><li><a href="global.html#loadTouch">loadTouch</a></li><li><a href="global.html#loadUserData">loadUserData</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#noTasksTouch">noTasksTouch</a></li><li><a href="global.html#notClose">notClose</a></li><li><a href="global.html#removeFromMainPage">removeFromMainPage</a></li><li><a href="global.html#removeHighlight">removeHighlight</a></li><li><a href="global.html#removeStringFromLocalStorage">removeStringFromLocalStorage</a></li><li><a href="global.html#renderAssignedToBt">renderAssignedToBt</a></li><li><a href="global.html#renderContacts">renderContacts</a></li><li><a href="global.html#renderContactsHTML">renderContactsHTML</a></li><li><a href="global.html#renderContactsListLetters">renderContactsListLetters</a></li><li><a href="global.html#renderInputText">renderInputText</a></li><li><a href="global.html#renderPopupContact">renderPopupContact</a></li><li><a href="global.html#renderSglContactHTML">renderSglContactHTML</a></li><li><a href="global.html#resetForm">resetForm</a></li><li><a href="global.html#resetTaskForm">resetTaskForm</a></li><li><a href="global.html#saveChangedContact">saveChangedContact</a></li><li><a href="global.html#saveChangedContactFunctions">saveChangedContactFunctions</a></li><li><a href="global.html#saveChangedTask">saveChangedTask</a></li><li><a href="global.html#saveContactValues">saveContactValues</a></li><li><a href="global.html#saveEditedSubtask">saveEditedSubtask</a></li><li><a href="global.html#saveInputText">saveInputText</a></li><li><a href="global.html#saveNewContactValues">saveNewContactValues</a></li><li><a href="global.html#saveNewTask">saveNewTask</a></li><li><a href="global.html#saveStringInLocalStorage">saveStringInLocalStorage</a></li><li><a href="global.html#saveSubtasksListEdit">saveSubtasksListEdit</a></li><li><a href="global.html#searchAllNote">searchAllNote</a></li><li><a href="global.html#searchNote">searchNote</a></li><li><a href="global.html#setItem">setItem</a></li><li><a href="global.html#setMonth">setMonth</a></li><li><a href="global.html#setPrioButtonColor">setPrioButtonColor</a></li><li><a href="global.html#setTaskPrio">setTaskPrio</a></li><li><a href="global.html#showAssignedToBt">showAssignedToBt</a></li><li><a href="global.html#showContact">showContact</a></li><li><a href="global.html#showPopupContact">showPopupContact</a></li><li><a href="global.html#showPopupContactContainer">showPopupContactContainer</a></li><li><a href="global.html#showPopupContactContent">showPopupContactContent</a></li><li><a href="global.html#showPopupExistContact">showPopupExistContact</a></li><li><a href="global.html#showPopupSlider">showPopupSlider</a></li><li><a href="global.html#sortContactsList">sortContactsList</a></li><li><a href="global.html#startDragging">startDragging</a></li><li><a href="global.html#stopClosing">stopClosing</a></li><li><a href="global.html#summaryIconChangeHover">summaryIconChangeHover</a></li><li><a href="global.html#summaryIconChangeOut">summaryIconChangeOut</a></li><li><a href="global.html#taskBoardEmpty">taskBoardEmpty</a></li><li><a href="global.html#toggelSubtaskCompleted">toggelSubtaskCompleted</a></li><li><a href="global.html#touchElementStyle">touchElementStyle</a></li><li><a href="global.html#touchEnd">touchEnd</a></li><li><a href="global.html#touchHighlight">touchHighlight</a></li><li><a href="global.html#touchMove">touchMove</a></li><li><a href="global.html#updateContactsPage">updateContactsPage</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Oct 26 2023 12:58:25 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
