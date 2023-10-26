@@ -1,14 +1,24 @@
 let users = [];
 
+/**
+ * Initialize the application by loading users from local storage and any external source.
+ * @returns {Promise<void>}
+ */
 async function init() {
     loadUsersFromLocalStorage();
     loadUsers(); 
 }
 
+/**
+ * Save the current users array to local storage.
+ */
 function saveUsersToLocalStorage() {
     localStorage.setItem('users', JSON.stringify(users));
 }
 
+/**
+ * Load users from local storage and update the users array.
+ */
 function loadUsersFromLocalStorage() {
     let storedUsers = localStorage.getItem('users');
     if (storedUsers) {
@@ -18,6 +28,10 @@ function loadUsersFromLocalStorage() {
     }
 }
 
+/**
+ * Load users from an external source, update the users array, and then save to local storage.
+ * @returns {Promise<void>}
+ */
 async function loadUsers() {
     try {
         let parsedUsers = JSON.parse(await getItem('users'));
@@ -33,6 +47,10 @@ async function loadUsers() {
     }
 }
 
+/**
+ * Handle the registration process for a new user.
+ * @returns {Promise<void>}
+ */
 async function register() {
     if (!validateRegistrationFields()) {
         return;
@@ -41,6 +59,10 @@ async function register() {
     await processRegistration();
 }
 
+/**
+ * Validate the registration form fields.
+ * @returns {boolean} Whether the form fields are valid or not.
+ */
 function validateRegistrationFields() {
     let checkbox = document.getElementById('privacyPolicyCheckbox');
     if (!checkbox.checked) {
@@ -65,6 +87,10 @@ function validateRegistrationFields() {
     return true;
 }
 
+/**
+ * Process the registration of a new user.
+ * @returns {Promise<void>}
+ */
 async function processRegistration() {
     let email = document.getElementById('emailregister');
     let password1 = document.getElementById('passwordregister1');
@@ -83,6 +109,9 @@ async function processRegistration() {
     resetFormValue();
 }
 
+/**
+ * Reset the registration form values.
+ */
 function resetFormValue() {
     document.getElementById('nameregister').value = '';
     document.getElementById('emailregister').value = '';
@@ -91,6 +120,12 @@ function resetFormValue() {
     document.getElementById('registerBtn').disabled = false;
 }
 
+/**
+ * Load a standard user list and contacts for the provided user and name.
+ * @param {string} user - The email of the user.
+ * @param {string} name - The name of the user.
+ * @returns {Promise<void>}
+ */
 async function loadStandardUserListAndContacts(user, name) {
     let new_list = JSON.parse(await getItem('guest-list'));
     await setItem(user + '-list', new_list);
@@ -99,6 +134,13 @@ async function loadStandardUserListAndContacts(user, name) {
     await setItem(user + '-contacts', new_contact);
 }
 
+/**
+ * Add a user to the provided contacts list.
+ * @param {string} user - The email of the user.
+ * @param {string} name - The name of the user.
+ * @param {Array} new_contact - The contacts list to which the user should be added.
+ * @returns {number} The new length of the contacts list after adding the user.
+ */
 function addUserToContacts(user, name, new_contact) {
     if(user !== 'guest') {
         let nameAlterd = name.charAt(0).toUpperCase() + name.slice(1);
