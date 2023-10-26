@@ -14,6 +14,15 @@ async function createNewTask() {
         showPopup('Cannot be saved as a guest. Please create an account');
         closeNewContacts();
     } else {
+        await defineNewTask();
+    }
+}
+
+/**
+ * This function defines the new Task values and calls all the neccessary functions.
+ */
+
+async function defineNewTask() {
     let taskTitle = document.getElementById('task-title');
     let taskDescription = document.getElementById('task-description');
     let assignedTo = getAssignedToUsers();
@@ -22,13 +31,11 @@ async function createNewTask() {
     let idIndex = getIdIndex();
     let taskBoard = getTaskBoardField();
     
-
     await saveNewTask(taskTitle, taskDescription, assignedTo, dueDate, taskCategory, idIndex, taskBoard);
     resetTaskForm();
     removeStringFromLocalStorage();
     showPopup('Task added to board');
     openHTML('/board.html');
-    }
 }
 
 /**
@@ -416,11 +423,8 @@ async function changeTask(id, i) {
     let taskBoard = list[i]['task_board'];
 
     await saveChangedTask(id, i, taskTitle.value, taskDescription.value, assignedTo, dueDate.value, taskCategory, taskBoard);
-
     closeBoardCard();
     showPopup('Task changed');
-    //render or
-    // openHTML('/board.html');
     loadTaskBoard();
 }
 

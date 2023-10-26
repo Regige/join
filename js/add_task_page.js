@@ -36,6 +36,7 @@ function showAssignedToBt() {
         contactsListToAssignCon.innerHTML = "";
         contactsListToAssignCon.innerHTML = /*html*/`<p>&emsp; No contacts yet</p>`;
     } else {
+    sortContactsList();
     renderAssignedToBt();
     }
 }
@@ -82,21 +83,6 @@ function stopClosing(event) {
 }
 
 
-// function showAssignedToIcons() {
-//     document.querySelectorAll('[type="checkbox"]').forEach(item => {
-//         if(item.checked === true) { 
-//             let divSib = item.previousElementSibling;
-//             let divIcon = divSib.firstElementChild;
-//             let divIconColor = divIcon.style.backgroundColor;
-//             let divIconLogogram = divIcon.innerHTML;
-
-//         let IconCon = document.getElementById('task-assigned-to-icon-shown');
-//         IconCon += /*html*/`
-//         <div style="background-color:${divIconColor};" class="task-contacts-color-icon">${divIconLogogram}</div>`;
-            // createAssignedToIcon(divIconColor, divIconLogogram);
-//         } 
-//     });
-// }
 
 // subtask input field
 

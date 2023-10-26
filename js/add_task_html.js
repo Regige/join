@@ -26,7 +26,6 @@ function createAddTask() {
                   </div>
                 </div>
               </label>
-              <!-- <div id="task-assigned-to-icon-shown"></div> -->
             </div>
             <div id="task-hr" class="task-hr"></div>
             <div id="task-input-right" class="task-input-right">
@@ -94,11 +93,6 @@ function createAssignedToBt(i, contact) {
             </div>`;
 }
 
-// function createAssignedToIcon(divIconColor, divIconLogogram) {
-//     return /*html*/`
-//         <div style="background-color:${divIconColor};" class="task-contacts-color-icon">${divIconLogogram}</div>
-//     `
-// }
 
 function createInputText(i, subtask) {
     return /*html*/`

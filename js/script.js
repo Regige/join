@@ -91,7 +91,7 @@ function handleForgotPasswordFormSubmit() {
 function checkUserLogin() {
     if (user == undefined) {
         console.log('fehler')
-        openPage('/index.html');
+        openPage('index.html');
     }
 }
 

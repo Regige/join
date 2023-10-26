@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join/Summary</title>
+    <link rel="icon" href="./img/Logo_for_Favicon.png" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/fonts.css" />
+    <link rel="stylesheet" href="./css/summary.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/sidebar.css" />
+    <script src="./js/storage.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/includeHTML.js"></script>
+    <script src="./js/summary.js"></script>
+  </head>
+
+  <body onload="includeHTML();initsummary()">
+    <div w3-include-html="/templates/header.html"></div>
+    <div w3-include-html="/templates/sidebar.html"></div>
+    <div id="summary_body" class="summary_body">
+      <div class="summary_container summary_fbfsco">
+        <div class="summary_header">
+          <div class="summary_header_big">
+            <div class="summary_fbfsc">
+              <p class="summary_headline_left">Join 360</p>
+
+              <svg
+                style="margin-left: 30px; margin-right: 30px"
+                width="4"
+                height="63"
+                viewBox="0 0 4 63"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2 2V61"
+                  stroke="#29ABE2"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+              </svg>
+
+              <p class="summary_headline_right">Key Metrics at a Glance</p>
+            </div>
+          </div>
+          <div class="summary_header_small">
+            <div class="summary_fbcco">
+              <div>
+                <p
+                  style="margin-bottom: 5px; margin-top: 15px"
+                  class="summary_headline_left"
+                >
+                  Join 360
+                </p>
+              </div>
+              <div class="summary_headline_right">Key Metrics at a Glance</div>
+              <svg
+                style="margin-top: 10px"
+                width="94"
+                height="4"
+                viewBox="0 0 94 4"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M92 2L2 2"
+                  stroke="#29ABE2"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="summary_tasks_layout">
+          <div class="summary_fbfsc">
+            <div class="summary_fbcco summary_task">
+              <div class="summary_fbsbc">
+                <div
+                  onclick="openHTML('/board.html')"
+                  onmouseover="summaryIconChangeHover('pen_icon')"
+                  onmouseout="summaryIconChangeOut('pen_icon')"
+                  class="summary_left_start summary_fbcc summary_box_margin"
+                >
+                  <div>
+                    <img
+                      id="summary_edit_icon"
+                      class="summary_icon"
+                      src="./img/pen_icon.svg"
+                      alt="Edit-Icon"
+                    />
+                  </div>
+                  <div class="summary_fbcco">
+                    <div id="summary-to-do" class="summary_number_font">0</div>
+                    <div class="summary_text_font">To-do</div>
+                  </div>
+                </div>
+                <div
+                  onclick="openHTML('/board.html')"
+                  onmouseover="summaryIconChangeHover('check_icon')"
+                  onmouseout="summaryIconChangeOut('check_icon')"
+                  class="summary_left_start summary_fbcc summary_box_margin"
+                >
+                  <div>
+                    <img
+                      id="summary_check_icon"
+                      class="summary_icon"
+                      src="./img/check_icon.svg"
+                      alt="Check-Icon"
+                    />
+                  </div>
+                  <div class="summary_fbcco">
+                    <div id="summary-done" class="summary_number_font">0</div>
+                    <div class="summary_text_font">Done</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="summary_fbcc">
+                <div
+                  onclick="openHTML('/board.html')"
+                  class="summary_left_center summary_fbfsc summary_box_margin"
+                >
+                  <div class="summary_left_start_center summary_fbcc">
+                    <div>
+                      <img
+                        class="summary_icon"
+                        src="./img/urgent_icon.svg"
+                        alt="Edit-Icon"
+                      />
+                    </div>
+                    <div class="">
+                      <div id="summary-urgent" class="summary_number_font">
+                        0
+                      </div>
+                      <div class="summary_text_font">Urgent</div>
+                    </div>
+                  </div>
+                  <div class="summary_fbfsc">
+                    <div>
+                      <svg
+                        class="summary_svg_center"
+                        viewBox="0 0 2 106"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1 1.98828V104.011"
+                          stroke="#D1D1D1"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                        />
+                      </svg>
+                    </div>
+                    <div class="summary_fbscc">
+                      <div id="urgent-date" class="summary_text_date">-</div>
+                      <div>Upcoming Deadline</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="summary_fbsbc">
+                <div
+                  onclick="openHTML('/board.html')"
+                  class="summary_left_ende summary_fbcc summary_box_margin"
+                >
+                  <div class="summary_fbcco">
+                    <div id="summary-all-tasks" class="summary_number_font">
+                      0
+                    </div>
+                    <div class="summary_text_font summary_left_ende-box">
+                      Tasks in Board
+                    </div>
+                  </div>
+                </div>
+                <div
+                  onclick="openHTML('/board.html')"
+                  class="summary_left_ende summary_fbcc summary_box_margin"
+                >
+                  <div class="summary_fbcco">
+                    <div id="summary-in-progess" class="summary_number_font">
+                      0
+                    </div>
+                    <div class="summary_text_font summary_left_ende-box">
+                      Tasks in Progess
+                    </div>
+                  </div>
+                </div>
+                <div
+                  onclick="openHTML('/board.html')"
+                  class="summary_left_ende summary_fbcc summary_box_margin"
+                >
+                  <div class="summary_fbcco">
+                    <div
+                      id="summary-await-feedback"
+                      class="summary_number_font"
+                    >
+                      0
+                    </div>
+                    <div class="summary_text_font summary_left_ende-box">
+                      Awaiting Feedback
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="summary_gretting" class="summary_dn">
+              <div class="summary_fbscc summary_greeting">
+                <div
+                  class="summary_greeting_font_top"
+                  id="summary_welcome_text"
+                >
+                  Good morning,
+                </div>
+                <div
+                  id="summary_welcome_text_name"
+                  class="summary_greeting_font_name"
+                >
+                  ---
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
