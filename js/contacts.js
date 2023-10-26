@@ -25,9 +25,11 @@ async function saveNewContact() {
     resetForm(contactName, contactEmail, contactPhone);
     closeNewContacts();
 
-    if ( document.URL.includes("add_task.html") ) {
+    if ( document.URL.includes("add_task.html") || document.URL.includes("board.html")) {
+        if(document.URL.includes("add_task.html")) {
         sortContactsList();
         renderAssignedToBt();
+        }
     } else {
         updateContactsPage(contactNameAlterd);
     };
