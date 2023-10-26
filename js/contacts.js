@@ -129,11 +129,12 @@ function updateContactsPage(contactNameAlterd) {
  */
 
 async function deleteContacts(i) {
-    if(user === 'guest') {
-        showPopup('Cannot be deleted as a guest. Please create an account');
-        closeNewContacts();
-    } if(user === contacts[i]['email']) {
-        showPopup('Cannot be deleted.');
+    if(user === 'guest' || user === contacts[i]['email']) {
+        if (user === 'guest') {
+            showPopup('Cannot be deleted as a guest. Please create an account');
+        } else {
+            showPopup('Cannot be deleted.');
+        }
         closeNewContacts();
     } else {
     deleteFromList(i);
@@ -214,11 +215,12 @@ function changeUsersInTask(users, k, task, j) {
  */
 
 async function saveChangedContact(i) {
-    if(user === 'guest') {
-        showPopup('Cannot be changed as a guest. Please create an account');
-        closeNewContacts();
-    } if(user === contacts[i]['email']) {
-        showPopup('Cannot be changed.');
+    if(user === 'guest' || user === contacts[i]['email']) {
+        if (user === 'guest') {
+            showPopup('Cannot be changed as a guest. Please create an account');
+        } else {
+            showPopup('Cannot be changed.');
+        }
         closeNewContacts();
     }
     else {
