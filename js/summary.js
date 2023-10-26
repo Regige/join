@@ -217,10 +217,10 @@ function setMonth(month) {
  */
 function summaryIconChangeHover(icon) {
     if (icon == 'pen_icon') {
-        document.getElementById('summary_edit_icon').src = './img/pen_icon_withe.svg';
+        document.getElementById('summary_edit_icon').src = '../img/pen_icon_withe.svg';
     }
     if (icon == 'check_icon') {
-        document.getElementById('summary_check_icon').src = './img/check_icon_withe.svg';
+        document.getElementById('summary_check_icon').src = '../img/check_icon_withe.svg';
     }
 }
 
@@ -231,9 +231,9 @@ function summaryIconChangeHover(icon) {
  */
 function summaryIconChangeOut(icon) {
     if (icon == 'pen_icon') {
-        document.getElementById('summary_edit_icon').src = './img/pen_icon.svg';
+        document.getElementById('summary_edit_icon').src = '../img/pen_icon.svg';
     }
     if (icon == 'check_icon') {
-        document.getElementById('summary_check_icon').src = './img/check_icon.svg';
+        document.getElementById('summary_check_icon').src = '../img/check_icon.svg';
     }
 }

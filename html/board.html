@@ -4,25 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join/Board</title>
-    <link rel="icon" href="./img/Logo_for_Favicon.png" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/fonts.css" />
-    <link rel="stylesheet" href="./css/board.css" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/header.css" />
-    <link rel="stylesheet" href="./css/sidebar.css" />
-    <link rel="stylesheet" href="./css/add_task.css" />
+    <link rel="icon" href="../img/Logo_for_Favicon.png" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/fonts.css" />
+    <link rel="stylesheet" href="../css/board.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/sidebar.css" />
+    <link rel="stylesheet" href="../css/add_task.css" />
 
-    <script src="./js/storage.js"></script>
-    <script src="./js/script.js"></script>
-    <script src="./js/board_template.js"></script>
-    <script src="./js/board.js"></script>
-    <script src="./js/touch.js"></script>
-    <script src="./js/includeHTML.js"></script>
-    <script src="./js/add_task.js"></script>
-    <script src="./js/add_task_page.js"></script>
-    <script src="./js/add_task_html.js"></script>
-    <script src="./js/contacts_page.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/board_template.js"></script>
+    <script src="../js/board.js"></script>
+    <script src="../js/touch.js"></script>
+    <script src="../js/includeHTML.js"></script>
+    <script src="../js/add_task.js"></script>
+    <script src="../js/add_task_page.js"></script>
+    <script src="../js/add_task_html.js"></script>
+    <script src="../js/contacts_page.js"></script>
   </head>
 
   <body onload="includeHTML();initBoard()">
@@ -34,10 +34,10 @@
         <div class="board_heder_small">
           <h1>Board</h1>
           <div
-            onclick="saveStringInLocalStorage('to_do'),deleteGuestTask('kann nicht gelöscht werden'), openHTML('/add_task.html')"
+            onclick="saveStringInLocalStorage('to_do'),deleteGuestTask('kann nicht gelöscht werden'), openHTML('/html/add_task.html')"
             class="board_button_add_task_small board_fbcc dn"
           >
-            <img src="./img/add.svg" alt="add Icon" />
+            <img src="../img/add.svg" alt="add Icon" />
           </div>
         </div>
         <div class="board_fbsbc board_serch_small">
@@ -50,13 +50,13 @@
               name="suche"
               id="search_board"
             />
-            <img class="board_serch_svg" src="./img/search.svg" alt="" />
+            <img class="board_serch_svg" src="../img/search.svg" alt="" />
           </div>
           <div
-            onclick="saveStringInLocalStorage('to_do'), openHTML('/add_task.html')"
+            onclick="saveStringInLocalStorage('to_do'), openHTML('/html/add_task.html')"
             class="board_button_add_task board_fbcc"
           >
-            Add task <img src="./img/add.svg" alt="add Icon" />
+            Add task <img src="../img/add.svg" alt="add Icon" />
           </div>
         </div>
       </div>
@@ -66,8 +66,8 @@
             <p id="board_to_do_headline" class="board_p">To do</p>
             <img
               class="board_add"
-              onclick="saveStringInLocalStorage('to_do'), openHTML('/add_task.html')"
-              src="./img/plus_button.svg"
+              onclick="saveStringInLocalStorage('to_do'), openHTML('/html/add_task.html')"
+              src="../img/plus_button.svg"
               alt=""
             />
           </div>
@@ -87,8 +87,8 @@
             <p id="board_in_progress_headline" class="board_p">In progress</p>
             <img
               class="board_add"
-              onclick="saveStringInLocalStorage('in_progress'), openHTML('/add_task.html')"
-              src="./img/plus_button.svg"
+              onclick="saveStringInLocalStorage('in_progress'), openHTML('/html/add_task.html')"
+              src="../img/plus_button.svg"
               alt=""
             />
           </div>
@@ -110,8 +110,8 @@
             </p>
             <img
               class="board_add"
-              onclick="saveStringInLocalStorage('await_feedback'), openHTML('/add_task.html')"
-              src="./img/plus_button.svg"
+              onclick="saveStringInLocalStorage('await_feedback'), openHTML('/html/add_task.html')"
+              src="../img/plus_button.svg"
               alt=""
             />
           </div>

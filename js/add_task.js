@@ -35,7 +35,7 @@ async function defineNewTask() {
     resetTaskForm();
     removeStringFromLocalStorage();
     showPopup('Task added to board');
-    openHTML('/board.html');
+    openHTML('/html/board.html');
 }
 
 /**

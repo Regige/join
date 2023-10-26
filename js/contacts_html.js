@@ -48,7 +48,7 @@ function createPopupContact() {
     return /*html*/`
         <div id="contacts-add-con" class="contacts-add-con" onclick="stopClosing(event)">
             <div class="contacts-add-con-left">
-                <img src="./img/contacts-join-logo.svg" alt="" class="contacts-join-logo"/>
+                <img src="../img/contacts-join-logo.svg" alt="" class="contacts-join-logo"/>
                 <h2 id="popup-contact-header" class="contacts-h2">Add contact</h2>
                 <p id="popup-contact-p" class="contacts-add-text">Tasks are better with a team!</p>
                 <div class="contacts-hr-ho"></div>
@@ -57,20 +57,20 @@ function createPopupContact() {
                 <div class="contacts-add-close-con" onclick="closeNewContacts()"></div>
                 <div class="contacts-con-sub">
                     <div id="popuo-contact-user-icon">
-                        <img src="./img/contacts-user-logo.svg" alt="" class="contacts-user-logo"/>
+                        <img src="../img/contacts-user-logo.svg" alt="" class="contacts-user-logo"/>
                     </div>
                     <form onsubmit="createNewContact(); return false;" class="contacts-form">
                         <div class="contacts-input-con">
                             <input required type="text" name="name" id="popup-contact-name" placeholder="Name" class="contacts-input"/>
-                            <img src="./img/person.svg" alt="" />
+                            <img src="../img/person.svg" alt="" />
                         </div>
                         <div class="contacts-input-con">
                             <input required type="email" name="email" id="popup-contact-email" placeholder="Email" class="contacts-input"/>
-                            <img src="./img/mail.svg" alt="" />
+                            <img src="../img/mail.svg" alt="" />
                         </div>
                         <div class="contacts-input-con">
                             <input type="tel" name="phone" id="popup-contact-phone" placeholder="Phone" class="contacts-input"/>
-                            <img src="./img/add_call.svg" alt="" />
+                            <img src="../img/add_call.svg" alt="" />
                         </div>
                         <div id="popup-contact-button-con" class="contacts-button-con">
                             <input type="button" value="Cancel" onclick="closeNewContacts()" class="contacts-button contacts-bt-cancel contacts-bt-ft contacts-bt-cancel">

@@ -31,7 +31,7 @@ function filterTaskBoard(task_board) {
         document.getElementById('board_' + task_board).innerHTML = "";
         for (let i = 0; i < filter.length; i++) {
             const element = filter[i];
-            let priority_img = './img/task-prio-' + element.priority.charAt(0).toLowerCase() + '.svg';
+            let priority_img = '../img/task-prio-' + element.priority.charAt(0).toLowerCase() + '.svg';
             document.getElementById('board_' + task_board).innerHTML +=
                 createBoardTasks(element.id, element.category, element.headline, element.text, priority_img);
             loadBoardUsers(element.id, element.task_user);
@@ -254,7 +254,7 @@ function generateTaskData(element) {
     text = element.text;
     date = element.date;
     priority = element.priority;
-    priority_img = './img/task-prio-' + element.priority.charAt(0).toLowerCase() + '.svg'
+    priority_img = '../img/task-prio-' + element.priority.charAt(0).toLowerCase() + '.svg'
     return;
 }
 
@@ -288,9 +288,9 @@ function createBordCardSubtasks(id, subtasks) {
         for (let i = 0; i < subtasks.length; i++) {
             const element = subtasks[i];
             if (element.completed == 1) {
-                var completed = './img/Check button.svg';
+                var completed = '../img/Check button.svg';
             } else {
-                var completed = './img/Check button none.svg';
+                var completed = '../img/Check button none.svg';
             }
             document.getElementById(`board-card-subtasks${id}`).innerHTML += createBoardCardSubtaks(id, i, element.completed, element.text, completed);
         }

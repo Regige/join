@@ -4,21 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join/Summary</title>
-    <link rel="icon" href="./img/Logo_for_Favicon.png" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/fonts.css" />
-    <link rel="stylesheet" href="./css/summary.css" />
-    <link rel="stylesheet" href="./css/header.css" />
-    <link rel="stylesheet" href="./css/sidebar.css" />
-    <script src="./js/storage.js"></script>
-    <script src="./js/script.js"></script>
-    <script src="./js/includeHTML.js"></script>
-    <script src="./js/summary.js"></script>
+    <link rel="icon" href="../img/Logo_for_Favicon.png" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/fonts.css" />
+    <link rel="stylesheet" href="../css/summary.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/sidebar.css" />
+    <script src="../js/storage.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/includeHTML.js"></script>
+    <script src="../js/summary.js"></script>
   </head>
 
   <body onload="includeHTML();initsummary()">
-    <div w3-include-html="/templates/header.html"></div>
-    <div w3-include-html="/templates/sidebar.html"></div>
+    <div w3-include-html="../templates/header.html"></div>
+    <div w3-include-html="../templates/sidebar.html"></div>
     <div id="summary_body" class="summary_body">
       <div class="summary_container summary_fbfsco">
         <div class="summary_header">
@@ -79,7 +79,7 @@
             <div class="summary_fbcco summary_task">
               <div class="summary_fbsbc">
                 <div
-                  onclick="openHTML('/board.html')"
+                  onclick="openHTML('/html/board.html')"
                   onmouseover="summaryIconChangeHover('pen_icon')"
                   onmouseout="summaryIconChangeOut('pen_icon')"
                   class="summary_left_start summary_fbcc summary_box_margin"
@@ -88,7 +88,7 @@
                     <img
                       id="summary_edit_icon"
                       class="summary_icon"
-                      src="./img/pen_icon.svg"
+                      src="../img/pen_icon.svg"
                       alt="Edit-Icon"
                     />
                   </div>
@@ -98,7 +98,7 @@
                   </div>
                 </div>
                 <div
-                  onclick="openHTML('/board.html')"
+                  onclick="openHTML('/html/board.html')"
                   onmouseover="summaryIconChangeHover('check_icon')"
                   onmouseout="summaryIconChangeOut('check_icon')"
                   class="summary_left_start summary_fbcc summary_box_margin"
@@ -107,7 +107,7 @@
                     <img
                       id="summary_check_icon"
                       class="summary_icon"
-                      src="./img/check_icon.svg"
+                      src="../img/check_icon.svg"
                       alt="Check-Icon"
                     />
                   </div>
@@ -120,14 +120,14 @@
 
               <div class="summary_fbcc">
                 <div
-                  onclick="openHTML('/board.html')"
+                  onclick="openHTML('/html/board.html')"
                   class="summary_left_center summary_fbfsc summary_box_margin"
                 >
                   <div class="summary_left_start_center summary_fbcc">
                     <div>
                       <img
                         class="summary_icon"
-                        src="./img/urgent_icon.svg"
+                        src="../img/urgent_icon.svg"
                         alt="Edit-Icon"
                       />
                     </div>
@@ -164,7 +164,7 @@
 
               <div class="summary_fbsbc">
                 <div
-                  onclick="openHTML('/board.html')"
+                  onclick="openHTML('/html/board.html')"
                   class="summary_left_ende summary_fbcc summary_box_margin"
                 >
                   <div class="summary_fbcco">
@@ -177,7 +177,7 @@
                   </div>
                 </div>
                 <div
-                  onclick="openHTML('/board.html')"
+                  onclick="openHTML('/html/board.html')"
                   class="summary_left_ende summary_fbcc summary_box_margin"
                 >
                   <div class="summary_fbcco">
@@ -190,7 +190,7 @@
                   </div>
                 </div>
                 <div
-                  onclick="openHTML('/board.html')"
+                  onclick="openHTML('/html/board.html')"
                   class="summary_left_ende summary_fbcc summary_box_margin"
                 >
                   <div class="summary_fbcco">

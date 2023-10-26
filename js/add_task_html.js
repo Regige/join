@@ -21,7 +21,7 @@ function createAddTask() {
                     <button onclick="stopClosing(event), showPopupContact()" 
                     id="add-new-contact-bt" 
                     class="d-none task-button task-bt-create task-bt-add pos-rel">Add new contact
-                    <img src="./img/contacts_add_icon.svg" alt=""/>
+                    <img src="../img/contacts_add_icon.svg" alt=""/>
                     </button>
                   </div>
                 </div>
@@ -60,7 +60,7 @@ function createAddTask() {
                 <div class="task-sub-input-con" onclick="changeToSubText()">
                   <div id="task-sub-bt-open" class="flx task-sub-bt-open-con">
                     <input type="text" placeholder="Add new subtask" class="task-sub-input"/>
-                    <img src="./img/add_black.svg" alt="" />
+                    <img src="../img/add_black.svg" alt="" />
                   </div>
                   <div id="task-sub-input-text-con" class="d-none flx task-sub-input-text-con">
                     <input id="task-sub-input-text" type="text" placeholder="" class="task-sub-input"

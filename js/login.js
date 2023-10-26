@@ -5,7 +5,7 @@ async function login() {
     //console.log(user);
     if (user) {
         saveUserinLocalStorge(user.email,user.name);
-        window.location.href = 'summary.html';
+        window.location.href = './html/summary.html';
 
     } else {
         showPopup('Email and/or password are incorrect.');

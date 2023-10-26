@@ -54,7 +54,7 @@ function createBoradCard(id, story, story_bg, headline, text, date, priority, pr
         <div class="board_fbsbc">
             <div id="Card_story${id}" class="board_detail_header board_fbcc"  style="background-color: ${story_bg};">${story}</div>
             <div class="board_detail_fixed_close">
-            <img onclick="stopClosing(event), closeBoardCard()" src="./img/Close.svg" alt="">
+            <img onclick="stopClosing(event), closeBoardCard()" src="../img/Close.svg" alt="">
         </div></div>
         <div id="board_detail_box_content">
         <div class="board_detail_headline">${headline}
@@ -87,20 +87,20 @@ function createBoradCard(id, story, story_bg, headline, text, date, priority, pr
         </div>
         <div id="board-card-subtasks${id}" class="board_dfcfsco board_detail_date_prio">Subtasks
             <div class="board_dfcb" style="margin-top: 20px;margin-left: 5px;">
-                <img class="board_fbcc" src="./img/Check button.svg" alt="">
+                <img class="board_fbcc" src="../img/Check button.svg" alt="">
                 <span class="board_detail_subtasks"> Implement Recipe Recommendation</span>
             </div>
             <div class="board_dfcb" style="margin-top: 20px;margin-left: 5px;">
-                <img class="board_fbcc" src="./img/Check button none.svg" alt="">
+                <img class="board_fbcc" src="../img/Check button none.svg" alt="">
                 <span class="board_detail_subtasks"> Implement Recipe Recommendation</span>
             </div>
             </div>
             </div>
         <div class="board_dfec board_detail_del_edit" style="margin-top: 30px;">
-            <div id="board_card_bt_delete" onclick="deleteTask(${id})" class="board_dfcb"><img  src="./img/delete.svg" alt="">Delete
-                <img style="cursor: default;" src="./img/stroked_vertically.svg" alt="">
+            <div id="board_card_bt_delete" onclick="deleteTask(${id})" class="board_dfcb"><img  src="../img/delete.svg" alt="">Delete
+                <img style="cursor: default;" src="../img/stroked_vertically.svg" alt="">
             </div>
-            <div id="board_card_bt_edit" onclick="editTask(${id})" class="board_dfcb"><img  src="./img/edit.svg" alt="">Edit</div>
+            <div id="board_card_bt_edit" onclick="editTask(${id})" class="board_dfcb"><img  src="../img/edit.svg" alt="">Edit</div>
         </div>
     </div>
 </div>
