@@ -5,21 +5,18 @@ async function init() {
     loadUsers(); 
 }
 
-
 function saveUsersToLocalStorage() {
     localStorage.setItem('users', JSON.stringify(users));
 }
 
 function loadUsersFromLocalStorage() {
-    const storedUsers = localStorage.getItem('users');
+    let storedUsers = localStorage.getItem('users');
     if (storedUsers) {
         users = JSON.parse(storedUsers);
     } else {
         users = [];
     }
 }
-
-
 
 async function loadUsers() {
     try {
@@ -35,8 +32,6 @@ async function loadUsers() {
         console.error('Loading error:', e);
     }
 }
-
-
 
 async function register() {
     if (!validateRegistrationFields()) {
@@ -85,10 +80,10 @@ async function processRegistration() {
     await setItem('users', JSON.stringify(users));
     await loadStandardUserListAndContacts(email.value, name.value);
     showPopupAndRedirect('You have successfully registered.', 'index.html');
-    resetForm();
+    resetFormValue();
 }
 
-function resetForm() {
+function resetFormValue() {
     document.getElementById('nameregister').value = '';
     document.getElementById('emailregister').value = '';
     document.getElementById('passwordregister1').value = '';
